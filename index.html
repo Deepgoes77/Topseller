@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fokusthemen 1. HJ 2025</title>
   <style>
-    /* Globaler Reset und Standardisierung */
+    /* Grundlegende Reset und Standardisierung */
     * {
       margin: 0;
       padding: 0;
@@ -16,7 +16,7 @@
       background-color: #f7f7f7;
       color: #333;
       line-height: 1.6;
-      padding-bottom: 70px; /* Platz für fixierten Footer */
+      padding-bottom: 60px; /* Platz für den fixierten Footer */
     }
     /* Globaler Header */
     header.global-header {
@@ -60,26 +60,26 @@
       margin: 20px auto;
       padding: 0 15px;
     }
-    /* Sections – standardmäßig ausgeblendet, aktive Section sichtbar */
+    /* Sections – standardmäßig ausgeblendet, aktive Section wird eingeblendet */
     .section {
       display: none;
       animation: fadeIn 0.5s;
       background-color: #fff;
       border-radius: 6px;
       padding: 20px;
-      margin-bottom: 30px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
     }
     .section.active {
       display: block;
     }
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
-    /* Kategorien */
+    /* Kategorien mit Schatten und abgerundeten Ecken */
     .category {
       margin: 30px 0;
+      background-color: #fff;
       border-radius: 6px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -127,53 +127,14 @@
       width: 100%;
       box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
     }
-    /* Zusätzliche Abstände im Abschlussphase-Bereich */
-    .abschlussphase p,
-    .abschlussphase ul,
-    .abschlussphase select {
-      margin-bottom: 20px;
-    }
-    .abschlussphase ul {
-      margin-left: 20px;
-    }
-    /* Mobile Optimierung */
+    /* Responsive Anpassungen */
     @media (max-width: 600px) {
-      header.global-header h1 {
-        font-size: 1.8em;
-      }
-      nav a {
-        padding: 8px 12px;
-        font-size: 0.9em;
-      }
-      .container {
-        margin: 10px auto;
-        padding: 0 10px;
-      }
-      .section {
-        padding: 15px;
-        margin-bottom: 20px;
-      }
-      .category h2 {
-        padding: 10px;
-        font-size: 1.2em;
+      nav {
+        flex-direction: column;
+        gap: 10px;
       }
       .model {
         width: calc(50% - 20px);
-        padding: 10px;
-        margin: 5px;
-        font-size: 0.9em;
-      }
-      /* Innerer Header in Neuheiten anpassen */
-      header[style] h1 {
-        font-size: 1.8em;
-      }
-      header[style] p {
-        font-size: 1.5em;
-      }
-      /* Dropdown-Menü */
-      .abschlussphase select {
-        padding: 8px;
-        font-size: 0.9em;
       }
     }
   </style>
@@ -195,42 +156,15 @@
 </nav>
 
 <div class="container">
-  <!-- Section: Abschlussphase – Optimierter Bereich in Sie-Form, kompakt für mobile Nutzung -->
-  <div id="abschlussphase" class="section abschlussphase">
-    <h2>Abschlussphase – Den Deal erfolgreich abschließen</h2>
-    <p>Beobachten Sie, ob Ihr Kunde Interesse zeigt – intensives Nachdenken, zustimmendes Nicken oder konkrete Fragen zu Details.</p>
-    
-    <h3>Kaufsignale</h3>
-    <ul>
-      <li>✔ Der Kunde überlegt lange</li>
-      <li>✔ Er nickt zustimmend</li>
-      <li>✔ Er fragt zu Lieferung oder Garantien</li>
-    </ul>
-    
-    <h3>Wählen Sie einen Einwand zur Einwandbehandlung:</h3>
-    <select id="abschlussfragen" style="padding:10px; font-size:1em; width:100%;">
-      <option value="">-- Bitte wählen Sie einen Einwand aus --</option>
-      <option value="1">Ich muss nochmal darüber nachdenken.</option>
-      <option value="2">Das ist mir zu teuer.</option>
-      <option value="3">Ich habe noch andere Angebote, die ich mir ansehen möchte.</option>
-      <option value="4">Ich bin mir unsicher wegen der Größe.</option>
-      <option value="5">Ich muss erst mit meinem Partner sprechen.</option>
-      <option value="6">Ich habe Angst, dass die Qualität nicht gut genug ist.</option>
-      <option value="7">Ich brauche noch etwas Zeit, um zu sparen.</option>
-      <option value="8">Der Liefertermin ist mir zu spät.</option>
-      <option value="9">Ich bin mir nicht sicher, ob es in mein Zuhause passt.</option>
-      <option value="10">Ich will nochmal darüber schlafen.</option>
-    </select>
-    
-    <div id="abschluss-text" style="margin-top:20px; font-size:1.1em; font-style: italic;"></div>
-    
-    <h3>Einwände behandeln</h3>
-    <p>Nehmen Sie den Einwand ernst und bieten Sie Ihrem Kunden eine klare Lösung – so kommen Sie gemeinsam zum Abschluss.</p>
+  <!-- Section: Abschlussphase -->
+  <div id="abschlussphase" class="section">
+    <h2>Abschlussphase</h2>
+    <p>Hier wird der Inhalt für die Abschlussphase angezeigt.</p>
   </div>
 
   <!-- Section: Neuheiten und Topseller -->
   <div id="neuheiten" class="section active">
-    <!-- Innerer Header für diesen Bereich -->
+    <!-- Innerer Header für den Bereich -->
     <header style="background-color:#f1c40f; text-align:center; padding:10px 0; margin-bottom:20px;">
       <h1 style="margin:0; font-size:2.5em;">DIGA</h1>
       <p style="margin:5px 0 0; font-size:2em;">Neuheiten und Topseller</p>
@@ -374,51 +308,6 @@
     });
     link.classList.add('active');
   }
-</script>
-
-<!-- Script für interaktive Einwandbehandlung in Sie-Form -->
-<script>
-  document.getElementById("abschlussfragen").addEventListener("change", function() {
-    let auswahl = this.value;
-    let text = "";
-    
-    switch(auswahl) {
-      case "1":
-        text = "Absolut verständlich – eine fundierte Entscheidung braucht Zeit. Sie haben ein Möbelstück mit erstklassiger Verarbeitung, langlebigen Materialien und zeitlosem Design. Warum warten, wenn Sie bereits wissen, dass es passt?";
-        break;
-      case "2":
-        text = "Teuer ist relativ – wenn Sie in ein Möbelstück investieren, das Jahrzehnte hält, sparen Sie langfristig. Sie erhalten echte Qualität. Günstigere Alternativen gibt es, aber keine mit dieser Hochwertigkeit. Möchten Sie wirklich Kompromisse eingehen?";
-        break;
-      case "3":
-        text = "Natürlich können Sie sich auch andere Angebote ansehen, aber Qualität spricht für sich. Dieses Möbelstück bietet eine Verarbeitung, die Sie so in dieser Preisklasse kaum finden. Warum Zeit verlieren, wenn Sie schon wissen, dass es perfekt ist?";
-        break;
-      case "4":
-        text = "Ein gutes Möbelstück passt sich Ihrer Umgebung an – nicht umgekehrt. Die Proportionen sind so gewählt, dass es sich harmonisch einfügt. Qualität bleibt auch langfristig erhalten.";
-        break;
-      case "5":
-        text = "Das ist völlig verständlich – aber denken Sie daran: Wer kennt Ihren Geschmack besser als Sie? Sie treffen heute eine Entscheidung für langlebige Qualität, und Ihr Partner wird begeistert sein.";
-        break;
-      case "6":
-        text = "Ich verstehe Ihre Bedenken – Qualität lässt sich nicht immer sofort beurteilen. Aber hier spüren Sie den Unterschied: handverlesene Materialien, erstklassige Verarbeitung und eine Herstellergarantie machen den Unterschied.";
-        break;
-      case "7":
-        text = "Ich verstehe, dass Sie sich Zeit nehmen möchten. Aber Qualität ist eine Investition – wer jetzt in hochwertige Möbel investiert, spart sich später Ersatzkäufe und Ärger.";
-        break;
-      case "8":
-        text = "Hochwertige Möbel brauchen Zeit – das ist keine Massenware, sondern Handwerkskunst. Ein paar Wochen Wartezeit bedeuten jahrelange Zufriedenheit. Das Warten lohnt sich!";
-        break;
-      case "9":
-        text = "Die zeitlose Gestaltung und hochwertigen Materialien sorgen dafür, dass es sich in viele Einrichtungsstile einfügt. Ein echtes Qualitätsstück passt sich an – und Sie entscheiden sich für Beständigkeit.";
-        break;
-      case "10":
-        text = "Verständlich, aber Ihr erster Eindruck war positiv. Wenn Sie jetzt zusagen, treffen Sie eine Entscheidung für Wertigkeit und Qualität – eine Entscheidung, die Sie nicht bereuen werden.";
-        break;
-      default:
-        text = "";
-    }
-    
-    document.getElementById("abschluss-text").innerText = text;
-  });
 </script>
 
 </body>
