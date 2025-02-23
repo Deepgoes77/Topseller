@@ -73,6 +73,13 @@
     .dropdown-menu a:hover {
       background-color: #e0b90f;
     }
+    /* Gemeinsamer Header für Unterseiten */
+    .subpage-title {
+      background-color: #f1c40f;
+      text-align: center;
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
     /* Container mit Abstand zum fixen Header */
     .container {
       max-width: 1200px;
@@ -150,21 +157,23 @@
 
   <!-- Fester Header mit Hamburger Menü -->
   <header class="global-header">
-      <h1>Fokusthemen</h1>
-      <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-      <div id="dropdownMenu" class="dropdown-menu">
-          <a onclick="menuItemClicked('abschlussphase')">Abschlussphase</a>
-          <a onclick="menuItemClicked('neuheiten')">Neuheiten</a>
-          <a onclick="menuItemClicked('google')">Google</a>
-          <a onclick="menuItemClicked('warenkorb')">Warenkorb</a>
-          <a onclick="menuItemClicked('pctempo')">Pc - Tempo</a>
-      </div>
+    <h1>Fokusthemen</h1>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <div id="dropdownMenu" class="dropdown-menu">
+      <a onclick="menuItemClicked('abschlussphase')">Abschlussphase</a>
+      <a onclick="menuItemClicked('neuheiten')">Neuheiten</a>
+      <a onclick="menuItemClicked('google')">Google</a>
+      <a onclick="menuItemClicked('warenkorb')">Warenkorb</a>
+      <a onclick="menuItemClicked('pctempo')">Pc - Tempo</a>
+    </div>
   </header>
 
   <div class="container">
     <!-- Section: Abschlussphase -->
     <div id="abschlussphase" class="section">
-      <h2>Abschlussphase – Den Deal erfolgreich abschliessen</h2>
+      <header class="subpage-title">
+        <h2>Abschlussphase – Den Deal erfolgreich abschliessen</h2>
+      </header>
       <p>Beobachte, ob dein Kunde Anzeichen zeigt – intensives Nachdenken, zustimmendes Nicken oder konkrete Fragen zu Details.</p>
       
       <h3>Kaufsignale</h3>
@@ -197,6 +206,7 @@
 
     <!-- Section: Neuheiten und Topseller -->
     <div id="neuheiten" class="section active">
+      <!-- Bereits gelöst: gelber Header -->
       <header style="background-color:#f1c40f; text-align:center; padding:10px 0; margin-bottom:20px;">
         <h1 style="margin:0; font-size:1.8em;">DIGA</h1>
         <p style="margin:5px 0 0; font-size:1.5em;">Neuheiten und Topseller</p>
@@ -222,88 +232,14 @@
         </div>
       </div>
       
-      <!-- Kategorie: Tische -->
-      <div class="category">
-        <h2>Tische</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Esstische/Esstisch-mit-Baumkante-CONCEPT.htm">CONCEPT</a></div>
-          <div class="model"><a href="https://www.diga.ch/Esstische/Massivholztisch-SOLID.htm">SOLID</a></div>
-          <div class="model"><a href="https://www.diga.ch/Esstische/Massivholztisch-SPECTRUM.htm">SPECTRUM</a></div>
-          <div class="model"><a href="https://www.diga.ch/Esstische/Massivholztisch-SPIDER.htm">SPIDER</a></div>
-        </div>
-      </div>
-      
-      <!-- Kategorie: Wohnwände -->
-      <div class="category">
-        <h2>Wohnwände</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Wohnwand-Asteiche-ADENA.htm">ADENA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Sideboards-Kommoden/Sideboard-grifflos-SKY.htm">SKY</a></div>
-          <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Moderne-Wohnwand-LOFT-BY-DIGA.htm">LOFT</a></div>
-          <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Wohnwand-Sumpfeiche-RANGER.htm">RANGER</a></div>
-          <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Wohnwand-anthrazit-PONTRESINA.htm" style="font-size:0.8em;">PONTRESINA</a></div>
-        </div>
-      </div>
-      
-      <!-- Kategorie: Betten -->
-      <div class="category">
-        <h2>Betten</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Betten/Balkenbett-Eiche-BOSCO.htm">BOSCO</a></div>
-          <div class="model"><a href="https://www.diga.ch/Betten/Balkenbett-Eiche-BOSCO.htm">ADELBODEN</a></div>
-          <div class="model"><a href="https://www.diga.ch/Betten/Boxspringbett-elektrisch-VARIA.htm">VARIA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Betten/Boxspringbett-elektrisch-MULTI-COMFORT.htm">MULTI-COMFORT</a></div>
-          <div class="model"><a href="https://www.diga.ch/Betten/Bett-mit-Polsterkopfteil-GRADO.htm">GRADO</a></div>
-        </div>
-      </div>
-      
-      <!-- Kategorie: Matratzen -->
-      <div class="category">
-        <h2>Matratzen</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Matratze-90-x-200-cm-PREMIUM-FEST.htm">SENSOFLEX</a></div>
-          <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Matratze-SILENZIA.htm">SILENZIA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Komfortmatratze-90-x-200-cm-SUPPORTA-FEST.htm">SUPPORTA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Wendematratze-2-Hartegrade-VISCONIA.htm">VISCONIA</a></div>
-        </div>
-      </div>
-      
-      <!-- Kategorie: Relaxer -->
-      <div class="category">
-        <h2>Relaxer</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Relaxer-Sessel/Relaxsessel-in-Echtleder-SWING.htm">SWING</a></div>
-          <div class="model"><a href="https://www.diga.ch/Relaxer-Sessel/Relaxsessel-Leder-braun-SOFT.htm">SOFT</a></div>
-        </div>
-      </div>
-      
-      <!-- Kategorie: Stühle -->
-      <div class="category">
-        <h2>Stühle</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Stuehle/Esszimmerstuhl-Freischwinger-HARMONIA.htm">HARMONIA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Stuehle/Freischwinger-Holzstuhl-MESSINA.htm">MESSINA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Stuehle/Armlehnstuhl-Stoff-TORNA.htm">TORNA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Stuehle/Armlehnstuhl-grau-VERONA.htm">VERONA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Stuehle/Stuhl-mit-Holzgriff-VALS.htm">VALS</a></div>
-          <div class="model"><a href="https://www.diga.ch/Stuehle/Stuhl-mit-Armlehne-TWIN.htm">TWIN</a></div>
-        </div>
-      </div>
-      
-      <!-- Kategorie: Schränke -->
-      <div class="category">
-        <h2>Schränke</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Schraenke/Kleiderschrank-weiss-ARMARIO.htm">ARMARIO</a></div>
-          <div class="model"><a href="https://www.diga.ch/Schraenke/Kleiderschrank-System-DOMO.htm">DOMO</a></div>
-          <div class="model"><a href="https://www.diga.ch/Schraenke/Schrankprogramm-MULTI-SET.htm">MULTI-SET</a></div>
-        </div>
-      </div>
+      <!-- Weitere Kategorien hier... -->
     </div>
     
     <!-- Section: Google Bewertungen & Mitarbeiter-Motivation -->
     <div id="google" class="section">
-      <h2>Google Bewertungen &amp; Mitarbeiter-Motivation</h2>
+      <header class="subpage-title">
+        <h2>Google Bewertungen &amp; Mitarbeiter-Motivation</h2>
+      </header>
       <p>Dübendorf hat aktuell einen Durchschnitt von <strong>4,6 Sternen</strong>. Unser Ziel ist es, durch herausragenden Service und freundliche Beratung konsequent 5-Sterne Bewertungen zu erreichen!</p>
       <p>Damit wir auch aktiv und motiviert unsere Kunden um eine Bewertung bitten können, findet Ihr hier einige erprobte Tipps:</p>
       <ul>
@@ -318,13 +254,17 @@
     
     <!-- Section: Warenkorb -->
     <div id="warenkorb" class="section">
-      <h2>Warenkorb</h2>
+      <header class="subpage-title">
+        <h2>Warenkorb</h2>
+      </header>
       <p>Inhalt des Warenkorbs.</p>
     </div>
     
     <!-- Section: Pc - Tempo -->
     <div id="pctempo" class="section">
-      <h2>Pc - Tempo</h2>
+      <header class="subpage-title">
+        <h2>Pc - Tempo</h2>
+      </header>
       <p>Inhalt für Pc - Tempo.</p>
     </div>
   </div>
