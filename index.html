@@ -30,17 +30,18 @@
       padding: 10px 20px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       z-index: 1000;
-    }
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      text-align: center;
     }
     header.global-header h1 {
-      font-size: 1.8em;
+      font-size: 2em; /* 2 Punkte größer als vorher */
       margin: 0;
+      font-weight: bold;
     }
     .hamburger {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
       font-size: 1.8em;
       cursor: pointer;
       padding: 5px;
@@ -149,17 +150,15 @@
 
   <!-- Fester Header mit Hamburger Menü -->
   <header class="global-header">
-    <div class="header-content">
       <h1>Fokusthemen</h1>
       <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-    </div>
-    <div id="dropdownMenu" class="dropdown-menu">
-      <a onclick="menuItemClicked('abschlussphase')">Abschlussphase</a>
-      <a onclick="menuItemClicked('neuheiten')">Neuheiten</a>
-      <a onclick="menuItemClicked('google')">Google</a>
-      <a onclick="menuItemClicked('warenkorb')">Warenkorb</a>
-      <a onclick="menuItemClicked('pctempo')">Pc - Tempo</a>
-    </div>
+      <div id="dropdownMenu" class="dropdown-menu">
+          <a onclick="menuItemClicked('abschlussphase')">Abschlussphase</a>
+          <a onclick="menuItemClicked('neuheiten')">Neuheiten</a>
+          <a onclick="menuItemClicked('google')">Google</a>
+          <a onclick="menuItemClicked('warenkorb')">Warenkorb</a>
+          <a onclick="menuItemClicked('pctempo')">Pc - Tempo</a>
+      </div>
   </header>
 
   <div class="container">
@@ -331,6 +330,7 @@
   </div>
 
   <script>
+    // Hamburger Menü umschalten
     function toggleMenu() {
       var menu = document.getElementById("dropdownMenu");
       menu.style.display = (menu.style.display === "block") ? "none" : "block";
@@ -346,6 +346,54 @@
       });
       document.getElementById(sectionId).classList.add('active');
     }
+
+    // Hamburger Menü beim Scrollen schließen
+    window.addEventListener('scroll', function() {
+      var menu = document.getElementById("dropdownMenu");
+      if(menu.style.display === "block"){
+        menu.style.display = "none";
+      }
+    });
+
+    // Swipe-Funktionalität für die Sections
+    const sectionOrder = ["abschlussphase", "neuheiten", "google", "warenkorb", "pctempo"];
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    document.addEventListener('touchstart', function(event) {
+      touchstartX = event.changedTouches[0].screenX;
+    }, false);
+
+    document.addEventListener('touchend', function(event) {
+      touchendX = event.changedTouches[0].screenX;
+      handleGesture();
+    }, false);
+
+    function handleGesture(){
+      if (touchendX < touchstartX - 50) {
+        // Swipe nach links: Nächste Section
+        nextSection();
+      }
+      if (touchendX > touchstartX + 50) {
+        // Swipe nach rechts: Vorherige Section
+        previousSection();
+      }
+    }
+
+    function nextSection(){
+      let currentSection = document.querySelector('.section.active');
+      let currentIndex = sectionOrder.indexOf(currentSection.id);
+      let nextIndex = (currentIndex + 1) % sectionOrder.length;
+      showSection(sectionOrder[nextIndex]);
+    }
+
+    function previousSection(){
+      let currentSection = document.querySelector('.section.active');
+      let currentIndex = sectionOrder.indexOf(currentSection.id);
+      let prevIndex = (currentIndex - 1 + sectionOrder.length) % sectionOrder.length;
+      showSection(sectionOrder[prevIndex]);
+    }
+
     // Interaktive Einwandbehandlung
     document.getElementById("abschlussfragen").addEventListener("change", function() {
       let auswahl = this.value;
