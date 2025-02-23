@@ -2,12 +2,11 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <!-- Optimierung für mobile Geräte -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Fokusthemen 1. HJ 2025</title>
+  <title>Fokusthemen</title>
   <style>
-    /* Globaler Reset und Standardisierung */
+    /* Globaler Reset */
     * {
       margin: 0;
       padding: 0;
@@ -18,28 +17,68 @@
       background-color: #f7f7f7;
       color: #333;
       line-height: 1.6;
-      /* Genug Abstand am unteren Rand, damit Inhalte nicht unter der Bottom-Nav verschwinden */
-      padding-bottom: 70px;
+      padding-bottom: 20px;
     }
-    /* Globaler Header */
+    /* Fester Header */
     header.global-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
       background-color: #f1c40f;
       color: #000;
-      text-align: center;
-      padding: 20px;
+      padding: 10px 20px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     header.global-header h1 {
-      font-size: 2em;
-      margin-bottom: 10px;
+      font-size: 1.8em;
+      margin: 0;
     }
-    /* Container für den Inhalt */
+    .hamburger {
+      font-size: 1.8em;
+      cursor: pointer;
+      padding: 5px;
+      user-select: none;
+    }
+    /* Dropdown Menü */
+    .dropdown-menu {
+      display: none;
+      background-color: #f1c40f;
+      position: absolute;
+      right: 20px;
+      top: 100%;
+      width: 200px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      border-bottom: 1px solid #ddd;
+    }
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+    .dropdown-menu a:hover {
+      background-color: #e0b90f;
+    }
+    /* Container mit Abstand zum fixen Header */
     .container {
       max-width: 1200px;
-      margin: 20px auto;
+      margin: 80px auto 20px; /* Top-Margin entspricht Header-Höhe */
       padding: 0 15px;
     }
-    /* Sections – standardmäßig ausgeblendet, aktive Section sichtbar */
+    /* Sections */
     .section {
       display: none;
       animation: fadeIn 0.5s;
@@ -95,53 +134,36 @@
       color: #000;
       font-weight: bold;
     }
-    /* Bottom Navigation als App-typische Navigation */
-    nav.bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: #f1c40f;
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
-    nav.bottom-nav a {
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-      padding: 5px 10px;
-      font-size: 0.9em;
-      transition: background-color 0.3s;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    nav.bottom-nav a:hover,
-    nav.bottom-nav a.active {
-      background-color: #e0b90f;
-    }
-    /* Responsive Anpassungen */
     @media (max-width: 600px) {
       .model {
         width: calc(50% - 20px);
       }
-      header.global-header h1 {
-        font-size: 1.8em;
+      header.global-header h1,
+      .hamburger {
+        font-size: 1.6em;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Globaler Header -->
+  <!-- Fester Header mit Hamburger Menü -->
   <header class="global-header">
-    <h1>Fokusthemen 1. HJ 2025</h1>
+    <div class="header-content">
+      <h1>Fokusthemen</h1>
+      <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    </div>
+    <div id="dropdownMenu" class="dropdown-menu">
+      <a onclick="menuItemClicked('abschlussphase')">Abschlussphase</a>
+      <a onclick="menuItemClicked('neuheiten')">Neuheiten</a>
+      <a onclick="menuItemClicked('google')">Google</a>
+      <a onclick="menuItemClicked('warenkorb')">Warenkorb</a>
+      <a onclick="menuItemClicked('pctempo')">Pc - Tempo</a>
+    </div>
   </header>
 
   <div class="container">
-    <!-- Section: Abschlussphase – Überarbeiteter Bereich in Sie-Form -->
+    <!-- Section: Abschlussphase -->
     <div id="abschlussphase" class="section">
       <h2>Abschlussphase – Den Deal erfolgreich abschließen</h2>
       <p>Beobachten Sie, ob Ihr Kunde Anzeichen zeigt – intensives Nachdenken, zustimmendes Nicken oder konkrete Fragen zu Details.</p>
@@ -150,8 +172,6 @@
       <ul>
         <li>✔ Der Kunde überlegt lange</li>
         <li>✔ Er nickt zustimmend</li>
-        <li>✔ Er stellt detaillierte Fragen</li>
-        <li>✔ Positive Körpersprache</li>
         <li>✔ Er fragt zu Lieferung oder Garantien</li>
       </ul>
       
@@ -173,19 +193,17 @@
       <div id="abschluss-text" style="margin-top:20px; font-size:1.1em; font-style: italic;"></div>
       
       <h3>Einwände behandeln</h3>
-
-      <p>Nehme Einwände ernst und biete dem Kunden eine klare Lösung – so finden ihr gemeinsam zum Abschluss.</p>
+      <p>Nehmen Sie den Einwand ernst und bieten Sie Ihrem Kunden eine klare Lösung – so finden Sie gemeinsam zum Abschluss.</p>
     </div>
 
     <!-- Section: Neuheiten und Topseller -->
     <div id="neuheiten" class="section active">
-      <!-- Innerer Header für diesen Bereich -->
       <header style="background-color:#f1c40f; text-align:center; padding:10px 0; margin-bottom:20px;">
-        <h1 style="margin:0; font-size:2em;">DIGA</h1>
+        <h1 style="margin:0; font-size:1.8em;">DIGA</h1>
         <p style="margin:5px 0 0; font-size:1.5em;">Neuheiten und Topseller</p>
       </header>
       
-      <!-- Sofas Category -->
+      <!-- Kategorie: Sofas -->
       <div class="category">
         <h2>Sofas</h2>
         <div class="model-list">
@@ -205,7 +223,7 @@
         </div>
       </div>
       
-      <!-- Tische Category -->
+      <!-- Kategorie: Tische -->
       <div class="category">
         <h2>Tische</h2>
         <div class="model-list">
@@ -216,7 +234,7 @@
         </div>
       </div>
       
-      <!-- Wohnwände Category -->
+      <!-- Kategorie: Wohnwände -->
       <div class="category">
         <h2>Wohnwände</h2>
         <div class="model-list">
@@ -228,7 +246,7 @@
         </div>
       </div>
       
-      <!-- Betten Category -->
+      <!-- Kategorie: Betten -->
       <div class="category">
         <h2>Betten</h2>
         <div class="model-list">
@@ -240,7 +258,7 @@
         </div>
       </div>
       
-      <!-- Matratzen Category -->
+      <!-- Kategorie: Matratzen -->
       <div class="category">
         <h2>Matratzen</h2>
         <div class="model-list">
@@ -251,7 +269,7 @@
         </div>
       </div>
       
-      <!-- Relaxer Category -->
+      <!-- Kategorie: Relaxer -->
       <div class="category">
         <h2>Relaxer</h2>
         <div class="model-list">
@@ -260,7 +278,7 @@
         </div>
       </div>
       
-      <!-- Stühle Category -->
+      <!-- Kategorie: Stühle -->
       <div class="category">
         <h2>Stühle</h2>
         <div class="model-list">
@@ -273,7 +291,7 @@
         </div>
       </div>
       
-      <!-- Schränke Category -->
+      <!-- Kategorie: Schränke -->
       <div class="category">
         <h2>Schränke</h2>
         <div class="model-list">
@@ -284,36 +302,43 @@
       </div>
     </div>
     
-    <!-- Section: Google Bewertungen (Platzhalter) -->
+    <!-- Section: Google Bewertungen & Mitarbeiter-Motivation -->
     <div id="google" class="section">
-      <h2>Google Bewertungen</h2>
-      <p>Hier werden Google Bewertungen angezeigt.</p>
+      <h2>Google Bewertungen &amp; Mitarbeiter-Motivation</h2>
+      <p>Unsere Filiale digamöbel Dübendorf hat aktuell einen Durchschnitt von <strong>4,6 Sternen</strong>. Unser Ziel ist es, durch herausragenden Service und freundliche Beratung konsequent 5-Sterne Bewertungen zu erreichen!</p>
+      <p>Damit auch Sie aktiv und motiviert unsere Kunden um eine Bewertung bitten können, finden Sie hier einige erprobte Tipps:</p>
+      <ul>
+        <li><strong>Persönlicher Ansatz:</strong> Beginnen Sie das Gespräch mit einer freundlichen Nachfrage: „Wie zufrieden sind Sie mit Ihrem Einkaufserlebnis bei uns?“</li>
+        <li><strong>Timing ist alles:</strong> Bitten Sie um eine Bewertung, wenn der positive Eindruck noch frisch ist – direkt nach einem gelungenen Beratungsgespräch oder Kaufabschluss.</li>
+        <li><strong>Hilfestellung anbieten:</strong> Erklären Sie dem Kunden, wie einfach es ist, eine Google-Bewertung abzugeben – eventuell mit einem direkten Link oder QR-Code.</li>
+        <li><strong>Dankbarkeit zeigen:</strong> Bedanken Sie sich immer herzlich für das Feedback und betonen Sie, wie wertvoll jede Bewertung für uns ist.</li>
+        <li><strong>Teamgeist fördern:</strong> Setzen Sie sich gemeinsame Ziele im Team, um mehr 5-Sterne Bewertungen zu erzielen, und feiern Sie auch kleine Erfolge!</li>
+      </ul>
+      <p>Gehen Sie mit Begeisterung an diese Aufgabe – jede positive Bewertung stärkt unseren Ruf und macht unseren Service für neue Kunden noch attraktiver.</p>
     </div>
     
-    <!-- Section: Warenkorb (Platzhalter) -->
+    <!-- Section: Warenkorb -->
     <div id="warenkorb" class="section">
       <h2>Warenkorb</h2>
       <p>Inhalt des Warenkorbs.</p>
     </div>
     
-    <!-- Section: Pc - Tempo (Platzhalter) -->
+    <!-- Section: Pc - Tempo -->
     <div id="pctempo" class="section">
       <h2>Pc - Tempo</h2>
       <p>Inhalt für Pc - Tempo.</p>
     </div>
   </div>
 
-  <!-- Bottom Navigation (als feste Leiste am unteren Bildschirmrand) -->
-  <nav class="bottom-nav">
-    <a onclick="showSection('abschlussphase'); setActive(this)">Abschlussphase</a>
-    <a onclick="showSection('neuheiten'); setActive(this)" class="active">Neuheiten</a>
-    <a onclick="showSection('google'); setActive(this)">Google</a>
-    <a onclick="showSection('warenkorb'); setActive(this)">Warenkorb</a>
-    <a onclick="showSection('pctempo'); setActive(this)">Pc - Tempo</a>
-  </nav>
-
   <script>
-    // Funktion zum Umschalten der sichtbaren Section
+    function toggleMenu() {
+      var menu = document.getElementById("dropdownMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+    function menuItemClicked(sectionId) {
+      showSection(sectionId);
+      toggleMenu();
+    }
     function showSection(sectionId) {
       var sections = document.querySelectorAll('.section');
       sections.forEach(function(sec) {
@@ -321,26 +346,16 @@
       });
       document.getElementById(sectionId).classList.add('active');
     }
-    // Funktion zur optischen Hervorhebung des aktiven Navigationselements
-    function setActive(link) {
-      var navLinks = document.querySelectorAll('nav.bottom-nav a');
-      navLinks.forEach(function(a) {
-        a.classList.remove('active');
-      });
-      link.classList.add('active');
-    }
-
-    // Interaktive Einwandbehandlung in Sie-Form
+    // Interaktive Einwandbehandlung
     document.getElementById("abschlussfragen").addEventListener("change", function() {
       let auswahl = this.value;
       let text = "";
-      
       switch(auswahl) {
         case "1":
           text = "Absolut verständlich – eine fundierte Entscheidung braucht Zeit. Sie haben ein Möbelstück mit erstklassiger Verarbeitung, langlebigen Materialien und zeitlosem Design. Warum warten, wenn Sie bereits wissen, dass es passt?";
           break;
         case "2":
-          text = "Teuer ist relativ – wenn Sie in ein Möbelstück investieren, das viele Jahre hält, sparen Sie langfristig. Sie bekommen echte Qualität. Günstigere Alternativen gibt es, aber keine mit dieser Hochwertigkeit. Möchten Sie wirklich Kompromisse eingehen?";
+          text = "Teuer ist relativ – wenn Sie in ein Möbelstück investieren, das Jahrzehnte hält, sparen Sie langfristig. Sie bekommen echte Qualität. Günstigere Alternativen gibt es, aber keine mit dieser Hochwertigkeit. Möchten Sie wirklich Kompromisse eingehen?";
           break;
         case "3":
           text = "Natürlich können Sie sich auch andere Angebote ansehen, aber Qualität spricht für sich. Dieses Möbelstück bietet eine Verarbeitung, die Sie so in dieser Preisklasse kaum finden. Warum Zeit verlieren, wenn Sie schon wissen, dass es perfekt ist?";
@@ -352,7 +367,7 @@
           text = "Das ist völlig verständlich – aber denken Sie daran: Wer kennt Ihren Geschmack besser als Sie? Sie treffen heute eine Entscheidung für langlebige Qualität, und Ihr Partner wird begeistert sein, wenn er sieht, wie gut es passt.";
           break;
         case "6":
-          text = "Ich verstehe Ihre Bedenken – Qualität lässt sich nicht immer auf den ersten Blick beurteilen. Aber hier spüren Sie den Unterschied: hochwertige Materialien, erstklassige Verarbeitung und die Langlebigkeit machen den Unterschied.";
+          text = "Ich verstehe Ihre Bedenken – Qualität lässt sich nicht immer auf den ersten Blick beurteilen. Aber hier spüren Sie den Unterschied: handverlesene Materialien, erstklassige Verarbeitung und eine Herstellergarantie machen den Unterschied.";
           break;
         case "7":
           text = "Ich verstehe, dass Sie sich Zeit nehmen möchten. Aber Qualität ist eine Investition – wer jetzt in hochwertige Möbel investiert, spart sich später Ersatzkäufe und Ärger.";
@@ -369,7 +384,6 @@
         default:
           text = "";
       }
-      
       document.getElementById("abschluss-text").innerText = text;
     });
   </script>
