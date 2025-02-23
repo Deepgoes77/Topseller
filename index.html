@@ -2,10 +2,9 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <!-- Optimierung für mobile Geräte -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Fokusthemen 1. HJ 2025</title>
+  <title>Fokusthemen</title>
   <style>
     /* Globaler Reset und Standardisierung */
     * {
@@ -18,20 +17,20 @@
       background-color: #f7f7f7;
       color: #333;
       line-height: 1.6;
-      /* Genug Abstand am unteren Rand, damit Inhalte nicht unter der Bottom-Nav verschwinden */
       padding-bottom: 70px;
+      overflow-x: hidden;
     }
     /* Globaler Header */
     header.global-header {
       background-color: #f1c40f;
       color: #000;
       text-align: center;
-      padding: 20px;
+      padding: 10px 20px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     header.global-header h1 {
-      font-size: 2em;
-      margin-bottom: 10px;
+      font-size: 1.8em;
+      margin-bottom: 5px;
     }
     /* Container für den Inhalt */
     .container {
@@ -95,28 +94,32 @@
       color: #000;
       font-weight: bold;
     }
-    /* Bottom Navigation als App-typische Navigation */
+    /* Bottom Navigation als feste Leiste am unteren Bildschirmrand */
     nav.bottom-nav {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
+      width: 100vw;
       background-color: #f1c40f;
       display: flex;
       justify-content: space-around;
       padding: 10px 0;
       box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
       z-index: 1000;
+      overflow-x: hidden;
     }
     nav.bottom-nav a {
       text-decoration: none;
       color: #000;
       font-weight: bold;
-      padding: 5px 10px;
+      padding: 5px 0;
       font-size: 0.9em;
       transition: background-color 0.3s;
       cursor: pointer;
       border-radius: 4px;
+      flex: 1;
+      text-align: center;
     }
     nav.bottom-nav a:hover,
     nav.bottom-nav a.active {
@@ -128,7 +131,7 @@
         width: calc(50% - 20px);
       }
       header.global-header h1 {
-        font-size: 1.8em;
+        font-size: 1.6em;
       }
     }
   </style>
@@ -137,7 +140,7 @@
 
   <!-- Globaler Header -->
   <header class="global-header">
-    <h1>Fokusthemen 1. HJ 2025</h1>
+    <h1>Fokusthemen</h1>
   </header>
 
   <div class="container">
@@ -178,7 +181,7 @@
     <div id="neuheiten" class="section active">
       <!-- Innerer Header für diesen Bereich -->
       <header style="background-color:#f1c40f; text-align:center; padding:10px 0; margin-bottom:20px;">
-        <h1 style="margin:0; font-size:2em;">DIGA</h1>
+        <h1 style="margin:0; font-size:1.8em;">DIGA</h1>
         <p style="margin:5px 0 0; font-size:1.5em;">Neuheiten und Topseller</p>
       </header>
       
@@ -300,7 +303,7 @@
     </div>
   </div>
 
-  <!-- Bottom Navigation (als feste Leiste am unteren Bildschirmrand) -->
+  <!-- Bottom Navigation -->
   <nav class="bottom-nav">
     <a onclick="showSection('abschlussphase'); setActive(this)">Abschlussphase</a>
     <a onclick="showSection('neuheiten'); setActive(this)" class="active">Neuheiten</a>
