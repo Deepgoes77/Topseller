@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fokusthemen 1. HJ 2025</title>
+  <title>Fokusthemen</title>
   <style>
     /* Globaler Reset und Standardisierung */
     * {
@@ -25,9 +25,10 @@
       text-align: center;
       padding: 20px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
     }
     header.global-header h1 {
-      font-size: 2.5em;
+      font-size: 1.25em; /* Schriftgröße halbiert */
       margin-bottom: 10px;
     }
     /* Navigation */
@@ -151,8 +152,8 @@
 <body>
 
 <!-- Globaler Header -->
-<header class="global-header">
-  <h1>Fokusthemen 1. HJ 2025</h1>
+<header class="global-header" id="global-header">
+  <h1>Fokusthemen</h1>
 </header>
 
 <!-- Navigation -->
@@ -165,10 +166,10 @@
 </nav>
 
 <div class="container">
-  <!-- Section: Abschlussphase – Überarbeiteter Bereich in Sie-Form -->
+  <!-- Section: Abschlussphase – Optimierter Bereich -->
   <div id="abschlussphase" class="section abschlussphase">
     <h2>Abschlussphase – Den Deal erfolgreich abschließen</h2>
-    <p>Beobachten Sie, ob Ihr Kunde Anzeichen zeigt – intensives Nachdenken, zustimmendes Nicken oder konkrete Fragen zu Details.</p>
+    <p>Beobachten Sie, ob Ihr Kunde Anzeichen zeigt – intensives Nachdenken, zustimmendes Nicken oder konkrete Fragen.</p>
     
     <h3>Kaufsignale</h3>
     <ul>
@@ -177,7 +178,7 @@
       <li>✔ Er fragt zu Lieferung oder Garantien</li>
     </ul>
     
-    <h3>Wählen Sie einen Einwand:</h3>
+    <h3>Wählen Sie Ihren Einwand</h3>
     <select id="abschlussfragen" style="padding:10px; font-size:1em; width:100%;">
       <option value="">-- Bitte wählen Sie einen Einwand aus --</option>
       <option value="1">Ich muss nochmal darüber nachdenken.</option>
@@ -195,7 +196,7 @@
     <div id="abschluss-text" style="margin-top:20px; font-size:1.1em; font-style: italic;"></div>
     
     <h3>Einwände behandeln</h3>
-    <p>Nehmen Sie den Einwand ernst und bieten Sie Ihrem Kunden eine klare Lösung – so finden Sie gemeinsam zum Abschluss.</p>
+    <p>Nehmen Sie den Einwand ernst und bieten Sie Ihrem Kunden eine klare Lösung – so finden Sie gemeinsam den Weg zum Abschluss.</p>
   </div>
 
   <!-- Section: Neuheiten und Topseller -->
@@ -354,34 +355,34 @@
     
     switch(auswahl) {
       case "1":
-        text = "Absolut verständlich – eine fundierte Entscheidung braucht Zeit. Sie haben ein Möbelstück mit erstklassiger Verarbeitung, langlebigen Materialien und zeitlosem Design. Warum warten, wenn Sie bereits wissen, dass es passt?";
+        text = "Absolut verständlich – eine fundierte Entscheidung braucht Zeit. Sie erhalten ein Möbelstück mit erstklassiger Verarbeitung, langlebigen Materialien und zeitlosem Design. Warum warten, wenn Sie bereits wissen, dass es passt?";
         break;
       case "2":
-        text = "Teuer ist relativ – wenn Sie in ein Möbelstück investieren, das Jahrzehnte hält, sparen Sie langfristig. Sie bekommen echte Qualität. Günstigere Alternativen gibt es, aber keine mit dieser Hochwertigkeit. Möchten Sie wirklich Kompromisse eingehen?";
+        text = "Teuer ist relativ – wenn Sie in ein Möbelstück investieren, das Jahrzehnte hält, sparen Sie langfristig. Sie erhalten echte Qualität. Günstigere Alternativen gibt es, aber keine mit dieser Hochwertigkeit. Möchten Sie wirklich Kompromisse eingehen?";
         break;
       case "3":
-        text = "Natürlich können Sie sich auch andere Angebote ansehen, aber Qualität spricht für sich. Dieses Möbelstück bietet eine Verarbeitung, die Sie so in dieser Preisklasse kaum finden. Warum Zeit verlieren, wenn Sie schon wissen, dass es perfekt ist?";
+        text = "Natürlich können Sie auch andere Angebote prüfen, aber Qualität spricht für sich. Dieses Möbelstück bietet eine Verarbeitung, die Sie so in dieser Preisklasse kaum finden. Warum Zeit verlieren, wenn Sie wissen, dass es ideal ist?";
         break;
       case "4":
-        text = "Ein gutes Möbelstück passt sich Ihrer Umgebung an – nicht umgekehrt. Die Maße und Proportionen sind so gewählt, dass es sich harmonisch einfügt. Qualität bleibt auch langfristig erhalten.";
+        text = "Ein gutes Möbelstück passt sich Ihrem Raum an – nicht umgekehrt. Die Maße sind optimal gewählt, sodass es sich harmonisch einfügt. Qualität bleibt dauerhaft erhalten.";
         break;
       case "5":
-        text = "Das ist völlig verständlich – aber denken Sie daran: Wer kennt Ihren Geschmack besser als Sie? Sie treffen heute eine Entscheidung für langlebige Qualität, und Ihr Partner wird begeistert sein, wenn er sieht, wie gut es passt.";
+        text = "Das ist völlig verständlich – jedoch kennen Sie Ihren Geschmack am besten. Treffen Sie heute eine Entscheidung für langlebige Qualität, und Ihr Partner wird begeistert sein.";
         break;
       case "6":
-        text = "Ich verstehe Ihre Bedenken – Qualität lässt sich nicht immer auf den ersten Blick beurteilen. Aber hier spüren Sie den Unterschied: handverlesene Materialien, erstklassige Verarbeitung und eine Herstellergarantie machen den Unterschied.";
+        text = "Ich verstehe Ihre Bedenken – Qualität lässt sich nicht immer sofort erkennen. Aber hier spüren Sie den Unterschied: handverlesene Materialien, erstklassige Verarbeitung und eine Garantie sprechen für sich.";
         break;
       case "7":
-        text = "Ich verstehe, dass Sie sich Zeit nehmen möchten. Aber Qualität ist eine Investition – wer jetzt in hochwertige Möbel investiert, spart sich später Ersatzkäufe und Ärger.";
+        text = "Ich verstehe, dass Sie sich Zeit nehmen möchten. Aber bedenken Sie: Qualität ist eine Investition, die sich langfristig auszahlt – Ersatzkäufe vermeiden und Zufriedenheit sichern.";
         break;
       case "8":
-        text = "Hochwertige Möbel brauchen Zeit – das ist keine Massenware, sondern Handwerkskunst. Ein paar Wochen Wartezeit bedeuten jahrelange Zufriedenheit. Das Warten lohnt sich!";
+        text = "Hochwertige Möbel benötigen Zeit – hier handelt es sich nicht um Massenware, sondern um sorgfältige Handwerkskunst. Ein paar Wochen Wartezeit bedeuten jahrelange Zufriedenheit.";
         break;
       case "9":
-        text = "Die zeitlose Gestaltung und hochwertigen Materialien sorgen dafür, dass es sich in viele Einrichtungsstile einfügt. Ein echtes Qualitätsstück passt sich an – und Sie entscheiden sich für Beständigkeit.";
+        text = "Die zeitlose Gestaltung und hochwertigen Materialien sorgen dafür, dass es in viele Einrichtungsstile passt. Ein echtes Qualitätsstück fügt sich harmonisch ein – eine Entscheidung für Beständigkeit.";
         break;
       case "10":
-        text = "Verständlich, aber Ihr erster Eindruck war positiv. Wenn Sie jetzt zusagen, treffen Sie eine Entscheidung für Wertigkeit und Qualität – eine Entscheidung, die Sie nicht bereuen werden.";
+        text = "Verständlich, aber Ihr erster Eindruck war positiv. Treffen Sie heute eine Entscheidung für Wertigkeit und Qualität – eine Entscheidung, die Sie nicht bereuen werden.";
         break;
       default:
         text = "";
