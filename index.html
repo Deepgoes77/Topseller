@@ -166,6 +166,49 @@
         font-size: 1.6em;
       }
     }
+    /* Quiz-Stile */
+    #quiz-container {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    #quiz-container h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    #quiz-container p {
+      font-size: 1.1em;
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+    #quiz-container button {
+      padding: 10px 20px;
+      font-size: 1em;
+      margin-top: 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #f1c40f;
+      color: #000;
+    }
+    .answer-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin: 8px 0;
+      background-color: #f9f9f9;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .answer-btn:hover {
+      background-color: #eee;
+    }
   </style>
 </head>
 <body>
@@ -179,7 +222,7 @@
       <a onclick="menuItemClicked('neuheiten')">Neuheiten</a>
       <a onclick="menuItemClicked('google')">Google</a>
       <a onclick="menuItemClicked('warenkorb')">Warenkorb</a>
-      <a onclick="menuItemClicked('pctempo')">Pc - Tempo</a>
+      <a onclick="menuItemClicked('gartenmoebel_quiz')">Gartenmöbel‑Quiz</a>
     </div>
   </header>
 
@@ -350,12 +393,36 @@
       <p>Inhalt folgt.</p>
     </div>
     
-    <!-- Section: Pc - Tempo -->
-    <div id="pctempo" class="section">
+    <!-- Section: Gartenmöbel-Quiz -->
+    <div id="gartenmoebel_quiz" class="section">
       <header class="subpage-title">
-        <h2>Pc - Tempo</h2>
+        <h2>Gartenmöbel‑Quiz</h2>
       </header>
-      <p>Inhalt folgt.</p>
+      <div id="quiz-container">
+        <!-- Anleitung -->
+        <div id="quiz-instructions">
+          <h2>Willkommen zum Gartenmöbel‑Quiz!</h2>
+          <p>
+            Testen Sie Ihr Wissen über unsere hochwertigen Gartenmöbel.
+            In diesem Quiz erhalten Sie jeweils eine Frage mit drei möglichen Antworten.
+            Klicken Sie auf die Antwort, die Sie für richtig halten.
+            Bei einer korrekten Antwort erscheint ein großer grüner Smiley, bei einer falschen ein großer roter Smiley.
+            Danach klicken Sie auf „Weiter“, um zur nächsten Frage zu gelangen.
+          </p>
+          <button id="start-quiz">Quiz starten</button>
+        </div>
+        <!-- Quiz-Inhalt -->
+        <div id="quiz-content" style="display: none;">
+          <div id="question-container">
+            <h3 id="question-text"></h3>
+            <div id="answers-container">
+              <!-- Antwortbuttons werden dynamisch erstellt -->
+            </div>
+          </div>
+          <div id="feedback" style="text-align: center; font-size: 3em; margin: 20px 0;"></div>
+          <button id="next-question" style="display: none;">Weiter</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -372,7 +439,7 @@
     }
 
     // Swipe-Funktionalität für die Sections
-    const sectionOrder = ["abschlussphase", "neuheiten", "google", "warenkorb", "pctempo"];
+    const sectionOrder = ["abschlussphase", "neuheiten", "google", "warenkorb", "gartenmoebel_quiz"];
     let touchstartX = 0;
     let touchendX = 0;
 
@@ -464,6 +531,150 @@
           text = "";
       }
       document.getElementById("abschluss-text").innerText = text;
+    });
+
+    /* ------------------ Gartenmöbel-Quiz ------------------ */
+    const quizQuestions = [
+      {
+        category: "Lounges",
+        question: "Warum laufen QuickDry-Schaum-Kissen nicht voll Wasser?",
+        options: [
+          { text: "Weil sie eine Hohlfaser haben, die kein Wasser speichert.", correct: true },
+          { text: "Weil jedes Kissen eine eingebaute Mini-Heizung hat.", correct: false },
+          { text: "Weil kleine Wassergeister das Wasser heimlich absaugen.", correct: false }
+        ]
+      },
+      {
+        category: "Lounges",
+        question: "Was ist der Lotusblüteneffekt bei Lounge-Kissen?",
+        options: [
+          { text: "Wasser perlt einfach ab, weil die Oberfläche schmutz- und wasserabweisend ist.", correct: true },
+          { text: "Die Kissen riechen nach Lotus, wenn es regnet.", correct: false },
+          { text: "Beim Draufsitzen öffnet sich eine Lotusblüte aus dem Stoff.", correct: false }
+        ]
+      },
+      {
+        category: "Loungegestelle",
+        question: "Warum kann ein Edelstahl-Gestell nicht rosten?",
+        options: [
+          { text: "Weil Edelstahl rostfrei ist.", correct: true },
+          { text: "Weil es mit einer unsichtbaren Anti-Rost-Fee versiegelt wird.", correct: false },
+          { text: "Weil es jeden Morgen mit einer speziellen Anti-Rost-Salbe eingerieben wird.", correct: false }
+        ]
+      },
+      {
+        category: "Loungegestelle",
+        question: "Was ist das Besondere an pulverbeschichtetem Aluminium?",
+        options: [
+          { text: "Die Beschichtung ist extrem widerstandsfähig und kann nicht abplatzen.", correct: true },
+          { text: "Es schmeckt nach Vanille, wenn man daran leckt.", correct: false },
+          { text: "Es leuchtet im Dunkeln wie ein Zauberstab.", correct: false }
+        ]
+      },
+      {
+        category: "Gartentische",
+        question: "Warum sind Keramiktische besonders hitzebeständig?",
+        options: [
+          { text: "Weil sie kein hitzeempfindliches Material enthalten.", correct: true },
+          { text: "Weil sie heimlich mit Vulkanlava behandelt werden.", correct: false },
+          { text: "Weil die Tischplatte jedes Mal einen Eisschwall erzeugt, wenn es zu heiß wird.", correct: false }
+        ]
+      },
+      {
+        category: "Gartentische",
+        question: "Was ist der „Show-Effekt“ bei einem Keramiktisch?",
+        options: [
+          { text: "Man kann mit einem Feuerzeug darauf brennen, ohne dass die Platte heiß wird.", correct: true },
+          { text: "Man kann damit Nachrichten in den Himmel projizieren.", correct: false },
+          { text: "Der Tisch singt ein Lied, wenn man ihn mit Wasser besprüht.", correct: false }
+        ]
+      },
+      {
+        category: "Gartenstühle",
+        question: "Warum sind Batyline-Bezüge besonders stabil?",
+        options: [
+          { text: "Weil sie nicht nur genäht, sondern auch verschweißt sind.", correct: true },
+          { text: "Weil sie aus Spiderman’s Netz gewebt sind.", correct: false },
+          { text: "Weil sie mit Geheimzutaten aus dem Weltall verstärkt wurden.", correct: false }
+        ]
+      },
+      {
+        category: "Gartenstühle",
+        question: "Was passiert, wenn man auf einen hochwertigen Textilene-Stuhl steigt?",
+        options: [
+          { text: "Nichts, der Stuhl bleibt stabil.", correct: true },
+          { text: "Er verwandelt sich in einen Thron.", correct: false },
+          { text: "Er beamt dich in eine andere Dimension.", correct: false }
+        ]
+      },
+      {
+        category: "Gartenliegen",
+        question: "Warum ist die Bespannung hochwertiger Gartenliegen besonders bequem?",
+        options: [
+          { text: "Weil sie um den Rahmen herum gespannt ist und mehr Liegefläche bietet.", correct: true },
+          { text: "Weil es magischen Feenstaub enthält.", correct: false },
+          { text: "Weil jede Liege ein eingebautes Massage-System hat.", correct: false }
+        ]
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+
+    const startQuizBtn = document.getElementById("start-quiz");
+    const quizInstructions = document.getElementById("quiz-instructions");
+    const quizContent = document.getElementById("quiz-content");
+    const questionText = document.getElementById("question-text");
+    const answersContainer = document.getElementById("answers-container");
+    const feedbackEl = document.getElementById("feedback");
+    const nextQuestionBtn = document.getElementById("next-question");
+
+    startQuizBtn.addEventListener("click", function() {
+      quizInstructions.style.display = "none";
+      quizContent.style.display = "block";
+      currentQuestionIndex = 0;
+      showQuizQuestion();
+    });
+
+    function showQuizQuestion() {
+      // Clear vorherige Rückmeldung und Antworten
+      feedbackEl.innerHTML = "";
+      nextQuestionBtn.style.display = "none";
+      answersContainer.innerHTML = "";
+      
+      // Hole aktuelle Frage
+      const currentQuestion = quizQuestions[currentQuestionIndex];
+      questionText.textContent = currentQuestion.question;
+      
+      // Erstelle Buttons für jede Antwort
+      currentQuestion.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option.text;
+        btn.className = "answer-btn";
+        btn.addEventListener("click", function() {
+          // Antwortbuttons deaktivieren
+          Array.from(answersContainer.children).forEach(child => child.disabled = true);
+          if(option.correct) {
+            feedbackEl.innerHTML = '<span style="color: green;">&#128512;</span>';
+          } else {
+            feedbackEl.innerHTML = '<span style="color: red;">&#128577;</span>';
+          }
+          nextQuestionBtn.style.display = "block";
+        });
+        answersContainer.appendChild(btn);
+      });
+    }
+
+    nextQuestionBtn.addEventListener("click", function() {
+      currentQuestionIndex++;
+      if(currentQuestionIndex < quizQuestions.length) {
+        showQuizQuestion();
+      } else {
+        // Quiz beendet
+        questionText.textContent = "Quiz abgeschlossen! Vielen Dank fürs Mitmachen.";
+        answersContainer.innerHTML = "";
+        feedbackEl.innerHTML = "";
+        nextQuestionBtn.style.display = "none";
+      }
     });
   </script>
   
