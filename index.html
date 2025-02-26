@@ -33,7 +33,7 @@
       text-align: center;
     }
     header.global-header h1 {
-      font-size: 2em; /* 2 Punkte größer */
+      font-size: 2em;
       margin: 0;
       font-weight: bold;
     }
@@ -83,7 +83,7 @@
     /* Container mit Abstand zum fixen Header */
     .container {
       max-width: 1200px;
-      margin: 80px auto 20px; /* Top-Margin entspricht Header-Höhe */
+      margin: 80px auto 20px;
       padding: 0 15px;
     }
     /* Sections */
@@ -102,6 +102,21 @@
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+    /* Neue Animationen für Swipe-Effekt */
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideInLeft {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    .slide-in-right {
+      animation: slideInRight 0.5s forwards;
+    }
+    .slide-in-left {
+      animation: slideInLeft 0.5s forwards;
     }
     /* Kategorien */
     .category {
@@ -351,24 +366,10 @@
       menu.style.display = (menu.style.display === "block") ? "none" : "block";
     }
     function menuItemClicked(sectionId) {
+      // Beim manuellen Klick wird ohne Swipe-Richtung der Standard-FadeIn genutzt
       showSection(sectionId);
       toggleMenu();
     }
-    function showSection(sectionId) {
-      var sections = document.querySelectorAll('.section');
-      sections.forEach(function(sec) {
-        sec.classList.remove('active');
-      });
-      document.getElementById(sectionId).classList.add('active');
-    }
-
-    // Hamburger Menü beim Scrollen schließen
-    window.addEventListener('scroll', function() {
-      var menu = document.getElementById("dropdownMenu");
-      if(menu.style.display === "block"){
-        menu.style.display = "none";
-      }
-    });
 
     // Swipe-Funktionalität für die Sections
     const sectionOrder = ["abschlussphase", "neuheiten", "google", "warenkorb", "pctempo"];
@@ -395,18 +396,33 @@
       }
     }
 
+    // Angepasste showSection-Funktion mit Swipe-Animation
+    function showSection(sectionId, direction) {
+      var sections = document.querySelectorAll('.section');
+      sections.forEach(function(sec) {
+        sec.classList.remove('active', 'slide-in-left', 'slide-in-right');
+      });
+      var newSection = document.getElementById(sectionId);
+      newSection.classList.add('active');
+      if(direction === 'swipeLeft'){
+        newSection.classList.add('slide-in-right'); // Neue Section kommt von rechts
+      } else if(direction === 'swipeRight'){
+        newSection.classList.add('slide-in-left'); // Neue Section kommt von links
+      }
+    }
+
     function nextSection(){
       let currentSection = document.querySelector('.section.active');
       let currentIndex = sectionOrder.indexOf(currentSection.id);
       let nextIndex = (currentIndex + 1) % sectionOrder.length;
-      showSection(sectionOrder[nextIndex]);
+      showSection(sectionOrder[nextIndex], 'swipeLeft');
     }
 
     function previousSection(){
       let currentSection = document.querySelector('.section.active');
       let currentIndex = sectionOrder.indexOf(currentSection.id);
       let prevIndex = (currentIndex - 1 + sectionOrder.length) % sectionOrder.length;
-      showSection(sectionOrder[prevIndex]);
+      showSection(sectionOrder[prevIndex], 'swipeRight');
     }
 
     // Interaktive Einwandbehandlung
