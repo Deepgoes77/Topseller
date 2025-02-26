@@ -17,81 +17,91 @@
       background-color: #f7f7f7;
       color: #333;
       line-height: 1.6;
-      /* Platz für Footer */
       padding-bottom: 20px;
-      overflow-x: hidden;
     }
-    /* Fester Header – nicht fixiert, verschwindet beim Scrollen */
+    /* Fester Header */
     header.global-header {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       background-color: #f1c40f;
       color: #000;
       padding: 10px 20px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1000;
       text-align: center;
     }
     header.global-header h1 {
-      font-size: 1.25em; /* Schriftgröße halbiert */
-      font-weight: bold;
+      font-size: 2em; /* 2 Punkte größer */
       margin: 0;
+      font-weight: bold;
     }
-    /* Navigation */
-    nav {
+    .hamburger {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.8em;
+      cursor: pointer;
+      padding: 5px;
+      user-select: none;
+    }
+    /* Dropdown Menü */
+    .dropdown-menu {
+      display: none;
       background-color: #f1c40f;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 15px 0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: absolute;
+      right: 20px;
+      top: 100%;
+      width: 200px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
-    nav a {
+    .dropdown-menu a {
+      display: block;
+      padding: 10px;
       text-decoration: none;
       color: #000;
       font-weight: bold;
-      padding: 10px 20px;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-      cursor: pointer;
+      border-bottom: 1px solid #ddd;
     }
-    nav a:hover, nav a.active {
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+    .dropdown-menu a:hover {
       background-color: #e0b90f;
     }
-    /* Container für den Slider */
-    .container {
-      max-width: 1200px;
-      margin: 80px auto 20px; /* Abstand oberhalb entspricht Header-Höhe */
-      padding: 0 15px;
-      overflow: hidden;
-    }
-    /* Slider-Container: Enthält alle Sections in einer Zeile */
-    #slider {
-      display: flex;
-      transition: transform 0.5s ease;
-      /* Breite: Anzahl der Sections x 100% */
-      width: 500%;
-    }
-    /* Jede Section nimmt 100% des Containers ein */
-    .section {
-      flex: 0 0 100%;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      background-color: #fff;
-      border-radius: 6px;
-    }
-    /* Innerer Header für Unterseiten (Subpage-Titel) */
+    /* Gemeinsamer Header für Unterseiten */
     .subpage-title {
       background-color: #f1c40f;
       text-align: center;
       padding: 10px 0;
       margin-bottom: 20px;
     }
-    .subpage-title h1 {
-      margin: 0;
-      font-size: 1.8em;
+    /* Container mit Abstand zum fixen Header */
+    .container {
+      max-width: 1200px;
+      margin: 80px auto 20px; /* Top-Margin entspricht Header-Höhe */
+      padding: 0 15px;
     }
-    .subpage-title p {
-      margin: 5px 0 0;
-      font-size: 1.5em;
+    /* Sections */
+    .section {
+      display: none;
+      animation: fadeIn 0.5s;
+      background-color: #fff;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     /* Kategorien */
     .category {
@@ -132,325 +142,307 @@
       color: #000;
       font-weight: bold;
     }
-    /* Fixierter Footer */
-    footer {
-      background-color: #f1c40f;
-      color: #000;
-      text-align: center;
-      padding: 15px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
-    }
-    /* Zusätzliche Abstände im Abschlussphase-Bereich */
-    .abschlussphase p,
-    .abschlussphase ul,
-    .abschlussphase select {
-      margin-bottom: 20px;
-    }
-    .abschlussphase ul {
-      margin-left: 20px;
-    }
-    /* Responsive Anpassungen */
     @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        gap: 10px;
-      }
       .model {
         width: calc(50% - 20px);
       }
-      header.global-header h1 {
-        font-size: 1em;
+      header.global-header h1,
+      .hamburger {
+        font-size: 1.6em;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Fester Header -->
-  <header class="global-header" id="global-header">
+  <!-- Fester Header mit Hamburger Menü -->
+  <header class="global-header">
     <h1>Fokusthemen</h1>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <div id="dropdownMenu" class="dropdown-menu">
+      <a onclick="menuItemClicked('abschlussphase')">Abschlussphase</a>
+      <a onclick="menuItemClicked('neuheiten')">Neuheiten</a>
+      <a onclick="menuItemClicked('google')">Google</a>
+      <a onclick="menuItemClicked('warenkorb')">Warenkorb</a>
+      <a onclick="menuItemClicked('pctempo')">Pc - Tempo</a>
+    </div>
   </header>
 
-  <!-- Navigation -->
-  <nav>
-    <a onclick="goToSection('abschlussphase'); setActive(this)">Abschlussphase</a>
-    <a onclick="goToSection('neuheiten'); setActive(this)" class="active">Neuheiten und Topseller</a>
-    <a onclick="goToSection('google'); setActive(this)">Google Bewertungen</a>
-    <a onclick="goToSection('warenkorb'); setActive(this)">Warenkorb</a>
-    <a onclick="goToSection('pctempo'); setActive(this)">Pc - Tempo</a>
-  </nav>
-
-  <!-- Container mit Slider -->
   <div class="container">
-    <div id="slider">
-      <!-- Section: Abschlussphase -->
-      <div id="abschlussphase" class="section abschlussphase">
-        <header class="subpage-title">
-          <h2>Abschlussphase – Den Deal erfolgreich abschließen</h2>
-        </header>
-        <p>Beobachten Sie, ob Ihr Kunde Anzeichen zeigt – intensives Nachdenken, zustimmendes Nicken oder konkrete Fragen.</p>
-        
-        <h3>Kaufsignale</h3>
-        <ul>
-          <li>✔ Der Kunde überlegt lange</li>
-          <li>✔ Er nickt zustimmend</li>
-          <li>✔ Er fragt zu Lieferung oder Garantien</li>
-        </ul>
-        
-        <h3>Wählen Sie Ihren Einwand</h3>
-        <select id="abschlussfragen" style="padding:10px; font-size:1em; width:100%;">
-          <option value="">-- Bitte wählen Sie einen Einwand aus --</option>
-          <option value="1">Ich muss nochmal darüber nachdenken.</option>
-          <option value="2">Das ist mir zu teuer.</option>
-          <option value="3">Ich habe noch andere Angebote, die ich mir ansehen möchte.</option>
-          <option value="4">Ich bin mir unsicher wegen der Größe.</option>
-          <option value="5">Ich muss erst mit meinem Partner/meiner Partnerin sprechen.</option>
-          <option value="6">Ich habe Angst, dass die Qualität nicht gut genug ist.</option>
-          <option value="7">Ich brauche noch etwas Zeit, um zu sparen.</option>
-          <option value="8">Der Liefertermin ist mir zu spät.</option>
-          <option value="9">Ich bin mir nicht sicher, ob es in mein Zuhause passt.</option>
-          <option value="10">Ich will nochmal darüber schlafen.</option>
-        </select>
-        
-        <div id="abschluss-text" style="margin-top:20px; font-size:1.1em; font-style: italic;"></div>
-        
-        <h3>Einwände behandeln</h3>
-        <p>Nehmen Sie jeden Einwand ernst und bieten Sie Ihrem Kunden eine klare Lösung – so finden Sie gemeinsam den Weg zum Abschluss.</p>
-      </div>
+    <!-- Section: Abschlussphase -->
+    <div id="abschlussphase" class="section">
+      <header class="subpage-title">
+        <h2>Abschlussphase – Den Deal erfolgreich abschliessen</h2>
+      </header>
+      <p>Beobachte, ob dein Kunde Anzeichen zeigt – intensives Nachdenken, zustimmendes Nicken oder konkrete Fragen zu Details.</p>
+      
+      <h3>Kaufsignale</h3>
+      <ul>
+        <li>✔ Der Kunde überlegt lange</li>
+        <li>✔ Er nickt zustimmend</li>
+        <li>✔ Er fragt zu Lieferung oder Garantien</li>
+      </ul>
+      
+      <h3>Bei welchem Einwand brauchst Du Unterstützung?:</h3>
+      <select id="abschlussfragen" style="padding:10px; font-size:1em; width:100%;">
+        <option value="">-- Bitte wähle einen Einwand aus --</option>
+        <option value="1">Ich muss nochmal darüber nachdenken.</option>
+        <option value="2">Das ist mir zu teuer.</option>
+        <option value="3">Ich habe noch andere Angebote, die ich mir ansehen möchte.</option>
+        <option value="4">Ich bin mir unsicher wegen der Größe.</option>
+        <option value="5">Ich muss erst mit meinem Partner/meiner Partnerin sprechen.</option>
+        <option value="6">Ich habe Angst, dass die Qualität nicht gut genug ist.</option>
+        <option value="7">Ich brauche noch etwas Zeit, um zu sparen.</option>
+        <option value="8">Der Liefertermin ist mir zu spät.</option>
+        <option value="9">Ich bin mir nicht sicher, ob es in mein Zuhause passt.</option>
+        <option value="10">Ich will nochmal darüber schlafen.</option>
+      </select>
+      
+      <div id="abschluss-text" style="margin-top:20px; font-size:1.1em; font-style: italic;"></div>
+      
+      <h3>Einwände behandeln</h3>
+      <p>Nehme jeden Einwand ernst und biete deinem Kunden eine klare Lösung – so findet ihr gemeinsam zum Abschluss.</p>
+    </div>
 
-      <!-- Section: Neuheiten und Topseller -->
-      <div id="neuheiten" class="section">
-        <header class="subpage-title">
-          <h1 style="margin:0; font-size:1.8em;">DIGA</h1>
-          <p style="margin:5px 0 0; font-size:1.5em;">Neuheiten und Topseller</p>
-        </header>
-        
-        <!-- Kategorie: Sofas -->
-        <div class="category">
-          <h2>Sofas</h2>
-          <div class="model-list">
-            <div class="model"><a href="https://www.diga.ch/Sofas/Sofa-Lederlook-CHANGE.htm">CHANGE</a></div>
-            <div class="model"><a href="https://www.diga.ch/Sofas/Ledersofa-LEA.htm">LEA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Sofas/Sofa-3-platzig-PLACE.htm">PLACE</a></div>
-            <div class="model"><a href="https://www.diga.ch/Sofas/Polstergarnitur-Ecke-CASABLANCA.htm" style="font-size:0.8em;">CASABLANCA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Sofas/Ecksofa-mit-Holz-PENTA.htm">PENTA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Sofas/Ecksofa-mit-vielen-Funktionen-ARENA-2.0.htm">ARENA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Sofas/Einzelsofa-VALBELLA.htm">VALBELLA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Bettsofas/Schlafsofa-FLIP.htm">FLIP</a></div>
-            <div class="model"><a href="https://www.diga.ch/Sofas/Ecksofa-SANDRA.htm">SANDRA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Sofas/Ecksofa-NABUCCO.htm">NABUCCO</a></div>
-            <div class="model"><a href="https://www.diga.ch/Sofas/Polsterecke-modular-FREE-STYLE.htm">FREE-STYLE</a></div>
-            <div class="model"><a href="https://www.diga.ch/Sofas/Ecksofa-MURTEN.htm">MURTEN</a></div>
-            <div class="model"><a href="https://www.diga.ch/Sofas/Ledersofa-schwarz-ZONA.htm">ZONA</a></div>
-          </div>
-        </div>
-        
-        <!-- Kategorie: Tische -->
-        <div class="category">
-          <h2>Tische</h2>
-          <div class="model-list">
-            <div class="model"><a href="https://www.diga.ch/Esstische/Esstisch-mit-Baumkante-CONCEPT.htm">CONCEPT</a></div>
-            <div class="model"><a href="https://www.diga.ch/Esstische/Massivholztisch-SOLID.htm">SOLID</a></div>
-            <div class="model"><a href="https://www.diga.ch/Esstische/Massivholztisch-SPECTRUM.htm">SPECTRUM</a></div>
-            <div class="model"><a href="https://www.diga.ch/Esstische/Massivholztisch-SPIDER.htm">SPIDER</a></div>
-          </div>
-        </div>
-        
-        <!-- Kategorie: Wohnwände -->
-        <div class="category">
-          <h2>Wohnwände</h2>
-          <div class="model-list">
-            <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Wohnwand-Asteiche-ADENA.htm">ADENA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Sideboards-Kommoden/Sideboard-grifflos-SKY.htm">SKY</a></div>
-            <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Moderne-Wohnwand-LOFT-BY-DIGA.htm">LOFT</a></div>
-            <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Wohnwand-Sumpfeiche-RANGER.htm">RANGER</a></div>
-            <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Wohnwand-anthrazit-PONTRESINA.htm" style="font-size:0.8em;">PONTRESINA</a></div>
-          </div>
-        </div>
-        
-        <!-- Kategorie: Betten -->
-        <div class="category">
-          <h2>Betten</h2>
-          <div class="model-list">
-            <div class="model"><a href="https://www.diga.ch/Betten/Balkenbett-Eiche-BOSCO.htm">BOSCO</a></div>
-            <div class="model"><a href="https://www.diga.ch/Betten/Balkenbett-Eiche-BOSCO.htm">ADELBODEN</a></div>
-            <div class="model"><a href="https://www.diga.ch/Betten/Boxspringbett-elektrisch-VARIA.htm">VARIA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Betten/Boxspringbett-elektrisch-MULTI-COMFORT.htm">MULTI-COMFORT</a></div>
-            <div class="model"><a href="https://www.diga.ch/Betten/Bett-mit-Polsterkopfteil-GRADO.htm">GRADO</a></div>
-          </div>
-        </div>
-        
-        <!-- Kategorie: Matratzen -->
-        <div class="category">
-          <h2>Matratzen</h2>
-          <div class="model-list">
-            <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Matratze-90-x-200-cm-PREMIUM-FEST.htm">SENSOFLEX</a></div>
-            <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Matratze-SILENZIA.htm">SILENZIA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Komfortmatratze-90-x-200-cm-SUPPORTA-FEST.htm">SUPPORTA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Wendematratze-2-Hartegrade-VISCONIA.htm">VISCONIA</a></div>
-          </div>
-        </div>
-        
-        <!-- Kategorie: Relaxer -->
-        <div class="category">
-          <h2>Relaxer</h2>
-          <div class="model-list">
-            <div class="model"><a href="https://www.diga.ch/Relaxer-Sessel/Relaxsessel-in-Echtleder-SWING.htm">SWING</a></div>
-            <div class="model"><a href="https://www.diga.ch/Relaxer-Sessel/Relaxsessel-Leder-braun-SOFT.htm">SOFT</a></div>
-          </div>
-        </div>
-        
-        <!-- Kategorie: Stühle -->
-        <div class="category">
-          <h2>Stühle</h2>
-          <div class="model-list">
-            <div class="model"><a href="https://www.diga.ch/Stuehle/Esszimmerstuhl-Freischwinger-HARMONIA.htm">HARMONIA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Stuehle/Freischwinger-Holzstuhl-MESSINA.htm">MESSINA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Stuehle/Armlehnstuhl-Stoff-TORNA.htm">TORNA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Stuehle/Armlehnstuhl-grau-VERONA.htm">VERONA</a></div>
-            <div class="model"><a href="https://www.diga.ch/Stuehle/Stuhl-mit-Holzgriff-VALS.htm">VALS</a></div>
-            <div class="model"><a href="https://www.diga.ch/Stuehle/Stuhl-mit-Armlehne-TWIN.htm">TWIN</a></div>
-          </div>
-        </div>
-        
-        <!-- Kategorie: Schränke -->
-        <div class="category">
-          <h2>Schränke</h2>
-          <div class="model-list">
-            <div class="model"><a href="https://www.diga.ch/Schraenke/Kleiderschrank-weiss-ARMARIO.htm">ARMARIO</a></div>
-            <div class="model"><a href="https://www.diga.ch/Schraenke/Kleiderschrank-System-DOMO.htm">DOMO</a></div>
-            <div class="model"><a href="https://www.diga.ch/Schraenke/Schrankprogramm-MULTI-SET.htm">MULTI-SET</a></div>
-          </div>
+    <!-- Section: Neuheiten und Topseller -->
+    <div id="neuheiten" class="section active">
+      <header class="subpage-title">
+        <h1 style="margin:0; font-size:1.8em;">DIGA</h1>
+        <p style="margin:5px 0 0; font-size:1.5em;">Neuheiten und Topseller</p>
+      </header>
+      
+      <!-- Kategorie: Sofas -->
+      <div class="category">
+        <h2>Sofas</h2>
+        <div class="model-list">
+          <div class="model"><a href="https://www.diga.ch/Sofas/Sofa-Lederlook-CHANGE.htm">CHANGE</a></div>
+          <div class="model"><a href="https://www.diga.ch/Sofas/Ledersofa-LEA.htm">LEA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Sofas/Sofa-3-platzig-PLACE.htm">PLACE</a></div>
+          <div class="model"><a href="https://www.diga.ch/Sofas/Polstergarnitur-Ecke-CASABLANCA.htm" style="font-size:0.8em;">CASABLANCA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Sofas/Ecksofa-mit-Holz-PENTA.htm">PENTA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Sofas/Ecksofa-mit-vielen-Funktionen-ARENA-2.0.htm">ARENA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Sofas/Einzelsofa-VALBELLA.htm">VALBELLA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Bettsofas/Schlafsofa-FLIP.htm">FLIP</a></div>
+          <div class="model"><a href="https://www.diga.ch/Sofas/Ecksofa-SANDRA.htm">SANDRA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Sofas/Ecksofa-NABUCCO.htm">NABUCCO</a></div>
+          <div class="model"><a href="https://www.diga.ch/Sofas/Polsterecke-modular-FREE-STYLE.htm">FREE-STYLE</a></div>
+          <div class="model"><a href="https://www.diga.ch/Sofas/Ecksofa-MURTEN.htm">MURTEN</a></div>
+          <div class="model"><a href="https://www.diga.ch/Sofas/Ledersofa-schwarz-ZONA.htm">ZONA</a></div>
         </div>
       </div>
       
-      <!-- Section: Google Bewertungen & Mitarbeiter-Motivation -->
-      <div id="google" class="section">
-        <header class="subpage-title">
-          <h2>Google Bewertungen &amp; Mitarbeiter-Motivation</h2>
-        </header>
-        <p>Dübendorf hat aktuell einen Durchschnitt von <strong>4,6 Sternen</strong>. Unser Ziel ist es, durch herausragenden Service und freundliche Beratung konsequent 5-Sterne Bewertungen zu erreichen!</p>
-        <p>Hier einige Tipps:</p>
-        <ul>
-          <li><strong>Persönlich fragen:</strong> "Wie zufrieden sind Sie mit Ihrem Einkaufserlebnis?"</li>
-          <li><strong>Timing:</strong> Bitten Sie um eine Bewertung, solange der positive Eindruck frisch ist.</li>
-          <li><strong>Einfach erklären:</strong> Zeigen Sie, wie schnell und einfach eine Bewertung abzugeben ist.</li>
-          <li><strong>Dankbarkeit:</strong> Bedanken Sie sich immer für das Feedback.</li>
-        </ul>
-        <p>Mit jeder positiven Bewertung stärken wir unseren Ruf!</p>
+      <!-- Kategorie: Tische -->
+      <div class="category">
+        <h2>Tische</h2>
+        <div class="model-list">
+          <div class="model"><a href="https://www.diga.ch/Esstische/Esstisch-mit-Baumkante-CONCEPT.htm">CONCEPT</a></div>
+          <div class="model"><a href="https://www.diga.ch/Esstische/Massivholztisch-SOLID.htm">SOLID</a></div>
+          <div class="model"><a href="https://www.diga.ch/Esstische/Massivholztisch-SPECTRUM.htm">SPECTRUM</a></div>
+          <div class="model"><a href="https://www.diga.ch/Esstische/Massivholztisch-SPIDER.htm">SPIDER</a></div>
+        </div>
       </div>
       
-      <!-- Section: Warenkorb -->
-      <div id="warenkorb" class="section">
-        <header class="subpage-title">
-          <h2>Warenkorb</h2>
-        </header>
-        <p>Inhalt folgt.</p>
+      <!-- Kategorie: Wohnwände -->
+      <div class="category">
+        <h2>Wohnwände</h2>
+        <div class="model-list">
+          <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Wohnwand-Asteiche-ADENA.htm">ADENA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Sideboards-Kommoden/Sideboard-grifflos-SKY.htm">SKY</a></div>
+          <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Moderne-Wohnwand-LOFT-BY-DIGA.htm">LOFT</a></div>
+          <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Wohnwand-Sumpfeiche-RANGER.htm">RANGER</a></div>
+          <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Wohnwand-anthrazit-PONTRESINA.htm" style="font-size:0.8em;">PONTRESINA</a></div>
+        </div>
       </div>
       
-      <!-- Section: Pc - Tempo -->
-      <div id="pctempo" class="section">
-        <header class="subpage-title">
-          <h2>Pc - Tempo</h2>
-        </header>
-        <p>Inhalt folgt.</p>
+      <!-- Kategorie: Betten -->
+      <div class="category">
+        <h2>Betten</h2>
+        <div class="model-list">
+          <div class="model"><a href="https://www.diga.ch/Betten/Balkenbett-Eiche-BOSCO.htm">BOSCO</a></div>
+          <div class="model"><a href="https://www.diga.ch/Betten/Balkenbett-Eiche-BOSCO.htm">ADELBODEN</a></div>
+          <div class="model"><a href="https://www.diga.ch/Betten/Boxspringbett-elektrisch-VARIA.htm">VARIA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Betten/Boxspringbett-elektrisch-MULTI-COMFORT.htm">MULTI-COMFORT</a></div>
+          <div class="model"><a href="https://www.diga.ch/Betten/Bett-mit-Polsterkopfteil-GRADO.htm">GRADO</a></div>
+        </div>
       </div>
+      
+      <!-- Kategorie: Matratzen -->
+      <div class="category">
+        <h2>Matratzen</h2>
+        <div class="model-list">
+          <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Matratze-90-x-200-cm-PREMIUM-FEST.htm">SENSOFLEX</a></div>
+          <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Matratze-SILENZIA.htm">SILENZIA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Komfortmatratze-90-x-200-cm-SUPPORTA-FEST.htm">SUPPORTA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Wendematratze-2-Hartegrade-VISCONIA.htm">VISCONIA</a></div>
+        </div>
+      </div>
+      
+      <!-- Kategorie: Relaxer -->
+      <div class="category">
+        <h2>Relaxer</h2>
+        <div class="model-list">
+          <div class="model"><a href="https://www.diga.ch/Relaxer-Sessel/Relaxsessel-in-Echtleder-SWING.htm">SWING</a></div>
+          <div class="model"><a href="https://www.diga.ch/Relaxer-Sessel/Relaxsessel-Leder-braun-SOFT.htm">SOFT</a></div>
+        </div>
+      </div>
+      
+      <!-- Kategorie: Stühle -->
+      <div class="category">
+        <h2>Stühle</h2>
+        <div class="model-list">
+          <div class="model"><a href="https://www.diga.ch/Stuehle/Esszimmerstuhl-Freischwinger-HARMONIA.htm">HARMONIA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Stuehle/Freischwinger-Holzstuhl-MESSINA.htm">MESSINA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Stuehle/Armlehnstuhl-Stoff-TORNA.htm">TORNA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Stuehle/Armlehnstuhl-grau-VERONA.htm">VERONA</a></div>
+          <div class="model"><a href="https://www.diga.ch/Stuehle/Stuhl-mit-Holzgriff-VALS.htm">VALS</a></div>
+          <div class="model"><a href="https://www.diga.ch/Stuehle/Stuhl-mit-Armlehne-TWIN.htm">TWIN</a></div>
+        </div>
+      </div>
+      
+      <!-- Kategorie: Schränke -->
+      <div class="category">
+        <h2>Schränke</h2>
+        <div class="model-list">
+          <div class="model"><a href="https://www.diga.ch/Schraenke/Kleiderschrank-weiss-ARMARIO.htm">ARMARIO</a></div>
+          <div class="model"><a href="https://www.diga.ch/Schraenke/Kleiderschrank-System-DOMO.htm">DOMO</a></div>
+          <div class="model"><a href="https://www.diga.ch/Schraenke/Schrankprogramm-MULTI-SET.htm">MULTI-SET</a></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Section: Google Bewertungen & Mitarbeiter-Motivation -->
+    <div id="google" class="section">
+      <header class="subpage-title">
+        <h2>Google Bewertungen &amp; Mitarbeiter-Motivation</h2>
+      </header>
+      <p>Dübendorf hat aktuell einen Durchschnitt von <strong>4,6 Sternen</strong>. Unser Ziel ist es, durch herausragenden Service und freundliche Beratung konsequent 5-Sterne Bewertungen zu erreichen!</p>
+      <p>Damit wir auch aktiv und motiviert unsere Kunden um eine Bewertung bitten können, findet Ihr hier einige erprobte Tipps:</p>
+      <ul>
+        <li><strong>Persönlicher Ansatz:</strong> Beginne nach dem Verkauf mit einer freundlichen Nachfrage: „Wie zufrieden sind Sie mit Ihrem Einkaufserlebnis bei uns?“</li>
+        <li><strong>Timing ist alles:</strong> Bitte um eine Bewertung, wenn der positive Eindruck noch frisch ist – direkt nach einem gelungenen Beratungsgespräch oder Kaufabschluss.</li>
+        <li><strong>Hilfestellung anbieten:</strong> Erkläre dem Kunden, wie einfach es ist, eine Google-Bewertung abzugeben – einfach unser Kärtchen in die Hand drücken</li>
+        <li><strong>Dankbarkeit zeigen:</strong> Bedanken dich immer herzlich für das Feedback und betonen, wie wertvoll jede Bewertung für uns ist.</li>
+        <li><strong>Teamgeist fördern:</strong> Lasst uns gemeinsame Ziele im Team setzen, um mehr 5-Sterne Bewertungen zu erzielen, um hier noch besser zu werden</li>
+      </ul>
+      <p>Gehen mit Begeisterung an diese Aufgabe – jede positive Bewertung stärkt unseren Ruf und macht unseren Service für neue Kunden noch attraktiver.</p>
+    </div>
+    
+    <!-- Section: Warenkorb -->
+    <div id="warenkorb" class="section">
+      <header class="subpage-title">
+        <h2>Warenkorb</h2>
+      </header>
+      <p>Inhalt folgt.</p>
+    </div>
+    
+    <!-- Section: Pc - Tempo -->
+    <div id="pctempo" class="section">
+      <header class="subpage-title">
+        <h2>Pc - Tempo</h2>
+      </header>
+      <p>Inhalt folgt.</p>
     </div>
   </div>
 
-  <!-- Fixierter Footer -->
-  <footer>
-    <p>&copy; 2025 Diga Möbel - Alle Rechte vorbehalten</p>
-  </footer>
-
   <script>
-    // Navigation: Gehe zu einer bestimmten Section per Slider
+    // Hamburger Menü umschalten
+    function toggleMenu() {
+      var menu = document.getElementById("dropdownMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+    function menuItemClicked(sectionId) {
+      showSection(sectionId);
+      toggleMenu();
+    }
+    function showSection(sectionId) {
+      var sections = document.querySelectorAll('.section');
+      sections.forEach(function(sec) {
+        sec.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    // Hamburger Menü beim Scrollen schließen
+    window.addEventListener('scroll', function() {
+      var menu = document.getElementById("dropdownMenu");
+      if(menu.style.display === "block"){
+        menu.style.display = "none";
+      }
+    });
+
+    // Swipe-Funktionalität für die Sections
     const sectionOrder = ["abschlussphase", "neuheiten", "google", "warenkorb", "pctempo"];
-    let currentIndex = 1; // Start mit "neuheiten" (Index 1)
-    const slider = document.getElementById("slider");
-    
-    function goToSection(sectionId) {
-      currentIndex = sectionOrder.indexOf(sectionId);
-      slider.style.transform = "translateX(-" + (currentIndex * 100) + "%)";
-    }
-    
-    function setActive(link) {
-      const navLinks = document.querySelectorAll('nav a');
-      navLinks.forEach(a => a.classList.remove('active'));
-      link.classList.add('active');
-    }
-    
-    // Swipe-Funktionalität für den Slider
     let touchstartX = 0;
     let touchendX = 0;
-    
-    document.addEventListener('touchstart', event => {
+
+    document.addEventListener('touchstart', function(event) {
       touchstartX = event.changedTouches[0].screenX;
     }, false);
-    
-    document.addEventListener('touchend', event => {
+
+    document.addEventListener('touchend', function(event) {
       touchendX = event.changedTouches[0].screenX;
       handleGesture();
     }, false);
-    
+
     function handleGesture(){
       if (touchendX < touchstartX - 50) {
-        // Swipe nach links: nächste Section
+        // Swipe nach links: Nächste Section
         nextSection();
       }
       if (touchendX > touchstartX + 50) {
-        // Swipe nach rechts: vorherige Section
+        // Swipe nach rechts: Vorherige Section
         previousSection();
       }
     }
-    
+
     function nextSection(){
-      currentIndex = (currentIndex + 1) % sectionOrder.length;
-      slider.style.transform = "translateX(-" + (currentIndex * 100) + "%)";
+      let currentSection = document.querySelector('.section.active');
+      let currentIndex = sectionOrder.indexOf(currentSection.id);
+      let nextIndex = (currentIndex + 1) % sectionOrder.length;
+      showSection(sectionOrder[nextIndex]);
     }
-    
+
     function previousSection(){
-      currentIndex = (currentIndex - 1 + sectionOrder.length) % sectionOrder.length;
-      slider.style.transform = "translateX(-" + (currentIndex * 100) + "%)";
+      let currentSection = document.querySelector('.section.active');
+      let currentIndex = sectionOrder.indexOf(currentSection.id);
+      let prevIndex = (currentIndex - 1 + sectionOrder.length) % sectionOrder.length;
+      showSection(sectionOrder[prevIndex]);
     }
-    
-    // Script für interaktive Einwandbehandlung in Sie-Form
+
+    // Interaktive Einwandbehandlung
     document.getElementById("abschlussfragen").addEventListener("change", function() {
       let auswahl = this.value;
       let text = "";
       switch(auswahl) {
         case "1":
-          text = "Absolut verständlich – eine fundierte Entscheidung braucht Zeit. Sie erhalten ein Möbelstück mit erstklassiger Verarbeitung, langlebigen Materialien und zeitlosem Design. Warum warten, wenn Sie bereits wissen, dass es passt?";
+          text = "Absolut verständlich – eine fundierte Entscheidung braucht Zeit. Sie haben ein Möbelstück mit erstklassiger Verarbeitung, langlebigen Materialien und zeitlosem Design. Warum warten, wenn Sie bereits wissen, dass es passt?";
           break;
         case "2":
-          text = "Teuer ist relativ – wenn Sie in ein Möbelstück investieren, das viele Jahre hält, sparen Sie langfristig. Sie erhalten echte Qualität. Günstigere Alternativen gibt es, aber keine mit dieser Hochwertigkeit. Möchten Sie wirklich Kompromisse eingehen?";
+          text = "Teuer ist relativ – wenn Sie in ein Möbelstück investieren, das viele Jahre hält, sparen Sie langfristig. Sie bekommen echte Qualität. Günstigere Alternativen gibt es, aber keine mit dieser Hochwertigkeit. Möchten Sie wirklich Kompromisse eingehen?";
           break;
         case "3":
-          text = "Natürlich können Sie auch andere Angebote prüfen, aber Qualität spricht für sich. Dieses Möbelstück bietet eine Verarbeitung, die Sie so in dieser Preisklasse kaum finden. Warum Zeit verlieren, wenn Sie schon wissen, dass es ideal ist?";
+          text = "Natürlich können Sie sich auch andere Angebote ansehen, aber Qualität spricht für sich. Dieses Möbelstück bietet eine Verarbeitung, die Sie so in dieser Preisklasse kaum finden. Warum Zeit verlieren, wenn Sie schon wissen, dass es perfekt ist?";
           break;
         case "4":
-          text = "Ein gutes Möbelstück passt sich Ihrem Raum an – nicht umgekehrt. Die Maße und Proportionen sind optimal gewählt, sodass es sich harmonisch einfügt. Qualität bleibt dauerhaft erhalten.";
+          text = "Ein gutes Möbelstück passt sich Ihrer Umgebung an – nicht umgekehrt. Die Maße und Proportionen sind so gewählt, dass es sich harmonisch einfügt. Qualität bleibt auch langfristig erhalten.";
           break;
         case "5":
-          text = "Das ist verständlich – jedoch kennen Sie Ihren Geschmack am besten. Treffen Sie heute eine Entscheidung für langlebige Qualität, und Ihr Partner wird begeistert sein.";
+          text = "Das ist völlig verständlich – aber denken Sie daran: Wer kennt Ihren Geschmack besser als Sie? Sie treffen heute eine Entscheidung für langlebige Qualität, und Ihr Partner wird begeistert sein, wenn er sieht, wie gut es passt.";
           break;
         case "6":
-          text = "Ich verstehe Ihre Bedenken – Qualität lässt sich nicht immer sofort erkennen. Aber hier spüren Sie den Unterschied: Hochwertige Materialien, erstklassige Verarbeitung und Langlebigkeit machen den Unterschied.";
+          text = "Ich verstehe Ihre Bedenken – Qualität lässt sich nicht immer auf den ersten Blick beurteilen. Aber hier spüren Sie den Unterschied: hochwertige Materialien, erstklassige Verarbeitung und die Langlebigkeit machen den Unterschied.";
           break;
         case "7":
-          text = "Ich verstehe, dass Sie sich Zeit nehmen möchten. Aber bedenken Sie: Qualität ist eine Investition, die sich langfristig auszahlt – Ersatzkäufe vermeiden und Zufriedenheit sichern.";
+          text = "Ich verstehe, dass Sie sich Zeit nehmen möchten. Aber Qualität ist eine Investition – wer jetzt in hochwertige Möbel investiert, spart sich später Ersatzkäufe und Ärger.";
           break;
         case "8":
-          text = "Hochwertige Möbel benötigen Zeit – hier handelt es sich nicht um Massenware, sondern um sorgfältige Handwerkskunst. Ein paar Wochen Wartezeit bedeuten jahrelange Zufriedenheit.";
+          text = "Hochwertige Möbel brauchen Zeit – das ist keine Massenware, sondern Handwerkskunst. Ein paar Wochen Wartezeit bedeuten jahrelange Zufriedenheit. Das Warten lohnt sich!";
           break;
         case "9":
-          text = "Die zeitlose Gestaltung und hochwertigen Materialien sorgen dafür, dass es sich in viele Einrichtungsstile einfügt. Ein echtes Qualitätsstück fügt sich harmonisch ein – eine Entscheidung für Beständigkeit.";
+          text = "Die zeitlose Gestaltung und hochwertigen Materialien sorgen dafür, dass es sich in viele Einrichtungsstile einfügt. Ein echtes Qualitätsstück passt sich an – und Sie entscheiden sich für Beständigkeit.";
           break;
         case "10":
-          text = "Verständlich, aber Ihr erster Eindruck war positiv. Treffen Sie heute eine Entscheidung für Wertigkeit und Qualität – eine Entscheidung, die Sie nicht bereuen werden.";
+          text = "Verständlich, aber Ihr erster Eindruck war positiv. Wenn Sie jetzt zusagen, treffen Sie eine Entscheidung für Wertigkeit und Qualität – eine Entscheidung, die Sie nicht bereuen werden.";
           break;
         default:
           text = "";
@@ -458,6 +450,6 @@
       document.getElementById("abschluss-text").innerText = text;
     });
   </script>
-
+  
 </body>
 </html>
