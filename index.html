@@ -815,18 +815,18 @@
               btn.classList.add("correct");
               score++;
               feedbackEl.innerHTML = '<span style="color: green;">&#128512;</span>';
-              // Konfetti-Effekt für 3 Sekunden
-              let duration = 3000;
+              // Konfetti-Effekt für 2 Sekunden
+              let duration = 2000;
               let animationEnd = Date.now() + duration;
               (function frame() {
                 confetti({
-                  particleCount: 2,
+                  particleCount: 5,
                   angle: 60,
                   spread: 55,
                   origin: { x: 0 }
                 });
                 confetti({
-                  particleCount: 2,
+                  particleCount: 5,
                   angle: 120,
                   spread: 55,
                   origin: { x: 1 }
