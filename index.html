@@ -260,6 +260,18 @@
       border-left: 4px solid #f1c40f;
       background-color: #fffbea;
     }
+    /* Score-Counter für das Quiz */
+    #score-counter {
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: right;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
@@ -456,14 +468,15 @@
           <p>
             Testen Sie Ihr Wissen über unsere hochwertigen Gartenmöbel.
             In diesem Quiz erhalten Sie jeweils eine Frage mit drei möglichen Antworten.
+            Jede richtige Antwort gibt einen Punkt, jede falsche Antwort zieht einen Punkt ab.
             Klicken Sie auf die Antwort, die Sie für richtig halten.
-            Bei einer korrekten Antwort erscheint ein großer grüner Smiley, bei einer falschen ein großer roter Smiley.
-            Danach klicken Sie auf „Weiter“, um zur nächsten Frage zu gelangen.
+            Danach erscheint Ihr aktueller Punktestand und Sie können auf „Weiter“ klicken, um zur nächsten Frage zu gelangen.
           </p>
           <button id="start-quiz">Quiz starten</button>
         </div>
         <!-- Quiz-Inhalt -->
         <div id="quiz-content" style="display: none;">
+          <div id="score-counter">Punkte: 0</div>
           <div id="question-container">
             <h3 id="question-text"></h3>
             <div id="answers-container">
@@ -542,53 +555,6 @@
       let prevIndex = (currentIndex - 1 + sectionOrder.length) % sectionOrder.length;
       showSection(sectionOrder[prevIndex], 'swipeRight');
     }
-
-    // Interaktive Einwandbehandlung in der Abschlussphase
-    document.getElementById("abschlussfragen").addEventListener("change", function() {
-      let auswahl = this.value;
-      let text = "";
-      switch(auswahl) {
-        case "1":
-          text = "Absolut verständlich – eine fundierte Entscheidung braucht Zeit. Sie haben ein Möbelstück mit erstklassiger Verarbeitung, langlebigen Materialien und zeitlosem Design. Warum warten, wenn Sie bereits wissen, dass es passt?";
-          break;
-        case "2":
-          text = "Teuer ist relativ – wenn Sie in ein Möbelstück investieren, das viele Jahre hält, sparen Sie langfristig. Sie bekommen echte Qualität. Günstigere Alternativen gibt es, aber keine mit dieser Hochwertigkeit. Möchten Sie wirklich Kompromisse eingehen?";
-          break;
-        case "3":
-          text = "Natürlich können Sie sich auch andere Angebote ansehen, aber Qualität spricht für sich. Dieses Möbelstück bietet eine Verarbeitung, die Sie so in dieser Preisklasse kaum finden. Warum Zeit verlieren, wenn Sie schon wissen, dass es perfekt ist?";
-          break;
-        case "4":
-          text = "Ein gutes Möbelstück passt sich Ihrer Umgebung an – nicht umgekehrt. Die Maße und Proportionen sind so gewählt, dass es sich harmonisch einfügt. Qualität bleibt auch langfristig erhalten.";
-          break;
-        case "5":
-          text = "Das ist völlig verständlich – aber denken Sie daran: Wer kennt Ihren Geschmack besser als Sie? Sie treffen heute eine Entscheidung für langlebige Qualität, und Ihr Partner wird begeistert sein, wenn er sieht, wie gut es passt.";
-          break;
-        case "6":
-          text = "Ich verstehe Ihre Bedenken – Qualität lässt sich nicht immer auf den ersten Blick beurteilen. Aber hier spüren Sie den Unterschied: hochwertige Materialien, erstklassige Verarbeitung und die Langlebigkeit machen den Unterschied.";
-          break;
-        case "7":
-          text = "Ich verstehe, dass Sie sich Zeit nehmen möchten. Aber Qualität ist eine Investition – wer jetzt in hochwertige Möbel investiert, spart sich später Ersatzkäufe und Ärger.";
-          break;
-        case "8":
-          text = "Hochwertige Möbel brauchen Zeit – das ist keine Massenware, sondern Handwerkskunst. Ein paar Wochen Wartezeit bedeuten jahrelange Zufriedenheit. Das Warten lohnt sich!";
-          break;
-        case "9":
-          text = "Die zeitlose Gestaltung und hochwertigen Materialien sorgen dafür, dass es sich in viele Einrichtungsstile einfügt. Ein echtes Qualitätsstück passt sich an – und Sie entscheiden sich für Beständigkeit.";
-          break;
-        case "10":
-          text = "Verständlich, aber Ihr erster Eindruck war positiv. Wenn Sie jetzt zusagen, treffen Sie eine Entscheidung für Wertigkeit und Qualität – eine Entscheidung, die Sie nicht bereuen werden.";
-          break;
-        default:
-          text = "";
-      }
-      const abschlussTextEl = document.getElementById("abschluss-text");
-      abschlussTextEl.innerText = text;
-      if(text) {
-        abschlussTextEl.classList.add("active");
-      } else {
-        abschlussTextEl.classList.remove("active");
-      }
-    });
 
     /* ------------------ Gartenmöbel-Quiz ------------------ */
     const quizQuestions = [
@@ -743,6 +709,7 @@
     ];
 
     let currentQuestionIndex = 0;
+    let score = 0;
 
     const startQuizBtn = document.getElementById("start-quiz");
     const quizInstructions = document.getElementById("quiz-instructions");
@@ -751,11 +718,18 @@
     const answersContainer = document.getElementById("answers-container");
     const feedbackEl = document.getElementById("feedback");
     const nextQuestionBtn = document.getElementById("next-question");
+    const scoreCounterEl = document.getElementById("score-counter");
+
+    function updateScoreCounter() {
+      scoreCounterEl.innerText = "Punkte: " + score;
+    }
 
     startQuizBtn.addEventListener("click", function() {
       quizInstructions.style.display = "none";
       quizContent.style.display = "block";
       currentQuestionIndex = 0;
+      score = 0;
+      updateScoreCounter();
       showQuizQuestion();
     });
 
@@ -778,10 +752,13 @@
           // Antwortbuttons deaktivieren
           Array.from(answersContainer.children).forEach(child => child.disabled = true);
           if(option.correct) {
+            score++;
             feedbackEl.innerHTML = '<span style="color: green;">&#128512;</span>';
           } else {
+            score--;
             feedbackEl.innerHTML = '<span style="color: red;">&#128577;</span>';
           }
+          updateScoreCounter();
           nextQuestionBtn.style.display = "block";
         });
         answersContainer.appendChild(btn);
