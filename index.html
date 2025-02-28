@@ -166,34 +166,48 @@
         font-size: 1.6em;
       }
     }
-    /* Stile für statisches Quiz */
+    /* Quiz-Stile */
     #quiz-container {
       background: #fff;
       border-radius: 8px;
       padding: 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.15);
       margin: 20px auto;
-      max-width: 800px;
+      max-width: 600px;
     }
-    #quiz-container h2, 
-    #quiz-container h3 {
+    #quiz-container h2 {
       text-align: center;
       margin-bottom: 15px;
     }
-    #quiz-container ol {
-      margin-left: 20px;
-      margin-bottom: 20px;
+    #quiz-container p {
+      font-size: 1.1em;
+      line-height: 1.4;
+      margin-bottom: 15px;
     }
-    #quiz-container li {
-      margin-bottom: 10px;
+    #quiz-container button {
+      padding: 10px 20px;
+      font-size: 1em;
+      margin-top: 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #f1c40f;
+      color: #000;
     }
-    #quiz-container ul {
-      list-style-type: none;
-      margin: 5px 0 10px 20px;
-      padding-left: 0;
+    .answer-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin: 8px 0;
+      background-color: #f9f9f9;
+      cursor: pointer;
+      transition: background-color 0.2s;
     }
-    #quiz-container ul li {
-      margin-bottom: 5px;
+    .answer-btn:hover {
+      background-color: #eee;
     }
   </style>
 </head>
@@ -385,135 +399,29 @@
         <h2>Gartenmöbel‑Quiz</h2>
       </header>
       <div id="quiz-container">
-        <h2>Gartenmöbel Quiz – Testen Sie Ihr Wissen</h2>
-        
-        <h3>Lounges</h3>
-        <ol>
-          <li>Warum können die Gestelle nicht rosten?
-            <ul>
-              <li>a) Sie werden täglich mit einem geheimen Anti-Rost-Spray eingesprüht. ❌</li>
-              <li>b) Edelstahl ist rostfrei, Aluminiumgestelle sind pulverbeschichtet. ✅</li>
-              <li>c) Weil sie mit Zaubersalz aus der Karibik behandelt wurden. ❌</li>
-            </ul>
-          </li>
-          <li>Was bedeutet pulverbeschichtet?
-            <ul>
-              <li>a) Die Möbel werden in Puderzucker getaucht, damit sie süßer aussehen. ❌</li>
-              <li>b) Es bedeutet, dass sie aus purem Pulver bestehen und sich bei Regen auflösen. ❌</li>
-              <li>c) Lackpulver wird eingebrannt und chemisch verbunden, was für extremen Schutz sorgt. ✅</li>
-            </ul>
-          </li>
-          <li>Was zeichnet Sunproof®-Kissen aus?
-            <ul>
-              <li>a) Sie wechseln die Farbe je nach Wetterlage. ❌</li>
-              <li>b) Sie fliegen automatisch ins Haus, wenn es regnet. ❌</li>
-              <li>c) Atmungsaktiv, UV-beständig, schimmelresistent, wasserabweisend und recycelbar. ✅</li>
-            </ul>
-          </li>
-          <li>Welche zwei Arten von wetterfesten Kissen gibt es?
-            <ul>
-              <li>a) Magische Wolken-Kissen und selbstwärmende Kuschel-Kissen. ❌</li>
-              <li>b) QuickDry-Schaum (wasserdurchlässig) und innengummierte Kissen (wasserdicht). ✅</li>
-              <li>c) Schwamm-Kissen und Luftballon-Kissen. ❌</li>
-            </ul>
-          </li>
-          <li>Wie erkennt man, ob ein Kissen innengummiert ist?
-            <ul>
-              <li>a) Wenn man es drückt, quietscht es. ❌</li>
-              <li>b) Es schwebt leicht über dem Boden. ❌</li>
-              <li>c) Es hat ein Lüftungsnetz an der Unterseite. ✅</li>
-            </ul>
-          </li>
-        </ol>
-        
-        <h3>Gartentische</h3>
-        <ol start="6">
-          <li>Was unterscheidet unsere Keramiktische von günstigeren Modellen?
-            <ul>
-              <li>a) Man kann sie als Surfbrett benutzen. ❌</li>
-              <li>b) Durchgehendes Keramikmuster, arretierbare Auszugsplatte, hochwertige Materialien. ✅</li>
-              <li>c) Sie sind aus einer geheimen Mars-Gesteinsschicht gefertigt. ❌</li>
-            </ul>
-          </li>
-          <li>Warum kann eine Keramikplatte nicht heiß werden?
-            <ul>
-              <li>a) Eine Zauberformel sorgt dafür, dass sie immer kühl bleibt. ❌</li>
-              <li>b) Die Tischplatte hat eingebaute Mini-Ventilatoren. ❌</li>
-              <li>c) Keramik ist hitzebeständig und nimmt Wärme nicht auf. ✅</li>
-            </ul>
-          </li>
-          <li>Warum ist Keramik besonders pflegeleicht?
-            <ul>
-              <li>a) Es wird mit einer Schutzschicht aus Drachenhaut versiegelt. ❌</li>
-              <li>b) Es reinigt sich von selbst über Nacht. ❌</li>
-              <li>c) Es ist nicht porös und nimmt keine Flüssigkeiten oder Flecken auf. ✅</li>
-            </ul>
-          </li>
-          <li>Warum ist es sinnvoll, eine Hausratversicherung für einen Keramiktisch zu prüfen?
-            <ul>
-              <li>a) Falls der Tisch davonfliegt, bekommt man eine Entschädigung. ❌</li>
-              <li>b) Falls ein Einhorn darauf landet, zahlt die Versicherung für den Schaden. ❌</li>
-              <li>c) Manche Hausratversicherungen decken Keramikbruch ab. ✅</li>
-            </ul>
-          </li>
-        </ol>
-        
-        <h3>Gartenstühle</h3>
-        <ol start="10">
-          <li>Warum sind die Bezüge aus Batyline-Textilene besonders langlebig?
-            <ul>
-              <li>a) Sie sind nicht nur genäht, sondern auch verschweißt. ✅</li>
-              <li>b) Sie sind mit Zaubergarn verstärkt. ❌</li>
-              <li>c) Weil sie jeden Morgen mit Kokosöl eingerieben werden. ❌</li>
-            </ul>
-          </li>
-          <li>Warum bleibt der Bezug eines hochwertigen Stuhls lange straff?
-            <ul>
-              <li>a) Der Bezug zieht sich bei Regen automatisch zusammen. ❌</li>
-              <li>b) Das Material hat eine hohe Spannkraft und wird nicht schnell träge. ✅</li>
-              <li>c) Der Stuhl trainiert jeden Morgen Yoga. ❌</li>
-            </ul>
-          </li>
-          <li>Was kann man mit einem hochwertigen Textilene-Stuhl als „Show-Effekt“ vorführen?
-            <ul>
-              <li>a) Ihn in eine Couch umbauen. ❌</li>
-              <li>b) Draufstellen, um die Stabilität zu demonstrieren. ✅</li>
-              <li>c) Ihn in einen Liegestuhl verwandeln, indem man daran zieht. ❌</li>
-            </ul>
-          </li>
-          <li>Warum sind viele Gartenstühle stapelbar?
-            <ul>
-              <li>a) Damit man darauf klettern kann, um den besten Blick zu haben. ❌</li>
-              <li>b) Um sie platzsparend zu lagern. ✅</li>
-              <li>c) Weil es lustig aussieht, wenn man einen Turm aus Stühlen baut. ❌</li>
-            </ul>
-          </li>
-        </ol>
-        
-        <h3>Gartenliegen</h3>
-        <ol start="14">
-          <li>Warum sind hochwertige Gartenliegen besonders bequem?
-            <ul>
-              <li>a) Sie sind mit einem unsichtbaren Federkern ausgestattet. ❌</li>
-              <li>b) Die Bespannung geht um den Rahmen herum, nicht nur dazwischen. ✅</li>
-              <li>c) Sie schweben leicht über dem Boden. ❌</li>
-            </ul>
-          </li>
-          <li>Warum haben einige Gartenliegen Rollen?
-            <ul>
-              <li>a) Damit man sie wie ein Skateboard benutzen kann. ❌</li>
-              <li>b) Damit sie von alleine in die Sonne rollen. ❌</li>
-              <li>c) Damit sie leichter bewegt werden können. ✅</li>
-            </ul>
-          </li>
-          <li>Was kann man mit einer hochwertigen Gartenliege als „Show-Effekt“ demonstrieren?
-            <ul>
-              <li>a) Sie als Katapult benutzen. ❌</li>
-              <li>b) Sie in ein Boot verwandeln. ❌</li>
-              <li>c) Draufstellen, um die Stabilität zu zeigen. ✅</li>
-            </ul>
-          </li>
-        </ol>
+        <!-- Anleitung -->
+        <div id="quiz-instructions">
+          <h2>Willkommen zum Gartenmöbel‑Quiz!</h2>
+          <p>
+            Testen Sie Ihr Wissen über unsere hochwertigen Gartenmöbel.
+            In diesem Quiz erhalten Sie jeweils eine Frage mit drei möglichen Antworten.
+            Klicken Sie auf die Antwort, die Sie für richtig halten.
+            Bei einer korrekten Antwort erscheint ein großer grüner Smiley, bei einer falschen ein großer roter Smiley.
+            Danach klicken Sie auf „Weiter“, um zur nächsten Frage zu gelangen.
+          </p>
+          <button id="start-quiz">Quiz starten</button>
+        </div>
+        <!-- Quiz-Inhalt -->
+        <div id="quiz-content" style="display: none;">
+          <div id="question-container">
+            <h3 id="question-text"></h3>
+            <div id="answers-container">
+              <!-- Antwortbuttons werden dynamisch erstellt -->
+            </div>
+          </div>
+          <div id="feedback" style="text-align: center; font-size: 3em; margin: 20px 0;"></div>
+          <button id="next-question" style="display: none;">Weiter</button>
+        </div>
       </div>
     </div>
   </div>
@@ -584,48 +492,216 @@
       showSection(sectionOrder[prevIndex], 'swipeRight');
     }
 
-    // Interaktive Einwandbehandlung
-    document.getElementById("abschlussfragen").addEventListener("change", function() {
-      let auswahl = this.value;
-      let text = "";
-      switch(auswahl) {
-        case "1":
-          text = "Absolut verständlich – eine fundierte Entscheidung braucht Zeit. Sie haben ein Möbelstück mit erstklassiger Verarbeitung, langlebigen Materialien und zeitlosem Design. Warum warten, wenn Sie bereits wissen, dass es passt?";
-          break;
-        case "2":
-          text = "Teuer ist relativ – wenn Sie in ein Möbelstück investieren, das viele Jahre hält, sparen Sie langfristig. Sie bekommen echte Qualität. Günstigere Alternativen gibt es, aber keine mit dieser Hochwertigkeit. Möchten Sie wirklich Kompromisse eingehen?";
-          break;
-        case "3":
-          text = "Natürlich können Sie sich auch andere Angebote ansehen, aber Qualität spricht für sich. Dieses Möbelstück bietet eine Verarbeitung, die Sie so in dieser Preisklasse kaum finden. Warum Zeit verlieren, wenn Sie schon wissen, dass es perfekt ist?";
-          break;
-        case "4":
-          text = "Ein gutes Möbelstück passt sich Ihrer Umgebung an – nicht umgekehrt. Die Maße und Proportionen sind so gewählt, dass es sich harmonisch einfügt. Qualität bleibt auch langfristig erhalten.";
-          break;
-        case "5":
-          text = "Das ist völlig verständlich – aber denken Sie daran: Wer kennt Ihren Geschmack besser als Sie? Sie treffen heute eine Entscheidung für langlebige Qualität, und Ihr Partner wird begeistert sein, wenn er sieht, wie gut es passt.";
-          break;
-        case "6":
-          text = "Ich verstehe Ihre Bedenken – Qualität lässt sich nicht immer auf den ersten Blick beurteilen. Aber hier spüren Sie den Unterschied: hochwertige Materialien, erstklassige Verarbeitung und die Langlebigkeit machen den Unterschied.";
-          break;
-        case "7":
-          text = "Ich verstehe, dass Sie sich Zeit nehmen möchten. Aber Qualität ist eine Investition – wer jetzt in hochwertige Möbel investiert, spart sich später Ersatzkäufe und Ärger.";
-          break;
-        case "8":
-          text = "Hochwertige Möbel brauchen Zeit – das ist keine Massenware, sondern Handwerkskunst. Ein paar Wochen Wartezeit bedeuten jahrelange Zufriedenheit. Das Warten lohnt sich!";
-          break;
-        case "9":
-          text = "Die zeitlose Gestaltung und hochwertigen Materialien sorgen dafür, dass es sich in viele Einrichtungsstile einfügt. Ein echtes Qualitätsstück passt sich an – und Sie entscheiden sich für Beständigkeit.";
-          break;
-        case "10":
-          text = "Verständlich, aber Ihr erster Eindruck war positiv. Wenn Sie jetzt zusagen, treffen Sie eine Entscheidung für Wertigkeit und Qualität – eine Entscheidung, die Sie nicht bereuen werden.";
-          break;
-        default:
-          text = "";
+    /* ------------------ Gartenmöbel-Quiz ------------------ */
+    const quizQuestions = [
+      // Lounges
+      {
+        category: "Lounges",
+        question: "Warum können die Gestelle nicht rosten?",
+        options: [
+          { text: "Sie werden täglich mit einem geheimen Anti-Rost-Spray eingesprüht.", correct: false },
+          { text: "Edelstahl ist rostfrei, Aluminiumgestelle sind pulverbeschichtet.", correct: true },
+          { text: "Weil sie mit Zaubersalz aus der Karibik behandelt wurden.", correct: false }
+        ]
+      },
+      {
+        category: "Lounges",
+        question: "Was bedeutet pulverbeschichtet?",
+        options: [
+          { text: "Die Möbel werden in Puderzucker getaucht, damit sie süßer aussehen.", correct: false },
+          { text: "Es bedeutet, dass sie aus purem Pulver bestehen und sich bei Regen auflösen.", correct: false },
+          { text: "Lackpulver wird eingebrannt und chemisch verbunden, was für extremen Schutz sorgt.", correct: true }
+        ]
+      },
+      {
+        category: "Lounges",
+        question: "Was zeichnet Sunproof®-Kissen aus?",
+        options: [
+          { text: "Sie wechseln die Farbe je nach Wetterlage.", correct: false },
+          { text: "Sie fliegen automatisch ins Haus, wenn es regnet.", correct: false },
+          { text: "Atmungsaktiv, UV-beständig, schimmelresistent, wasserabweisend und recycelbar.", correct: true }
+        ]
+      },
+      {
+        category: "Lounges",
+        question: "Welche zwei Arten von wetterfesten Kissen gibt es?",
+        options: [
+          { text: "Magische Wolken-Kissen und selbstwärmende Kuschel-Kissen.", correct: false },
+          { text: "QuickDry-Schaum (wasserdurchlässig) und innengummierte Kissen (wasserdicht).", correct: true },
+          { text: "Schwamm-Kissen und Luftballon-Kissen.", correct: false }
+        ]
+      },
+      {
+        category: "Lounges",
+        question: "Wie erkennt man, ob ein Kissen innengummiert ist?",
+        options: [
+          { text: "Wenn man es drückt, quietscht es.", correct: false },
+          { text: "Es schwebt leicht über dem Boden.", correct: false },
+          { text: "Es hat ein Lüftungsnetz an der Unterseite.", correct: true }
+        ]
+      },
+      // Gartentische
+      {
+        category: "Gartentische",
+        question: "Was unterscheidet unsere Keramiktische von günstigeren Modellen?",
+        options: [
+          { text: "Man kann sie als Surfbrett benutzen.", correct: false },
+          { text: "Durchgehendes Keramikmuster, arretierbare Auszugsplatte, hochwertige Materialien.", correct: true },
+          { text: "Sie sind aus einer geheimen Mars-Gesteinsschicht gefertigt.", correct: false }
+        ]
+      },
+      {
+        category: "Gartentische",
+        question: "Warum kann eine Keramikplatte nicht heiß werden?",
+        options: [
+          { text: "Eine Zauberformel sorgt dafür, dass sie immer kühl bleibt.", correct: false },
+          { text: "Die Tischplatte hat eingebaute Mini-Ventilatoren.", correct: false },
+          { text: "Keramik ist hitzebeständig und nimmt Wärme nicht auf.", correct: true }
+        ]
+      },
+      {
+        category: "Gartentische",
+        question: "Warum ist Keramik besonders pflegeleicht?",
+        options: [
+          { text: "Es wird mit einer Schutzschicht aus Drachenhaut versiegelt.", correct: false },
+          { text: "Es reinigt sich von selbst über Nacht.", correct: false },
+          { text: "Es ist nicht porös und nimmt keine Flüssigkeiten oder Flecken auf.", correct: true }
+        ]
+      },
+      {
+        category: "Gartentische",
+        question: "Warum ist es sinnvoll, eine Hausratversicherung für einen Keramiktisch zu prüfen?",
+        options: [
+          { text: "Falls der Tisch davonfliegt, bekommt man eine Entschädigung.", correct: false },
+          { text: "Falls ein Einhorn darauf landet, zahlt die Versicherung für den Schaden.", correct: false },
+          { text: "Manche Hausratversicherungen decken Keramikbruch ab.", correct: true }
+        ]
+      },
+      // Gartenstühle
+      {
+        category: "Gartenstühle",
+        question: "Warum sind die Bezüge aus Batyline-Textilene besonders langlebig?",
+        options: [
+          { text: "Sie sind nicht nur genäht, sondern auch verschweißt.", correct: true },
+          { text: "Sie sind mit Zaubergarn verstärkt.", correct: false },
+          { text: "Weil sie jeden Morgen mit Kokosöl eingerieben werden.", correct: false }
+        ]
+      },
+      {
+        category: "Gartenstühle",
+        question: "Warum bleibt der Bezug eines hochwertigen Stuhls lange straff?",
+        options: [
+          { text: "Der Bezug zieht sich bei Regen automatisch zusammen.", correct: false },
+          { text: "Das Material hat eine hohe Spannkraft und wird nicht schnell träge.", correct: true },
+          { text: "Der Stuhl trainiert jeden Morgen Yoga.", correct: false }
+        ]
+      },
+      {
+        category: "Gartenstühle",
+        question: "Was kann man mit einem hochwertigen Textilene-Stuhl als „Show-Effekt“ vorführen?",
+        options: [
+          { text: "Ihn in eine Couch umbauen.", correct: false },
+          { text: "Draufstellen, um die Stabilität zu demonstrieren.", correct: true },
+          { text: "Ihn in einen Liegestuhl verwandeln, indem man daran zieht.", correct: false }
+        ]
+      },
+      {
+        category: "Gartenstühle",
+        question: "Warum sind viele Gartenstühle stapelbar?",
+        options: [
+          { text: "Damit man darauf klettern kann, um den besten Blick zu haben.", correct: false },
+          { text: "Um sie platzsparend zu lagern.", correct: true },
+          { text: "Weil es lustig aussieht, wenn man einen Turm aus Stühlen baut.", correct: false }
+        ]
+      },
+      // Gartenliegen
+      {
+        category: "Gartenliegen",
+        question: "Warum sind hochwertige Gartenliegen besonders bequem?",
+        options: [
+          { text: "Sie sind mit einem unsichtbaren Federkern ausgestattet.", correct: false },
+          { text: "Die Bespannung geht um den Rahmen herum, nicht nur dazwischen.", correct: true },
+          { text: "Sie schweben leicht über dem Boden.", correct: false }
+        ]
+      },
+      {
+        category: "Gartenliegen",
+        question: "Warum haben einige Gartenliegen Rollen?",
+        options: [
+          { text: "Damit man sie wie ein Skateboard benutzen kann.", correct: false },
+          { text: "Damit sie von alleine in die Sonne rollen.", correct: false },
+          { text: "Damit sie leichter bewegt werden können.", correct: true }
+        ]
+      },
+      {
+        category: "Gartenliegen",
+        question: "Was kann man mit einer hochwertigen Gartenliege als „Show-Effekt“ demonstrieren?",
+        options: [
+          { text: "Sie als Katapult benutzen.", correct: false },
+          { text: "Sie in ein Boot verwandeln.", correct: false },
+          { text: "Draufstellen, um die Stabilität zu zeigen.", correct: true }
+        ]
       }
-      document.getElementById("abschluss-text").innerText = text;
+    ];
+
+    let currentQuestionIndex = 0;
+
+    const startQuizBtn = document.getElementById("start-quiz");
+    const quizInstructions = document.getElementById("quiz-instructions");
+    const quizContent = document.getElementById("quiz-content");
+    const questionText = document.getElementById("question-text");
+    const answersContainer = document.getElementById("answers-container");
+    const feedbackEl = document.getElementById("feedback");
+    const nextQuestionBtn = document.getElementById("next-question");
+
+    startQuizBtn.addEventListener("click", function() {
+      quizInstructions.style.display = "none";
+      quizContent.style.display = "block";
+      currentQuestionIndex = 0;
+      showQuizQuestion();
     });
 
-    /* Die interaktive Quiz-Funktionalität wurde entfernt und durch statischen Quiz-Inhalt ersetzt. */
+    function showQuizQuestion() {
+      // Clear vorherige Rückmeldung und Antworten
+      feedbackEl.innerHTML = "";
+      nextQuestionBtn.style.display = "none";
+      answersContainer.innerHTML = "";
+      
+      // Hole aktuelle Frage
+      const currentQuestion = quizQuestions[currentQuestionIndex];
+      questionText.textContent = currentQuestion.question;
+      
+      // Erstelle Buttons für jede Antwort
+      currentQuestion.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option.text;
+        btn.className = "answer-btn";
+        btn.addEventListener("click", function() {
+          // Antwortbuttons deaktivieren
+          Array.from(answersContainer.children).forEach(child => child.disabled = true);
+          if(option.correct) {
+            feedbackEl.innerHTML = '<span style="color: green;">&#128512;</span>';
+          } else {
+            feedbackEl.innerHTML = '<span style="color: red;">&#128577;</span>';
+          }
+          nextQuestionBtn.style.display = "block";
+        });
+        answersContainer.appendChild(btn);
+      });
+    }
+
+    nextQuestionBtn.addEventListener("click", function() {
+      currentQuestionIndex++;
+      if(currentQuestionIndex < quizQuestions.length) {
+        showQuizQuestion();
+      } else {
+        // Quiz beendet
+        questionText.textContent = "Quiz abgeschlossen! Vielen Dank fürs Mitmachen.";
+        answersContainer.innerHTML = "";
+        feedbackEl.innerHTML = "";
+        nextQuestionBtn.style.display = "none";
+      }
+    });
   </script>
   
 </body>
