@@ -228,6 +228,23 @@
       background-color: #e74c3c;
       color: #fff;
     }
+    /* Animation für Ergebnis */
+    .thumbs-up {
+      font-size: 5em;
+      text-align: center;
+      animation: bounce 1s infinite alternate;
+    }
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-20px); }
+    }
+    .final-message {
+      text-align: center;
+      font-size: 1.8em;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #002147;
+    }
     /* Abschlussphase - App-Charakter */
     #abschlussphase {
       background: linear-gradient(135deg, #ffffff, #f2f2f2);
@@ -279,7 +296,7 @@
       border-left: 4px solid #002147;
       background-color: #eef3f7;
     }
-    /* Score-Counter für das Quiz */
+    /* Score-Counter */
     #score-counter, #score-counter-holz {
       font-size: 1.2em;
       font-weight: bold;
@@ -352,8 +369,7 @@
         <p style="margin:5px 0 0; font-size:1.5em;">Neuheiten und Topseller</p>
       </header>
       
-      <!-- Hier folgen die Kategorien (Sofas, Tische, etc.) – unverändert -->
-      <!-- Kategorie: Sofas -->
+      <!-- Kategorie: Sofas (Beispiel, weitere Kategorien bleiben unverändert) -->
       <div class="category">
         <h2>Sofas</h2>
         <div class="model-list">
@@ -739,9 +755,15 @@
         if(currentQuestionIndex < quizQuestions.length) {
           showQuizQuestion();
         } else {
-          questionText.textContent = "Quiz abgeschlossen! Vielen Dank fürs Mitmachen.";
+          // Quiz beendet: Bei max. Punkten (perfekte Punktzahl) speziellen Erfolg anzeigen
+          if(score === quizQuestions.length) {
+            questionText.innerHTML = '<div class="thumbs-up">👍</div><div class="final-message">Super - Du hast es geschafft</div>';
+            feedbackEl.innerHTML = "";
+            confetti({ particleCount: 100, spread: 70, origin: { x: 0.5, y: 0.3 } });
+          } else {
+            questionText.textContent = "Quiz abgeschlossen! Vielen Dank fürs Mitmachen.";
+          }
           answersContainer.innerHTML = "";
-          feedbackEl.innerHTML = "";
           nextQuestionBtn.style.display = "none";
         }
       });
@@ -1160,9 +1182,14 @@
         if(currentHolzQuestionIndex < holzQuizQuestions.length) {
           showHolzQuizQuestion();
         } else {
-          questionTextHolz.textContent = "Quiz abgeschlossen! Vielen Dank fürs Mitmachen.";
+          if(holzScore === holzQuizQuestions.length) {
+            questionTextHolz.innerHTML = '<div class="thumbs-up">👍</div><div class="final-message">Super - Du hast es geschafft</div>';
+            feedbackHolzEl.innerHTML = "";
+            confetti({ particleCount: 100, spread: 70, origin: { x: 0.5, y: 0.3 } });
+          } else {
+            questionTextHolz.textContent = "Quiz abgeschlossen! Vielen Dank fürs Mitmachen.";
+          }
           answersContainerHolz.innerHTML = "";
-          feedbackHolzEl.innerHTML = "";
           nextQuestionHolzBtn.style.display = "none";
         }
       });
