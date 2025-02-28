@@ -209,6 +209,57 @@
     .answer-btn:hover {
       background-color: #eee;
     }
+    /* Abschlussphase - App-Charakter */
+    #abschlussphase {
+      background: linear-gradient(135deg, #ffffff, #f2f2f2);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    #abschlussphase h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+    #abschlussphase p {
+      margin-bottom: 15px;
+    }
+    #abschlussphase ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    #abschlussphase select {
+      border: none;
+      border-radius: 6px;
+      background-color: #fff;
+      padding: 12px;
+      font-size: 1em;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-top: 10px;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url('data:image/svg+xml;charset=US-ASCII,<svg%20xmlns="http://www.w3.org/2000/svg"%20width="16"%20height="16"%20viewBox="0%200%2016%2016"><polygon%20fill="%23333"%20points="4,6%208,10%2012,6"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 12px;
+    }
+    #abschluss-text {
+      margin-top: 20px;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #333;
+      background-color: #f9f9f9;
+      border-left: 4px solid transparent;
+      padding: 10px;
+      border-radius: 6px;
+      transition: border-left 0.3s, background-color 0.3s;
+    }
+    #abschluss-text.active {
+      border-left: 4px solid #f1c40f;
+      background-color: #fffbea;
+    }
   </style>
 </head>
 <body>
@@ -241,8 +292,8 @@
         <li>✔ Er fragt zu Lieferung oder Garantien</li>
       </ul>
       
-      <h3>Bei welchem Einwand brauchst Du Unterstützung?:</h3>
-      <select id="abschlussfragen" style="padding:10px; font-size:1em; width:100%;">
+      <h3>Bei welchem Einwand brauchst Du Unterstützung?</h3>
+      <select id="abschlussfragen">
         <option value="">-- Bitte wähle einen Einwand aus --</option>
         <option value="1">Ich muss nochmal darüber nachdenken.</option>
         <option value="2">Das ist mir zu teuer.</option>
@@ -256,7 +307,7 @@
         <option value="10">Ich will nochmal darüber schlafen.</option>
       </select>
       
-      <div id="abschluss-text" style="margin-top:20px; font-size:1.1em; font-style: italic;"></div>
+      <div id="abschluss-text"></div>
       
       <h3>Einwände behandeln</h3>
       <p>Nehme jeden Einwand ernst und biete deinem Kunden eine klare Lösung – so findet ihr gemeinsam zum Abschluss.</p>
@@ -530,7 +581,13 @@
         default:
           text = "";
       }
-      document.getElementById("abschluss-text").innerText = text;
+      const abschlussTextEl = document.getElementById("abschluss-text");
+      abschlussTextEl.innerText = text;
+      if(text) {
+        abschlussTextEl.classList.add("active");
+      } else {
+        abschlussTextEl.classList.remove("active");
+      }
     });
 
     /* ------------------ Gartenmöbel-Quiz ------------------ */
