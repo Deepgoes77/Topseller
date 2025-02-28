@@ -518,7 +518,7 @@
       }
       window.menuItemClicked = menuItemClicked;
 
-      // Swipe-Funktionalität für die Sections
+      // Swipe-Funktionalität für die Sections mit erhöhter Schwelle (75px)
       const sectionOrder = ["abschlussphase", "neuheiten", "google", "warenkorb", "gartenmoebel_quiz"];
       let touchstartX = 0;
       let touchendX = 0;
@@ -533,11 +533,12 @@
       }, false);
 
       function handleGesture(){
-        if (touchendX < touchstartX - 50) {
+        // Erhöhte Schwelle: 75px statt 50px
+        if (touchendX < touchstartX - 75) {
           // Swipe nach links: Nächste Section
           nextSection();
         }
-        if (touchendX > touchstartX + 50) {
+        if (touchendX > touchstartX + 75) {
           // Swipe nach rechts: Vorherige Section
           previousSection();
         }
@@ -809,23 +810,23 @@
           btn.addEventListener("click", function() {
             // Deaktiviere alle Buttons
             Array.from(answersContainer.children).forEach(child => child.disabled = true);
-            // Füge den passenden Klassennamen zum Button hinzu
+            // Füge Klassennamen hinzu und aktualisiere den Score
             if(option.correct) {
               btn.classList.add("correct");
               score++;
               feedbackEl.innerHTML = '<span style="color: green;">&#128512;</span>';
-              // Starte den Konfetti-Effekt für 3 Sekunden
+              // Konfetti-Effekt für 3 Sekunden
               let duration = 3000;
               let animationEnd = Date.now() + duration;
               (function frame() {
                 confetti({
-                  particleCount: 5,
+                  particleCount: 2,
                   angle: 60,
                   spread: 55,
                   origin: { x: 0 }
                 });
                 confetti({
-                  particleCount: 5,
+                  particleCount: 2,
                   angle: 120,
                   spread: 55,
                   origin: { x: 1 }
