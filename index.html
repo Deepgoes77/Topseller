@@ -492,6 +492,47 @@
       showSection(sectionOrder[prevIndex], 'swipeRight');
     }
 
+    // Interaktive Einwandbehandlung in der Abschlussphase
+    document.getElementById("abschlussfragen").addEventListener("change", function() {
+      let auswahl = this.value;
+      let text = "";
+      switch(auswahl) {
+        case "1":
+          text = "Absolut verständlich – eine fundierte Entscheidung braucht Zeit. Sie haben ein Möbelstück mit erstklassiger Verarbeitung, langlebigen Materialien und zeitlosem Design. Warum warten, wenn Sie bereits wissen, dass es passt?";
+          break;
+        case "2":
+          text = "Teuer ist relativ – wenn Sie in ein Möbelstück investieren, das viele Jahre hält, sparen Sie langfristig. Sie bekommen echte Qualität. Günstigere Alternativen gibt es, aber keine mit dieser Hochwertigkeit. Möchten Sie wirklich Kompromisse eingehen?";
+          break;
+        case "3":
+          text = "Natürlich können Sie sich auch andere Angebote ansehen, aber Qualität spricht für sich. Dieses Möbelstück bietet eine Verarbeitung, die Sie so in dieser Preisklasse kaum finden. Warum Zeit verlieren, wenn Sie schon wissen, dass es perfekt ist?";
+          break;
+        case "4":
+          text = "Ein gutes Möbelstück passt sich Ihrer Umgebung an – nicht umgekehrt. Die Maße und Proportionen sind so gewählt, dass es sich harmonisch einfügt. Qualität bleibt auch langfristig erhalten.";
+          break;
+        case "5":
+          text = "Das ist völlig verständlich – aber denken Sie daran: Wer kennt Ihren Geschmack besser als Sie? Sie treffen heute eine Entscheidung für langlebige Qualität, und Ihr Partner wird begeistert sein, wenn er sieht, wie gut es passt.";
+          break;
+        case "6":
+          text = "Ich verstehe Ihre Bedenken – Qualität lässt sich nicht immer auf den ersten Blick beurteilen. Aber hier spüren Sie den Unterschied: hochwertige Materialien, erstklassige Verarbeitung und die Langlebigkeit machen den Unterschied.";
+          break;
+        case "7":
+          text = "Ich verstehe, dass Sie sich Zeit nehmen möchten. Aber Qualität ist eine Investition – wer jetzt in hochwertige Möbel investiert, spart sich später Ersatzkäufe und Ärger.";
+          break;
+        case "8":
+          text = "Hochwertige Möbel brauchen Zeit – das ist keine Massenware, sondern Handwerkskunst. Ein paar Wochen Wartezeit bedeuten jahrelange Zufriedenheit. Das Warten lohnt sich!";
+          break;
+        case "9":
+          text = "Die zeitlose Gestaltung und hochwertigen Materialien sorgen dafür, dass es sich in viele Einrichtungsstile einfügt. Ein echtes Qualitätsstück passt sich an – und Sie entscheiden sich für Beständigkeit.";
+          break;
+        case "10":
+          text = "Verständlich, aber Ihr erster Eindruck war positiv. Wenn Sie jetzt zusagen, treffen Sie eine Entscheidung für Wertigkeit und Qualität – eine Entscheidung, die Sie nicht bereuen werden.";
+          break;
+        default:
+          text = "";
+      }
+      document.getElementById("abschluss-text").innerText = text;
+    });
+
     /* ------------------ Gartenmöbel-Quiz ------------------ */
     const quizQuestions = [
       // Lounges
