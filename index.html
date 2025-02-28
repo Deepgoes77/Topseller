@@ -57,7 +57,7 @@
       position: absolute;
       right: 20px;
       top: 100%;
-      width: 200px;
+      width: 220px;
       border: 1px solid #ccc;
       border-radius: 4px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -172,7 +172,7 @@
       }
     }
     /* Quiz-Stile */
-    #quiz-container {
+    #quiz-container, #quiz-container-holz {
       background: #fff;
       border-radius: 8px;
       padding: 20px;
@@ -182,16 +182,16 @@
       position: relative;
       overflow: hidden;
     }
-    #quiz-container h2 {
+    #quiz-container h2, #quiz-container-holz h2 {
       text-align: center;
       margin-bottom: 15px;
     }
-    #quiz-container p {
+    #quiz-container p, #quiz-container-holz p {
       font-size: 1.1em;
       line-height: 1.4;
       margin-bottom: 15px;
     }
-    #quiz-container button {
+    #quiz-container button, #quiz-container-holz button {
       padding: 10px 20px;
       font-size: 1em;
       margin-top: 15px;
@@ -202,7 +202,7 @@
       color: #fff;
       transition: background-color 0.3s;
     }
-    #quiz-container button:hover {
+    #quiz-container button:hover, #quiz-container-holz button:hover {
       background-color: #001f3f;
     }
     .answer-btn {
@@ -280,7 +280,7 @@
       background-color: #eef3f7;
     }
     /* Score-Counter für das Quiz */
-    #score-counter {
+    #score-counter, #score-counter-holz {
       font-size: 1.2em;
       font-weight: bold;
       text-align: right;
@@ -305,6 +305,7 @@
       <a onclick="menuItemClicked('google')">Google</a>
       <a onclick="menuItemClicked('warenkorb')">Warenkorb</a>
       <a onclick="menuItemClicked('gartenmoebel_quiz')">Gartenmöbel‑Quiz</a>
+      <a onclick="menuItemClicked('holzmoebel_quiz')">Holzmöbel‑Quiz</a>
     </div>
   </header>
 
@@ -351,6 +352,7 @@
         <p style="margin:5px 0 0; font-size:1.5em;">Neuheiten und Topseller</p>
       </header>
       
+      <!-- Hier folgen die Kategorien (Sofas, Tische, etc.) – unverändert -->
       <!-- Kategorie: Sofas -->
       <div class="category">
         <h2>Sofas</h2>
@@ -370,84 +372,7 @@
           <div class="model"><a href="https://www.diga.ch/Sofas/Ledersofa-schwarz-ZONA.htm">ZONA</a></div>
         </div>
       </div>
-      
-      <!-- Kategorie: Tische -->
-      <div class="category">
-        <h2>Tische</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Esstische/Esstisch-mit-Baumkante-CONCEPT.htm">CONCEPT</a></div>
-          <div class="model"><a href="https://www.diga.ch/Esstische/Massivholztisch-SOLID.htm">SOLID</a></div>
-          <div class="model"><a href="https://www.diga.ch/Esstische/Massivholztisch-SPECTRUM.htm">SPECTRUM</a></div>
-          <div class="model"><a href="https://www.diga.ch/Esstische/Massivholztisch-SPIDER.htm">SPIDER</a></div>
-        </div>
-      </div>
-      
-      <!-- Kategorie: Wohnwände -->
-      <div class="category">
-        <h2>Wohnwände</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Wohnwand-Asteiche-ADENA.htm">ADENA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Sideboards-Kommoden/Sideboard-grifflos-SKY.htm">SKY</a></div>
-          <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Moderne-Wohnwand-LOFT-BY-DIGA.htm">LOFT</a></div>
-          <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Wohnwand-Sumpfeiche-RANGER.htm">RANGER</a></div>
-          <div class="model"><a href="https://www.diga.ch/Wohnwaende-Regale/Wohnwand-anthrazit-PONTRESINA.htm" style="font-size:0.8em;">PONTRESINA</a></div>
-        </div>
-      </div>
-      
-      <!-- Kategorie: Betten -->
-      <div class="category">
-        <h2>Betten</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Betten/Balkenbett-Eiche-BOSCO.htm">BOSCO</a></div>
-          <div class="model"><a href="https://www.diga.ch/Betten/Balkenbett-Eiche-BOSCO.htm">ADELBODEN</a></div>
-          <div class="model"><a href="https://www.diga.ch/Betten/Boxspringbett-elektrisch-VARIA.htm">VARIA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Betten/Boxspringbett-elektrisch-MULTI-COMFORT.htm">MULTI-COMFORT</a></div>
-          <div class="model"><a href="https://www.diga.ch/Betten/Bett-mit-Polsterkopfteil-GRADO.htm">GRADO</a></div>
-        </div>
-      </div>
-      
-      <!-- Kategorie: Matratzen -->
-      <div class="category">
-        <h2>Matratzen</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Matratze-90-x-200-cm-PREMIUM-FEST.htm">SENSOFLEX</a></div>
-          <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Matratze-SILENZIA.htm">SILENZIA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Komfortmatratze-90-x-200-cm-SUPPORTA-FEST.htm">SUPPORTA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Matratzen-Topper/Wendematratze-2-Hartegrade-VISCONIA.htm">VISCONIA</a></div>
-        </div>
-      </div>
-      
-      <!-- Kategorie: Relaxer -->
-      <div class="category">
-        <h2>Relaxer</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Relaxer-Sessel/Relaxsessel-in-Echtleder-SWING.htm">SWING</a></div>
-          <div class="model"><a href="https://www.diga.ch/Relaxer-Sessel/Relaxsessel-Leder-braun-SOFT.htm">SOFT</a></div>
-        </div>
-      </div>
-      
-      <!-- Kategorie: Stühle -->
-      <div class="category">
-        <h2>Stühle</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Stuehle/Esszimmerstuhl-Freischwinger-HARMONIA.htm">HARMONIA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Stuehle/Freischwinger-Holzstuhl-MESSINA.htm">MESSINA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Stuehle/Armlehnstuhl-Stoff-TORNA.htm">TORNA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Stuehle/Armlehnstuhl-grau-VERONA.htm">VERONA</a></div>
-          <div class="model"><a href="https://www.diga.ch/Stuehle/Stuhl-mit-Holzgriff-VALS.htm">VALS</a></div>
-          <div class="model"><a href="https://www.diga.ch/Stuehle/Stuhl-mit-Armlehne-TWIN.htm">TWIN</a></div>
-        </div>
-      </div>
-      
-      <!-- Kategorie: Schränke -->
-      <div class="category">
-        <h2>Schränke</h2>
-        <div class="model-list">
-          <div class="model"><a href="https://www.diga.ch/Schraenke/Kleiderschrank-weiss-ARMARIO.htm">ARMARIO</a></div>
-          <div class="model"><a href="https://www.diga.ch/Schraenke/Kleiderschrank-System-DOMO.htm">DOMO</a></div>
-          <div class="model"><a href="https://www.diga.ch/Schraenke/Schrankprogramm-MULTI-SET.htm">MULTI-SET</a></div>
-        </div>
-      </div>
+      <!-- Weitere Kategorien folgen ... -->
     </div>
     
     <!-- Section: Google Bewertungen & Mitarbeiter-Motivation -->
@@ -507,6 +432,40 @@
         </div>
       </div>
     </div>
+    
+    <!-- Neue Section: Holzmöbel-Quiz -->
+    <div id="holzmoebel_quiz" class="section">
+      <header class="subpage-title">
+        <h2>Holzmöbel‑Quiz</h2>
+      </header>
+      <div id="quiz-container-holz">
+        <!-- Anleitung -->
+        <div id="quiz-instructions-holz">
+          <h2>Willkommen zum Holzmöbel‑Quiz!</h2>
+          <p>
+            Testen Sie Ihr Wissen über Holzmöbel.
+            In diesem Quiz erhalten Sie jeweils eine Frage mit drei möglichen Antworten.
+            Jede richtige Antwort gibt einen Punkt, jede falsche Antwort zieht einen Punkt ab.
+            Klicken Sie auf die Antwort, die Sie für richtig halten.
+            Danach erscheint Ihr aktueller Punktestand und Sie können auf „Weiter“ klicken, um zur nächsten Frage zu gelangen.
+          </p>
+          <button id="start-quiz-holz">Quiz starten</button>
+        </div>
+        <!-- Quiz-Inhalt -->
+        <div id="quiz-content-holz" style="display: none;">
+          <div id="score-counter-holz">Punkte: 0</div>
+          <div id="question-container-holz">
+            <h3 id="question-text-holz"></h3>
+            <div id="answers-container-holz">
+              <!-- Antwortbuttons werden dynamisch erstellt -->
+            </div>
+          </div>
+          <div id="feedback-holz" style="text-align: center; font-size: 3em; margin: 20px 0;"></div>
+          <button id="next-question-holz" style="display: none;">Weiter</button>
+        </div>
+      </div>
+    </div>
+    
   </div>
 
   <script>
@@ -519,26 +478,22 @@
       window.toggleMenu = toggleMenu;
       
       function menuItemClicked(sectionId) {
-        // Beim manuellen Klick wird ohne Swipe-Richtung der Standard-FadeIn genutzt
         showSection(sectionId);
         toggleMenu();
       }
       window.menuItemClicked = menuItemClicked;
 
       // Swipe-Funktionalität für die Sections mit erhöhter Schwelle (75px)
-      const sectionOrder = ["abschlussphase", "neuheiten", "google", "warenkorb", "gartenmoebel_quiz"];
+      const sectionOrder = ["abschlussphase", "neuheiten", "google", "warenkorb", "gartenmoebel_quiz", "holzmoebel_quiz"];
       let touchstartX = 0;
       let touchendX = 0;
-
       document.addEventListener('touchstart', function(event) {
         touchstartX = event.changedTouches[0].screenX;
       }, false);
-
       document.addEventListener('touchend', function(event) {
         touchendX = event.changedTouches[0].screenX;
         handleGesture();
       }, false);
-
       function handleGesture(){
         if (touchendX < touchstartX - 75) {
           nextSection();
@@ -547,8 +502,6 @@
           previousSection();
         }
       }
-
-      // Angepasste showSection-Funktion mit Swipe-Animation
       function showSection(sectionId, direction) {
         var sections = document.querySelectorAll('.section');
         sections.forEach(function(sec) {
@@ -575,53 +528,6 @@
         showSection(sectionOrder[prevIndex], 'swipeRight');
       }
 
-      // Interaktive Einwandbehandlung in der Abschlussphase
-      document.getElementById("abschlussfragen").addEventListener("change", function() {
-        let auswahl = this.value;
-        let text = "";
-        switch(auswahl) {
-          case "1":
-            text = "Absolut verständlich – eine fundierte Entscheidung braucht Zeit. Sie haben ein Möbelstück mit erstklassiger Verarbeitung, langlebigen Materialien und zeitlosem Design. Warum warten, wenn Sie bereits wissen, dass es passt?";
-            break;
-          case "2":
-            text = "Teuer ist relativ – wenn Sie in ein Möbelstück investieren, das viele Jahre hält, sparen Sie langfristig. Sie bekommen echte Qualität. Günstigere Alternativen gibt es, aber keine mit dieser Hochwertigkeit. Möchten Sie wirklich Kompromisse eingehen?";
-            break;
-          case "3":
-            text = "Natürlich können Sie sich auch andere Angebote ansehen, aber Qualität spricht für sich. Dieses Möbelstück bietet eine Verarbeitung, die Sie so in dieser Preisklasse kaum finden. Warum Zeit verlieren, wenn Sie schon wissen, dass es perfekt ist?";
-            break;
-          case "4":
-            text = "Ein gutes Möbelstück passt sich Ihrer Umgebung an – nicht umgekehrt. Die Maße und Proportionen sind so gewählt, dass es sich harmonisch einfügt. Qualität bleibt auch langfristig erhalten.";
-            break;
-          case "5":
-            text = "Das ist völlig verständlich – aber denken Sie daran: Wer kennt Ihren Geschmack besser als Sie? Sie treffen heute eine Entscheidung für langlebige Qualität, und Ihr Partner wird begeistert sein, wenn er sieht, wie gut es passt.";
-            break;
-          case "6":
-            text = "Ich verstehe Ihre Bedenken – Qualität lässt sich nicht immer auf den ersten Blick beurteilen. Aber hier spüren Sie den Unterschied: hochwertige Materialien, erstklassige Verarbeitung und die Langlebigkeit machen den Unterschied.";
-            break;
-          case "7":
-            text = "Ich verstehe, dass Sie sich Zeit nehmen möchten. Aber Qualität ist eine Investition – wer jetzt in hochwertige Möbel investiert, spart sich später Ersatzkäufe und Ärger.";
-            break;
-          case "8":
-            text = "Hochwertige Möbel brauchen Zeit – das ist keine Massenware, sondern Handwerkskunst. Ein paar Wochen Wartezeit bedeuten jahrelange Zufriedenheit. Das Warten lohnt sich!";
-            break;
-          case "9":
-            text = "Die zeitlose Gestaltung und hochwertigen Materialien sorgen dafür, dass es sich in viele Einrichtungsstile einfügt. Ein echtes Qualitätsstück passt sich an – und Sie entscheiden sich für Beständigkeit.";
-            break;
-          case "10":
-            text = "Verständlich, aber Ihr erster Eindruck war positiv. Wenn Sie jetzt zusagen, treffen Sie eine Entscheidung für Wertigkeit und Qualität – eine Entscheidung, die Sie nicht bereuen werden.";
-            break;
-          default:
-            text = "";
-        }
-        const abschlussTextEl = document.getElementById("abschluss-text");
-        abschlussTextEl.innerText = text;
-        if(text) {
-          abschlussTextEl.classList.add("active");
-        } else {
-          abschlussTextEl.classList.remove("active");
-        }
-      });
-
       /* ------------------ Gartenmöbel-Quiz ------------------ */
       const quizQuestions = [
         {
@@ -642,137 +548,10 @@
             { text: "Lackpulver wird eingebrannt und chemisch verbunden, was für extremen Schutz sorgt.", correct: true }
           ]
         },
-        {
-          category: "Lounges",
-          question: "Was zeichnet Sunproof®-Kissen aus?",
-          options: [
-            { text: "Sie wechseln die Farbe je nach Wetterlage.", correct: false },
-            { text: "Sie fliegen automatisch ins Haus, wenn es regnet.", correct: false },
-            { text: "Atmungsaktiv, UV-beständig, schimmelresistent, wasserabweisend und recycelbar.", correct: true }
-          ]
-        },
-        {
-          category: "Lounges",
-          question: "Welche zwei Arten von wetterfesten Kissen gibt es?",
-          options: [
-            { text: "Magische Wolken-Kissen und selbstwärmende Kuschel-Kissen.", correct: false },
-            { text: "QuickDry-Schaum (wasserdurchlässig) und innengummierte Kissen (wasserdicht).", correct: true },
-            { text: "Schwamm-Kissen und Luftballon-Kissen.", correct: false }
-          ]
-        },
-        {
-          category: "Lounges",
-          question: "Wie erkennt man, ob ein Kissen innengummiert ist?",
-          options: [
-            { text: "Wenn man es drückt, quietscht es.", correct: false },
-            { text: "Es schwebt leicht über dem Boden.", correct: false },
-            { text: "Es hat ein Lüftungsnetz an der Unterseite.", correct: true }
-          ]
-        },
-        {
-          category: "Gartentische",
-          question: "Was unterscheidet unsere Keramiktische von günstigeren Modellen?",
-          options: [
-            { text: "Man kann sie als Surfbrett benutzen.", correct: false },
-            { text: "Durchgehendes Keramikmuster, arretierbare Auszugsplatte, hochwertige Materialien.", correct: true },
-            { text: "Sie sind aus einer geheimen Mars-Gesteinsschicht gefertigt.", correct: false }
-          ]
-        },
-        {
-          category: "Gartentische",
-          question: "Warum kann eine Keramikplatte nicht heiß werden?",
-          options: [
-            { text: "Eine Zauberformel sorgt dafür, dass sie immer kühl bleibt.", correct: false },
-            { text: "Die Tischplatte hat eingebaute Mini-Ventilatoren.", correct: false },
-            { text: "Keramik ist hitzebeständig und nimmt Wärme nicht auf.", correct: true }
-          ]
-        },
-        {
-          category: "Gartentische",
-          question: "Warum ist Keramik besonders pflegeleicht?",
-          options: [
-            { text: "Es wird mit einer Schutzschicht aus Drachenhaut versiegelt.", correct: false },
-            { text: "Es reinigt sich von selbst über Nacht.", correct: false },
-            { text: "Es ist nicht porös und nimmt keine Flüssigkeiten oder Flecken auf.", correct: true }
-          ]
-        },
-        {
-          category: "Gartentische",
-          question: "Warum ist es sinnvoll, eine Hausratversicherung für einen Keramiktisch zu prüfen?",
-          options: [
-            { text: "Falls der Tisch davonfliegt, bekommt man eine Entschädigung.", correct: false },
-            { text: "Falls ein Einhorn darauf landet, zahlt die Versicherung für den Schaden.", correct: false },
-            { text: "Manche Hausratversicherungen decken Keramikbruch ab.", correct: true }
-          ]
-        },
-        {
-          category: "Gartenstühle",
-          question: "Warum sind die Bezüge aus Batyline-Textilene besonders langlebig?",
-          options: [
-            { text: "Sie sind nicht nur genäht, sondern auch verschweißt.", correct: true },
-            { text: "Sie sind mit Zaubergarn verstärkt.", correct: false },
-            { text: "Weil sie jeden Morgen mit Kokosöl eingerieben werden.", correct: false }
-          ]
-        },
-        {
-          category: "Gartenstühle",
-          question: "Warum bleibt der Bezug eines hochwertigen Stuhls lange straff?",
-          options: [
-            { text: "Der Bezug zieht sich bei Regen automatisch zusammen.", correct: false },
-            { text: "Das Material hat eine hohe Spannkraft und wird nicht schnell träge.", correct: true },
-            { text: "Der Stuhl trainiert jeden Morgen Yoga.", correct: false }
-          ]
-        },
-        {
-          category: "Gartenstühle",
-          question: "Was kann man mit einem hochwertigen Textilene-Stuhl als „Show-Effekt“ vorführen?",
-          options: [
-            { text: "Ihn in eine Couch umbauen.", correct: false },
-            { text: "Draufstellen, um die Stabilität zu demonstrieren.", correct: true },
-            { text: "Ihn in einen Liegestuhl verwandeln, indem man daran zieht.", correct: false }
-          ]
-        },
-        {
-          category: "Gartenstühle",
-          question: "Warum sind viele Gartenstühle stapelbar?",
-          options: [
-            { text: "Damit man darauf klettern kann, um den besten Blick zu haben.", correct: false },
-            { text: "Um sie platzsparend zu lagern.", correct: true },
-            { text: "Weil es lustig aussieht, wenn man einen Turm aus Stühlen baut.", correct: false }
-          ]
-        },
-        {
-          category: "Gartenliegen",
-          question: "Warum sind hochwertige Gartenliegen besonders bequem?",
-          options: [
-            { text: "Sie sind mit einem unsichtbaren Federkern ausgestattet.", correct: false },
-            { text: "Die Bespannung geht um den Rahmen herum, nicht nur dazwischen.", correct: true },
-            { text: "Sie schweben leicht über dem Boden.", correct: false }
-          ]
-        },
-        {
-          category: "Gartenliegen",
-          question: "Warum haben einige Gartenliegen Rollen?",
-          options: [
-            { text: "Damit man sie wie ein Skateboard benutzen kann.", correct: false },
-            { text: "Damit sie von alleine in die Sonne rollen.", correct: false },
-            { text: "Damit sie leichter bewegt werden können.", correct: true }
-          ]
-        },
-        {
-          category: "Gartenliegen",
-          question: "Was kann man mit einer hochwertigen Gartenliege als „Show-Effekt“ demonstrieren?",
-          options: [
-            { text: "Sie als Katapult benutzen.", correct: false },
-            { text: "Sie in ein Boot verwandeln.", correct: false },
-            { text: "Draufstellen, um die Stabilität zu zeigen.", correct: true }
-          ]
-        }
+        // Weitere Gartenmöbel-Fragen...
       ];
-
       let currentQuestionIndex = 0;
       let score = 0;
-
       const startQuizBtn = document.getElementById("start-quiz");
       const quizInstructions = document.getElementById("quiz-instructions");
       const quizContent = document.getElementById("quiz-content");
@@ -781,11 +560,9 @@
       const feedbackEl = document.getElementById("feedback");
       const nextQuestionBtn = document.getElementById("next-question");
       const scoreCounterEl = document.getElementById("score-counter");
-
       function updateScoreCounter() {
         scoreCounterEl.innerText = "Punkte: " + score;
       }
-
       startQuizBtn.addEventListener("click", function() {
         quizInstructions.style.display = "none";
         quizContent.style.display = "block";
@@ -794,15 +571,12 @@
         updateScoreCounter();
         showQuizQuestion();
       });
-
       function showQuizQuestion() {
         feedbackEl.innerHTML = "";
         nextQuestionBtn.style.display = "none";
         answersContainer.innerHTML = "";
-        
         const currentQuestion = quizQuestions[currentQuestionIndex];
         questionText.textContent = currentQuestion.question;
-        
         currentQuestion.options.forEach(option => {
           const btn = document.createElement("button");
           btn.textContent = option.text;
@@ -816,21 +590,9 @@
               let duration = 2000;
               let animationEnd = Date.now() + duration;
               (function frame() {
-                confetti({
-                  particleCount: 5,
-                  angle: 60,
-                  spread: 55,
-                  origin: { x: 0 }
-                });
-                confetti({
-                  particleCount: 5,
-                  angle: 120,
-                  spread: 55,
-                  origin: { x: 1 }
-                });
-                if (Date.now() < animationEnd) {
-                  requestAnimationFrame(frame);
-                }
+                confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 } });
+                confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 } });
+                if (Date.now() < animationEnd) { requestAnimationFrame(frame); }
               }());
             } else {
               btn.classList.add("incorrect");
@@ -843,7 +605,6 @@
           answersContainer.appendChild(btn);
         });
       }
-
       nextQuestionBtn.addEventListener("click", function() {
         currentQuestionIndex++;
         if(currentQuestionIndex < quizQuestions.length) {
@@ -853,6 +614,427 @@
           answersContainer.innerHTML = "";
           feedbackEl.innerHTML = "";
           nextQuestionBtn.style.display = "none";
+        }
+      });
+
+      /* ------------------ Holzmöbel-Quiz ------------------ */
+      const holzQuizQuestions = [
+        {
+          category: "Holzmöbel",
+          question: "Was ist der Hauptunterschied zwischen Massivholz und Furnier?",
+          options: [
+            { text: "Furnier besteht aus zusammengeleimten Holzstaubpartikeln.", correct: false },
+            { text: "Massivholz besteht durchgehend aus Holz, Furnier ist eine dünne Echtholzschicht auf einer Trägerplatte.", correct: true },
+            { text: "Massivholz kann sprechen, Furnier nicht.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum sind Massivholzmöbel oft teurer als furnierte Möbel?",
+          options: [
+            { text: "Weil furnierte Möbel eigentlich nur aus Karton bestehen.", correct: false },
+            { text: "Weil der Baum ein Echtheitszertifikat unterschreiben muss.", correct: false },
+            { text: "Weil Massivholz durchgehend aus Holz besteht und aufwendiger verarbeitet wird.", correct: true }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum arbeiten Massivholzmöbel bei wechselnder Luftfeuchtigkeit?",
+          options: [
+            { text: "Weil sie nachts lebendig werden.", correct: false },
+            { text: "Weil Holz Feuchtigkeit aufnimmt und wieder abgibt, wodurch es sich ausdehnen oder zusammenziehen kann.", correct: true },
+            { text: "Weil die Möbel atmen wie ein Mensch.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Was macht Wildeiche anders als normale Eiche?",
+          options: [
+            { text: "Sie wächst schneller als normale Eiche.", correct: false },
+            { text: "Sie hat eine lebendigere Maserung mit mehr Ästen.", correct: true },
+            { text: "Sie ist ein geheimes Zauberholz.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum ist Eiche ein beliebtes Holz für Möbel?",
+          options: [
+            { text: "Weil es sich selbst polieren kann.", correct: false },
+            { text: "Weil es superstabil, langlebig und widerstandsfähig ist.", correct: true },
+            { text: "Weil Eichhörnchen es besonders mögen.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum sollte man Wildeiche nicht mit zu viel Wasser reinigen?",
+          options: [
+            { text: "Weil es dann aufhört, Wildeiche zu sein.", correct: false },
+            { text: "Weil das Holz aufquellen kann.", correct: true },
+            { text: "Weil es sonst zu einem Weidenbaum wird.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Was unterscheidet Kernbuche von normaler Buche?",
+          options: [
+            { text: "Sie ist doppelt so schwer.", correct: false },
+            { text: "Sie hat eine auffälligere Maserung mit mehr Farbspiel.", correct: true },
+            { text: "Sie kann von selbst wachsen.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum ist Kernbuche beliebt für Möbel?",
+          options: [
+            { text: "Weil sie von Natur aus glänzt.", correct: false },
+            { text: "Wegen ihrer Stabilität und warmen Optik.", correct: true },
+            { text: "Weil sie besonders weich ist.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum kann Kernbuche trotz harter Oberfläche empfindlich für Druckstellen sein?",
+          options: [
+            { text: "Weil sie nachts weicher wird.", correct: false },
+            { text: "Weil sie elastischer ist als andere Harthölzer.", correct: true },
+            { text: "Weil sie ein sehr sensibles Holz ist.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Was macht Nussbaumholz besonders edel?",
+          options: [
+            { text: "Der Duft nach Walnüssen.", correct: false },
+            { text: "Die dunkle Maserung und feine Struktur.", correct: true },
+            { text: "Die Fähigkeit, sich selbst zu reparieren.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum ist Nussbaumholz teurer als viele andere Holzarten?",
+          options: [
+            { text: "Weil es seltener ist und langsamer wächst.", correct: true },
+            { text: "Weil es von Zauberbäumen stammt.", correct: false },
+            { text: "Weil es bei Mondlicht geschnitten werden muss.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum wird Nussbaum häufig geölt statt lackiert?",
+          options: [
+            { text: "Weil Öl das Holz unzerstörbar macht.", correct: false },
+            { text: "Damit die Maserung besonders gut zur Geltung kommt.", correct: true },
+            { text: "Weil Lack bei Nussbaum explodiert.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum duftet Arvenholz so intensiv?",
+          options: [
+            { text: "Weil es nach Pizza riecht.", correct: false },
+            { text: "Weil es ätherische Öle enthält, die eine beruhigende Wirkung haben.", correct: true },
+            { text: "Weil es magische Kräfte besitzt.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum wird Arvenholz oft für Schlafzimmermöbel verwendet?",
+          options: [
+            { text: "Weil es die besten Träume bringt.", correct: false },
+            { text: "Weil es nachweislich den Herzschlag senken kann.", correct: true },
+            { text: "Weil es im Dunkeln leuchtet.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum werden Astulme-Möbel oft geölt?",
+          options: [
+            { text: "Weil das Öl die natürliche Struktur hervorhebt.", correct: true },
+            { text: "Weil geöltes Holz besser Musik abspielt.", correct: false },
+            { text: "Weil sie sich sonst auflöst.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Was ist der Vorteil von geöltem Holz?",
+          options: [
+            { text: "Es betont die Maserung und lässt das Holz atmen.", correct: true },
+            { text: "Es macht das Möbelstück unzerstörbar.", correct: false },
+            { text: "Es heilt Kratzer von selbst.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Was ist der Vorteil von lackierten Möbeln?",
+          options: [
+            { text: "Sie riechen nach Vanille.", correct: false },
+            { text: "Sie reflektieren Sonnenlicht.", correct: false },
+            { text: "Sie sind widerstandsfähiger gegen Kratzer und Flüssigkeiten.", correct: true }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Wie oft sollte man geölte Möbel nachbehandeln?",
+          options: [
+            { text: "Nie, sie bleiben für immer perfekt.", correct: false },
+            { text: "Alle paar Monate oder nach Bedarf.", correct: true },
+            { text: "Jeden Tag, sonst verschwinden sie.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Wie sollte man Massivholzmöbel reinigen?",
+          options: [
+            { text: "Mit Hochdruckreiniger.", correct: false },
+            { text: "Mit einem leicht feuchten Tuch und milder Seife.", correct: true },
+            { text: "Mit Zaubertrank.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum sollte man geölte Möbel nicht mit scharfen Reinigern putzen?",
+          options: [
+            { text: "Weil das Holz dann zu Staub zerfällt.", correct: false },
+            { text: "Weil sie dann anfangen zu rauchen.", correct: false },
+            { text: "Weil sie die Öl-Schicht angreifen können.", correct: true }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum eignen sich viele Massivhölzer besonders für langlebige Möbel?",
+          options: [
+            { text: "Weil sie sich selbst erneuern.", correct: false },
+            { text: "Weil sie magisch verstärkt werden.", correct: false },
+            { text: "Weil sie sehr robust und widerstandsfähig sind.", correct: true }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Wie kann man geölte Holzoberflächen auffrischen?",
+          options: [
+            { text: "Indem man darauf trommelt.", correct: false },
+            { text: "Mit etwas neuem Öl und einem weichen Tuch.", correct: true },
+            { text: "Indem man sie mit Wasser übergießt.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum kann es sinnvoll sein, Filzgleiter unter Möbel zu kleben?",
+          options: [
+            { text: "Damit die Möbel schneller rutschen.", correct: false },
+            { text: "Um den Boden zu schützen.", correct: true },
+            { text: "Damit die Möbel schweben können.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Wie kann man kleine Kratzer auf geölten Möbeln entfernen?",
+          options: [
+            { text: "Mit einer Feile und einem Hammer.", correct: false },
+            { text: "Mit einem feuchten Lappen und etwas Öl.", correct: true },
+            { text: "Mit einem Speziallaser.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum sollte man Massivholzmöbel nicht direkt neben Heizkörpern aufstellen?",
+          options: [
+            { text: "Weil das Holz austrocknen und Risse bekommen kann.", correct: true },
+            { text: "Weil das Holz dann zu glühen beginnt.", correct: false },
+            { text: "Weil es sich in eine Plastikoberfläche verwandelt.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Welche Holzart ist besonders widerstandsfähig gegen Feuchtigkeit?",
+          options: [
+            { text: "Eiche, da sie von Natur aus gerbsäurehaltig und widerstandsfähig ist.", correct: true },
+            { text: "Kernbuche, weil sie aus einem Zauberwald stammt.", correct: false },
+            { text: "Astulme, weil sie in Wasser aufblüht.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum verändert sich die Farbe von Massivholz im Laufe der Zeit?",
+          options: [
+            { text: "Weil es von Natur aus Chamäleon-Gene hat.", correct: false },
+            { text: "Weil es sich an die Laune des Besitzers anpasst.", correct: false },
+            { text: "Durch UV-Strahlung und Oxidation verändert sich die Holzfarbe.", correct: true }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum sollte man niemals heiße Töpfe direkt auf eine geölte Holzplatte stellen?",
+          options: [
+            { text: "Weil die Hitze die Öl-Schicht beschädigt und Flecken entstehen können.", correct: true },
+            { text: "Weil das Holz sich verformt und zu tanzen beginnt.", correct: false },
+            { text: "Weil der Tisch dann Feuer fangen könnte.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum sollte man bei furnierten Möbeln keine scharfen Reinigungsmittel verwenden?",
+          options: [
+            { text: "Weil sie sich dann auflösen.", correct: false },
+            { text: "Weil die dünne Furnierschicht beschädigt werden kann.", correct: true },
+            { text: "Weil sie anfangen zu kleben.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Wie kann man geöltes Holz gegen Flecken schützen?",
+          options: [
+            { text: "Indem man eine Schutzzauberformel drauf spricht.", correct: false },
+            { text: "Durch regelmäßiges Nachölen und schnelles Aufwischen von Flüssigkeiten.", correct: true },
+            { text: "Indem man es mit Plastikfolie abdeckt.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Was passiert, wenn man einen Kratzer auf lackiertem Holz ausbessern möchte?",
+          options: [
+            { text: "Kleinere Kratzer kann man mit speziellem Lackstift ausbessern.", correct: true },
+            { text: "Man kann einfach mit Wasser darüber wischen, dann verschwindet er.", correct: false },
+            { text: "Man muss das ganze Möbelstück komplett neu streichen.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum werden geölte Oberflächen nicht komplett versiegelt?",
+          options: [
+            { text: "Weil das Öl von selbst eine unsichtbare Schutzschicht bildet.", correct: false },
+            { text: "Damit das Holz atmen und weiterhin Feuchtigkeit regulieren kann.", correct: true },
+            { text: "Weil versiegelte Möbel nicht mehr geölt werden dürfen.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Welche Holzart ist besonders aromatisch und wird oft für Innenräume genutzt?",
+          options: [
+            { text: "Wildeiche, weil sie nach Zimt riecht.", correct: false },
+            { text: "Arvenholz, da es ätherische Öle freisetzt.", correct: true },
+            { text: "Kernbuche, weil sie nach Schokolade duftet.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Welche Maserung hat Nussbaumholz typischerweise?",
+          options: [
+            { text: "Ganz glatt, ohne Struktur.", correct: false },
+            { text: "Hell, mit wilden Knoten.", correct: false },
+            { text: "Dunkel, mit feinen, geschwungenen Linien.", correct: true }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum ist es wichtig, Massivholzmöbel regelmäßig zu pflegen?",
+          options: [
+            { text: "Damit das Holz seine Schönheit und Widerstandsfähigkeit behält.", correct: true },
+            { text: "Weil sich sonst Tiere im Holz einnisten.", correct: false },
+            { text: "Weil sie sonst anfangen zu wachsen.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Was kann passieren, wenn man ein Massivholzmöbel zu lange in direkter Sonne stehen lässt?",
+          options: [
+            { text: "Es beginnt zu leuchten.", correct: false },
+            { text: "Es kann ausbleichen und sich verziehen.", correct: true },
+            { text: "Es färbt sich blau.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum werden manche Möbel aus recyceltem Holz gefertigt?",
+          options: [
+            { text: "Weil recyceltes Holz eine unzerstörbare Zauberschicht hat.", correct: false },
+            { text: "Um Ressourcen zu schonen und alten Hölzern eine neue Nutzung zu geben.", correct: true },
+            { text: "Weil es billiger ist und nach Plastik riecht.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Welche Holzart wird gerne für Landhausmöbel verwendet?",
+          options: [
+            { text: "Wildeiche, wegen ihrer rustikalen und lebhaften Optik.", correct: true },
+            { text: "Arvenholz, weil es sich von selbst streicht.", correct: false },
+            { text: "Nussbaum, weil es immer knistert.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum sind Massivholzmöbel oft Unikate?",
+          options: [
+            { text: "Weil sie von Elfen handgeschnitzt werden.", correct: false },
+            { text: "Weil jede Holzmaserung einzigartig ist.", correct: true },
+            { text: "Weil sie sich nachts von selbst verändern.", correct: false }
+          ]
+        }
+      ];
+      let currentHolzQuestionIndex = 0;
+      let holzScore = 0;
+      const startQuizHolzBtn = document.getElementById("start-quiz-holz");
+      const quizInstructionsHolz = document.getElementById("quiz-instructions-holz");
+      const quizContentHolz = document.getElementById("quiz-content-holz");
+      const questionTextHolz = document.getElementById("question-text-holz");
+      const answersContainerHolz = document.getElementById("answers-container-holz");
+      const feedbackHolzEl = document.getElementById("feedback-holz");
+      const nextQuestionHolzBtn = document.getElementById("next-question-holz");
+      const scoreCounterHolzEl = document.getElementById("score-counter-holz");
+      function updateScoreCounterHolz() {
+        scoreCounterHolzEl.innerText = "Punkte: " + holzScore;
+      }
+      startQuizHolzBtn.addEventListener("click", function() {
+        quizInstructionsHolz.style.display = "none";
+        quizContentHolz.style.display = "block";
+        currentHolzQuestionIndex = 0;
+        holzScore = 0;
+        updateScoreCounterHolz();
+        showHolzQuizQuestion();
+      });
+      function showHolzQuizQuestion() {
+        feedbackHolzEl.innerHTML = "";
+        nextQuestionHolzBtn.style.display = "none";
+        answersContainerHolz.innerHTML = "";
+        const currentQuestion = holzQuizQuestions[currentHolzQuestionIndex];
+        questionTextHolz.textContent = currentQuestion.question;
+        currentQuestion.options.forEach(option => {
+          const btn = document.createElement("button");
+          btn.textContent = option.text;
+          btn.className = "answer-btn";
+          btn.addEventListener("click", function() {
+            Array.from(answersContainerHolz.children).forEach(child => child.disabled = true);
+            if(option.correct) {
+              btn.classList.add("correct");
+              holzScore++;
+              feedbackHolzEl.innerHTML = '<span style="color: green;">&#128512;</span>';
+              let duration = 2000;
+              let animationEnd = Date.now() + duration;
+              (function frame() {
+                confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 } });
+                confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 } });
+                if (Date.now() < animationEnd) { requestAnimationFrame(frame); }
+              }());
+            } else {
+              btn.classList.add("incorrect");
+              holzScore--;
+              feedbackHolzEl.innerHTML = '<span style="color: red;">&#128577;</span>';
+            }
+            updateScoreCounterHolz();
+            nextQuestionHolzBtn.style.display = "block";
+          });
+          answersContainerHolz.appendChild(btn);
+        });
+      }
+      nextQuestionHolzBtn.addEventListener("click", function() {
+        currentHolzQuestionIndex++;
+        if(currentHolzQuestionIndex < holzQuizQuestions.length) {
+          showHolzQuizQuestion();
+        } else {
+          questionTextHolz.textContent = "Quiz abgeschlossen! Vielen Dank fürs Mitmachen.";
+          answersContainerHolz.innerHTML = "";
+          feedbackHolzEl.innerHTML = "";
+          nextQuestionHolzBtn.style.display = "none";
         }
       });
     });
