@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <title>Fokusthemen</title>
+  <!-- Canvas-Confetti Bibliothek für den Konfetti-Effekt -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <style>
     /* Globaler Reset */
     * {
@@ -174,6 +176,8 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.15);
       margin: 20px auto;
       max-width: 600px;
+      position: relative;
+      overflow: hidden;
     }
     #quiz-container h2 {
       text-align: center;
@@ -202,12 +206,20 @@
       border-radius: 4px;
       padding: 10px;
       margin: 8px 0;
-      background-color: #f9f9f9;
+      background-color: #FFEB3B;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: background-color 0.3s, color 0.3s;
     }
     .answer-btn:hover {
-      background-color: #eee;
+      background-color: #FFE082;
+    }
+    .answer-btn.correct {
+      background-color: #8BC34A;
+      color: #fff;
+    }
+    .answer-btn.incorrect {
+      background-color: #F44336;
+      color: #fff;
     }
     /* Abschlussphase - App-Charakter */
     #abschlussphase {
@@ -795,11 +807,35 @@
           btn.textContent = option.text;
           btn.className = "answer-btn";
           btn.addEventListener("click", function() {
+            // Deaktiviere alle Buttons
             Array.from(answersContainer.children).forEach(child => child.disabled = true);
+            // Füge den passenden Klassennamen zum Button hinzu
             if(option.correct) {
+              btn.classList.add("correct");
               score++;
               feedbackEl.innerHTML = '<span style="color: green;">&#128512;</span>';
+              // Starte den Konfetti-Effekt für 3 Sekunden
+              let duration = 3000;
+              let animationEnd = Date.now() + duration;
+              (function frame() {
+                confetti({
+                  particleCount: 5,
+                  angle: 60,
+                  spread: 55,
+                  origin: { x: 0 }
+                });
+                confetti({
+                  particleCount: 5,
+                  angle: 120,
+                  spread: 55,
+                  origin: { x: 1 }
+                });
+                if (Date.now() < animationEnd) {
+                  requestAnimationFrame(frame);
+                }
+              }());
             } else {
+              btn.classList.add("incorrect");
               score--;
               feedbackEl.innerHTML = '<span style="color: red;">&#128577;</span>';
             }
