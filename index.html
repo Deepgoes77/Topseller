@@ -171,6 +171,28 @@
         font-size: 1.6em;
       }
     }
+    /* App-Stile für die Startseite */
+    .app-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+    .app {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px;
+      text-align: center;
+      width: 150px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .app:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
     /* Quiz-Stile */
     #quiz-container, #quiz-container-holz {
       background: #fff;
@@ -327,6 +349,22 @@
   </header>
 
   <div class="container">
+    <!-- Neue Startseite: Kategorien als Apps -->
+    <div id="start" class="section active">
+      <header class="subpage-title">
+        <h2>Willkommen bei Fokusthemen</h2>
+        <p>Bitte wählen Sie eine Kategorie:</p>
+      </header>
+      <div class="app-container">
+        <div class="app" onclick="showSection('neuheiten')">Neuheiten</div>
+        <div class="app" onclick="showSection('abschlussphase')">Abschlussphase</div>
+        <div class="app" onclick="showSection('google')">Google Bewertungen</div>
+        <div class="app" onclick="showSection('warenkorb')">Warenkorb</div>
+        <div class="app" onclick="showSection('gartenmoebel_quiz')">Gartenmöbel‑Quiz</div>
+        <div class="app" onclick="showSection('holzmoebel_quiz')">Holzmöbel‑Quiz</div>
+      </div>
+    </div>
+
     <!-- Section: Abschlussphase -->
     <div id="abschlussphase" class="section">
       <header class="subpage-title">
@@ -363,7 +401,7 @@
     </div>
 
     <!-- Section: Neuheiten und Topseller -->
-    <div id="neuheiten" class="section active">
+    <div id="neuheiten" class="section">
       <header class="subpage-title">
         <h1 style="margin:0; font-size:1.8em;">DIGA</h1>
         <p style="margin:5px 0 0; font-size:1.5em;">Neuheiten und Topseller</p>
@@ -577,7 +615,8 @@
       window.menuItemClicked = menuItemClicked;
 
       // Swipe-Funktionalität für die Sections mit erhöhter Schwelle (75px)
-      const sectionOrder = ["abschlussphase", "neuheiten", "google", "warenkorb", "gartenmoebel_quiz", "holzmoebel_quiz"];
+      // Die Startseite wird in die Navigation aufgenommen
+      const sectionOrder = ["start", "neuheiten", "abschlussphase", "google", "warenkorb", "gartenmoebel_quiz", "holzmoebel_quiz"];
       let touchstartX = 0;
       let touchendX = 0;
       document.addEventListener('touchstart', function(event) {
@@ -1321,5 +1360,3 @@
   
 </body>
 </html>
-
-
