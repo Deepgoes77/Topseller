@@ -609,8 +609,11 @@
               <!-- Antwortbuttons werden dynamisch erstellt -->
             </div>
           </div>
-          <div id="feedback" style="text-align: center; font-size: 3em; margin: 20px 0;"></div>
-          <button id="next-question" style="display: none;">Weiter</button>
+          <!-- Container für Smiley und Weiter-Button nebeneinander -->
+          <div id="feedback-and-button" style="display: flex; align-items: center; justify-content: center; gap: 15px; margin: 20px 0;">
+            <div id="feedback" style="text-align:center; font-size: 3em;"></div>
+            <button id="next-question" style="display: none;">Weiter</button>
+          </div>
         </div>
       </div>
     </div>
@@ -642,8 +645,11 @@
               <!-- Antwortbuttons werden dynamisch erstellt -->
             </div>
           </div>
-          <div id="feedback-holz" style="text-align: center; font-size: 3em; margin: 20px 0;"></div>
-          <button id="next-question-holz" style="display: none;">Weiter</button>
+          <!-- Container für Smiley und Weiter-Button nebeneinander -->
+          <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin: 20px 0;">
+            <div id="feedback-holz" style="text-align:center; font-size: 3em;"></div>
+            <button id="next-question-holz" style="display: none;">Weiter</button>
+          </div>
         </div>
       </div>
     </div>
@@ -1009,11 +1015,11 @@
           showQuizQuestion();
         } else {
           if(score === quizQuestions.length) {
-            questionText.innerHTML = '<div class="thumbs-up">👍</div><div class="final-message">Super - Du hast es geschafft</div>';
+            questionText.innerHTML = '<div class="thumbs-up">👍</div><div class="final-message">Super - Du hast es geschafft.<br>Du hast ' + score + ' von ' + quizQuestions.length + ' Punkten erreicht</div>';
             feedbackEl.innerHTML = "";
             confetti({ particleCount: 100, spread: 70, origin: { x: 0.5, y: 0.3 } });
           } else {
-            questionText.textContent = "Quiz abgeschlossen! Vielen Dank fürs Mitmachen.";
+            questionText.textContent = "Quiz abgeschlossen! Vielen Dank fürs Mitmachen. Du hast " + score + " von " + quizQuestions.length + " Punkten erreicht.";
           }
           answersContainer.innerHTML = "";
           nextQuestionBtn.style.display = "none";
@@ -1488,11 +1494,11 @@
           showHolzQuizQuestion();
         } else {
           if(holzScore === holzQuizQuestions.length) {
-            questionTextHolz.innerHTML = '<div class="thumbs-up">👍</div><div class="final-message">Super - Du hast es geschafft</div>';
+            questionTextHolz.innerHTML = '<div class="thumbs-up">👍</div><div class="final-message">Super - Du hast es geschafft.<br>Du hast ' + holzScore + ' von ' + holzQuizQuestions.length + ' Punkten erreicht</div>';
             feedbackHolzEl.innerHTML = "";
             confetti({ particleCount: 100, spread: 70, origin: { x: 0.5, y: 0.3 } });
           } else {
-            questionTextHolz.textContent = "Quiz abgeschlossen! Vielen Dank fürs Mitmachen.";
+            questionTextHolz.textContent = "Quiz abgeschlossen! Vielen Dank fürs Mitmachen. Du hast " + holzScore + " von " + holzQuizQuestions.length + " Punkten erreicht.";
           }
           answersContainerHolz.innerHTML = "";
           nextQuestionHolzBtn.style.display = "none";
