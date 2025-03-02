@@ -91,6 +91,43 @@
       margin: 80px auto 20px;
       padding: 0 15px;
     }
+    /* Startseite – App-Icons */
+    .app-icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .app-icon {
+      width: 100px;
+      height: 100px;
+      margin: 15px;
+      background-color: #fff;
+      border: 2px solid #002147;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .app-icon:hover {
+      transform: scale(1.1);
+    }
+    .app-icon span.icon {
+      font-size: 3em;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .app-icon span.label {
+      margin-top: 10px;
+      font-size: 1em;
+      font-weight: bold;
+    }
     /* Sections */
     .section {
       display: none;
@@ -170,28 +207,6 @@
       .hamburger {
         font-size: 1.6em;
       }
-    }
-    /* App-Stile für die Startseite */
-    .app-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
-    }
-    .app {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 10px;
-      text-align: center;
-      width: 150px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-    .app:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
     /* Quiz-Stile */
     #quiz-container, #quiz-container-holz {
@@ -349,19 +364,36 @@
   </header>
 
   <div class="container">
-    <!-- Neue Startseite: Kategorien als Apps -->
-    <div id="start" class="section active">
+    <!-- Neue Startseite -->
+    <div id="startseite" class="section active">
       <header class="subpage-title">
-        <h2>Willkommen bei Fokusthemen</h2>
-        <p>Bitte wählen Sie eine Kategorie:</p>
+        <h2>Startseite</h2>
       </header>
-      <div class="app-container">
-        <div class="app" onclick="showSection('neuheiten')">Neuheiten</div>
-        <div class="app" onclick="showSection('abschlussphase')">Abschlussphase</div>
-        <div class="app" onclick="showSection('google')">Google Bewertungen</div>
-        <div class="app" onclick="showSection('warenkorb')">Warenkorb</div>
-        <div class="app" onclick="showSection('gartenmoebel_quiz')">Gartenmöbel‑Quiz</div>
-        <div class="app" onclick="showSection('holzmoebel_quiz')">Holzmöbel‑Quiz</div>
+      <div class="app-icons">
+        <div class="app-icon" onclick="menuItemClicked('abschlussphase')">
+          <span class="icon">🤝</span>
+          <span class="label">Abschlussphase</span>
+        </div>
+        <div class="app-icon" onclick="menuItemClicked('neuheiten')">
+          <span class="icon">✨</span>
+          <span class="label">Neuheiten</span>
+        </div>
+        <div class="app-icon" onclick="menuItemClicked('google')">
+          <span class="icon">⭐</span>
+          <span class="label">Google</span>
+        </div>
+        <div class="app-icon" onclick="menuItemClicked('warenkorb')">
+          <span class="icon">🛒</span>
+          <span class="label">Warenkorb</span>
+        </div>
+        <div class="app-icon" onclick="menuItemClicked('gartenmoebel_quiz')">
+          <span class="icon">🌳</span>
+          <span class="label">Gartenmöbel‑Quiz</span>
+        </div>
+        <div class="app-icon" onclick="menuItemClicked('holzmoebel_quiz')">
+          <span class="icon">🪵</span>
+          <span class="label">Holzmöbel‑Quiz</span>
+        </div>
       </div>
     </div>
 
@@ -615,8 +647,7 @@
       window.menuItemClicked = menuItemClicked;
 
       // Swipe-Funktionalität für die Sections mit erhöhter Schwelle (75px)
-      // Die Startseite wird in die Navigation aufgenommen
-      const sectionOrder = ["start", "neuheiten", "abschlussphase", "google", "warenkorb", "gartenmoebel_quiz", "holzmoebel_quiz"];
+      const sectionOrder = ["startseite", "abschlussphase", "neuheiten", "google", "warenkorb", "gartenmoebel_quiz", "holzmoebel_quiz"];
       let touchstartX = 0;
       let touchendX = 0;
       document.addEventListener('touchstart', function(event) {
@@ -1105,7 +1136,7 @@
         },
         {
           category: "Holzmöbel",
-          question: "Warum sollte man geölte Möbel nicht mit scharfen Reinigern putzen?",
+          question: "Warum sollte man geölte Möbel nicht mit scharfen Reinigungsmitteln putzen?",
           options: [
             { text: "Weil das Holz dann zu Staub zerfällt.", correct: false },
             { text: "Weil sie dann anfangen zu rauchen.", correct: false },
