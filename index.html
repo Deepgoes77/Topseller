@@ -7,6 +7,9 @@
   <title>Fokusthemen</title>
   <!-- Canvas-Confetti Bibliothek für den Konfetti-Effekt -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <!-- FontAwesome für Icon-Darstellung (weiße Inlays) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
   <style>
     /* Globaler Reset */
     * {
@@ -308,6 +311,39 @@
       margin-bottom: 15px;
       color: #002147;
     }
+    /* Startseite mit App-Icons */
+    #startpage .app-icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    #startpage .app-icon {
+      background-color: #002147;
+      border-radius: 12px;
+      width: 120px;
+      height: 120px;
+      margin: 10px;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    #startpage .app-icon i {
+      font-size: 2em;
+      margin-bottom: 8px;
+    }
+    #startpage .app-icon span {
+      font-size: 1em;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      #startpage .app-icon {
+        width: calc(50% - 20px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -327,6 +363,42 @@
   </header>
 
   <div class="container">
+
+    <!-- NEUE SECTION: STARTSEITE MIT ICONS -->
+    <div id="startpage" class="section active">
+      <header class="subpage-title">
+        <h2>Willkommen</h2>
+      </header>
+      <p>Wähle eine Kategorie aus:</p>
+      <div class="app-icons">
+        <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('abschlussphase')">
+          <i class="fa fa-handshake"></i>
+          <span>Abschlussphase</span>
+        </a>
+        <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('neuheiten')">
+          <i class="fa fa-star"></i>
+          <span>Neuheiten</span>
+        </a>
+        <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('google')">
+          <i class="fa fa-google"></i>
+          <span>Google</span>
+        </a>
+        <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('warenkorb')">
+          <i class="fa fa-shopping-cart"></i>
+          <span>Warenkorb</span>
+        </a>
+        <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('gartenmoebel_quiz')">
+          <i class="fa fa-seedling"></i>
+          <span>Gartenmöbel-Quiz</span>
+        </a>
+        <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('holzmoebel_quiz')">
+          <i class="fa fa-tree"></i>
+          <span>Holzmöbel-Quiz</span>
+        </a>
+      </div>
+    </div>
+    <!-- ENDE NEUE SECTION: STARTSEITE -->
+
     <!-- Section: Abschlussphase -->
     <div id="abschlussphase" class="section">
       <header class="subpage-title">
@@ -362,8 +434,8 @@
       <p>Nehme jeden Einwand ernst und biete deinen Kunden eine klare Lösung – so findet ihr gemeinsam zum Abschluss.</p>
     </div>
 
-    <!-- Section: Neuheiten und Topseller -->
-    <div id="neuheiten" class="section active">
+    <!-- Section: Neuheiten und Topseller (ENTFERNT 'active' DAMIT STARTPAGE DIE ERSTE IST) -->
+    <div id="neuheiten" class="section">
       <header class="subpage-title">
         <h1 style="margin:0; font-size:1.8em;">DIGA</h1>
         <p style="margin:5px 0 0; font-size:1.5em;">Neuheiten und Topseller</p>
@@ -526,7 +598,7 @@
       </div>
     </div>
     
-    <!-- Neue Section: Holzmöbel-Quiz -->
+    <!-- Section: Holzmöbel-Quiz -->
     <div id="holzmoebel_quiz" class="section">
       <header class="subpage-title">
         <h2>Holzmöbel‑Quiz</h2>
@@ -577,7 +649,7 @@
       window.menuItemClicked = menuItemClicked;
 
       // Swipe-Funktionalität für die Sections mit erhöhter Schwelle (75px)
-      const sectionOrder = ["abschlussphase", "neuheiten", "google", "warenkorb", "gartenmoebel_quiz", "holzmoebel_quiz"];
+      const sectionOrder = ["startpage", "abschlussphase", "neuheiten", "google", "warenkorb", "gartenmoebel_quiz", "holzmoebel_quiz"];
       let touchstartX = 0;
       let touchendX = 0;
       document.addEventListener('touchstart', function(event) {
