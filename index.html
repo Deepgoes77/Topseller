@@ -30,7 +30,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background-color: #002147; /* Dunkles Blau */
+      background-color: #002147; /* Einheitliches Blau */
       color: #fff;
       padding: 10px 20px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
@@ -56,7 +56,7 @@
     /* Dropdown Menü */
     .dropdown-menu {
       display: none;
-      background-color: #002147;
+      background-color: #002147; /* Einheitliches Blau */
       position: absolute;
       right: 20px;
       top: 100%;
@@ -78,11 +78,11 @@
       border-bottom: none;
     }
     .dropdown-menu a:hover {
-      background-color: #001f3f;
+      background-color: #002147; /* Einheitliches Blau auch beim Hover */
     }
     /* Gemeinsamer Header für Unterseiten */
     .subpage-title {
-      background-color: #003366; /* Mittelblau */
+      background-color: #002147; /* Einheitliches Blau */
       color: #fff;
       text-align: center;
       padding: 15px 0;
@@ -134,7 +134,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     .category h2 {
-      background-color: #003366; /* Mittelblau */
+      background-color: #002147; /* Einheitliches Blau */
       color: #fff;
       padding: 15px;
       font-size: 1.5em;
@@ -201,12 +201,12 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      background-color: #002147;
+      background-color: #002147; /* Einheitliches Blau */
       color: #fff;
       transition: background-color 0.3s;
     }
     #quiz-container button:hover, #quiz-container-holz button:hover {
-      background-color: #001f3f;
+      background-color: #002147; /* Einheitliches Blau ohne Hover-Abstufung */
     }
     .answer-btn {
       display: block;
@@ -246,7 +246,7 @@
       font-size: 1.8em;
       margin-top: 10px;
       font-weight: bold;
-      color: #002147;
+      color: #002147; /* Einheitliches Blau */
     }
     /* Abschlussphase - App-Charakter */
     #abschlussphase {
@@ -296,7 +296,7 @@
       transition: border-left 0.3s, background-color 0.3s;
     }
     #abschluss-text.active {
-      border-left: 4px solid #002147;
+      border-left: 4px solid #002147; /* Einheitliches Blau */
       background-color: #eef3f7;
     }
     /* Score-Counter */
@@ -309,7 +309,7 @@
       border-radius: 6px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       margin-bottom: 15px;
-      color: #002147;
+      color: #002147; /* Einheitliches Blau */
     }
     /* Startseite mit App-Icons */
     #startpage .app-icons {
@@ -319,7 +319,7 @@
       margin: 20px 0;
     }
     #startpage .app-icon {
-      background-color: #002147;
+      background-color: #002147; /* Einheitliches Blau */
       border-radius: 12px;
       width: 120px;
       height: 120px;
@@ -337,6 +337,9 @@
     }
     #startpage .app-icon span {
       font-size: 1em;
+      text-align: center;
+    }
+    #startpage p {
       text-align: center;
     }
     @media (max-width: 600px) {
@@ -364,12 +367,12 @@
 
   <div class="container">
 
-    <!-- NEUE SECTION: STARTSEITE MIT ICONS -->
+    <!-- STARTSEITE MIT ICONS -->
     <div id="startpage" class="section active">
       <header class="subpage-title">
         <h2>Willkommen</h2>
       </header>
-      <p>Wähle eine Kategorie aus:</p>
+      <p>Wähle eine Kategorie aus</p>
       <div class="app-icons">
         <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('abschlussphase')">
           <i class="fa fa-handshake"></i>
@@ -397,7 +400,7 @@
         </a>
       </div>
     </div>
-    <!-- ENDE NEUE SECTION: STARTSEITE -->
+    <!-- ENDE STARTSEITE -->
 
     <!-- Section: Abschlussphase -->
     <div id="abschlussphase" class="section">
@@ -434,7 +437,7 @@
       <p>Nehme jeden Einwand ernst und biete deinen Kunden eine klare Lösung – so findet ihr gemeinsam zum Abschluss.</p>
     </div>
 
-    <!-- Section: Neuheiten und Topseller (ENTFERNT 'active' DAMIT STARTPAGE DIE ERSTE IST) -->
+    <!-- Section: Neuheiten und Topseller -->
     <div id="neuheiten" class="section">
       <header class="subpage-title">
         <h1 style="margin:0; font-size:1.8em;">DIGA</h1>
@@ -644,7 +647,8 @@
       
       function menuItemClicked(sectionId) {
         showSection(sectionId);
-        toggleMenu();
+        // Entfernt, damit das Menü sich nicht automatisch öffnet/schließt:
+        // toggleMenu();
       }
       window.menuItemClicked = menuItemClicked;
 
