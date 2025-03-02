@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <title>Fokusthemen</title>
   <!-- Canvas-Confetti Bibliothek für den Konfetti-Effekt -->
@@ -42,6 +42,16 @@
       margin: 0;
       font-weight: bold;
     }
+    /* Zurück-Symbol links neben dem Titel */
+    .back-button {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.8em;
+      cursor: pointer;
+      color: #fff;
+    }
     .hamburger {
       position: absolute;
       right: 20px;
@@ -78,7 +88,7 @@
       border-bottom: none;
     }
     .dropdown-menu a:hover {
-      background-color: #002147; /* Einheitliches Blau auch beim Hover */
+      background-color: #002147; /* Gleiches Blau, dezentes Hover */
     }
     /* Gemeinsamer Header für Unterseiten */
     .subpage-title {
@@ -170,7 +180,8 @@
         width: calc(50% - 20px);
       }
       header.global-header h1,
-      .hamburger {
+      .hamburger,
+      .back-button {
         font-size: 1.6em;
       }
     }
@@ -206,7 +217,7 @@
       transition: background-color 0.3s;
     }
     #quiz-container button:hover, #quiz-container-holz button:hover {
-      background-color: #002147; /* Einheitliches Blau ohne Hover-Abstufung */
+      background-color: #002147; /* Einheitliches Blau */
     }
     .answer-btn {
       display: block;
@@ -351,8 +362,11 @@
 </head>
 <body>
 
-  <!-- Fester Header mit Hamburger Menü -->
+  <!-- Fester Header mit Zurück-Symbol und Hamburger Menü -->
   <header class="global-header">
+    <div class="back-button" onclick="goBackToStart()">
+      <i class="fa fa-arrow-left"></i>
+    </div>
     <h1>Fokusthemen</h1>
     <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
     <div id="dropdownMenu" class="dropdown-menu">
@@ -638,6 +652,13 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+
+      // Funktion, um zur Startseite zu wechseln
+      function goBackToStart() {
+        menuItemClicked('startpage');
+      }
+      window.goBackToStart = goBackToStart;
+
       // Hamburger Menü umschalten
       function toggleMenu() {
         var menu = document.getElementById("dropdownMenu");
@@ -647,13 +668,19 @@
       
       function menuItemClicked(sectionId) {
         showSection(sectionId);
-        // Entfernt, damit das Menü sich nicht automatisch öffnet/schließt:
-        // toggleMenu();
       }
       window.menuItemClicked = menuItemClicked;
 
       // Swipe-Funktionalität für die Sections mit erhöhter Schwelle (75px)
-      const sectionOrder = ["startpage", "abschlussphase", "neuheiten", "google", "warenkorb", "gartenmoebel_quiz", "holzmoebel_quiz"];
+      const sectionOrder = [
+        "startpage",
+        "abschlussphase",
+        "neuheiten",
+        "google",
+        "warenkorb",
+        "gartenmoebel_quiz",
+        "holzmoebel_quiz"
+      ];
       let touchstartX = 0;
       let touchendX = 0;
       document.addEventListener('touchstart', function(event) {
@@ -744,27 +771,31 @@
         }
       });
 
-      /* ------------------ Gartenmöbel-Quiz ------------------ */
+      /* ------------------ Gartenmöbel-Quiz ------------------
+         Die richtige Antwort wechselt ab Q1 -> Index 0, Q2 -> Index 1, Q3 -> Index 2, ...
+      */
       const quizQuestions = [
-        // Lounges
+        // Q1 (correct at index 0)
         {
           category: "Lounges",
           question: "Warum können die Gestelle nicht rosten?",
           options: [
-            { text: "Sie werden täglich mit einem geheimen Anti-Rost-Spray eingesprüht.", correct: false },
             { text: "Edelstahl ist rostfrei, Aluminiumgestelle sind pulverbeschichtet.", correct: true },
+            { text: "Sie werden täglich mit einem geheimen Anti-Rost-Spray eingesprüht.", correct: false },
             { text: "Weil sie mit Zaubersalz aus der Karibik behandelt wurden.", correct: false }
           ]
         },
+        // Q2 (correct at index 1)
         {
           category: "Lounges",
           question: "Was bedeutet pulverbeschichtet?",
           options: [
             { text: "Die Möbel werden in Puderzucker getaucht, damit sie süßer aussehen.", correct: false },
-            { text: "Es bedeutet, dass sie aus purem Pulver bestehen und sich bei Regen auflösen.", correct: false },
-            { text: "Lackpulver wird eingebrannt und chemisch verbunden, was für extremen Schutz sorgt.", correct: true }
+            { text: "Lackpulver wird eingebrannt und chemisch verbunden, was für extremen Schutz sorgt.", correct: true },
+            { text: "Es bedeutet, dass sie aus purem Pulver bestehen und sich bei Regen auflösen.", correct: false }
           ]
         },
+        // Q3 (correct at index 2)
         {
           category: "Lounges",
           question: "Was zeichnet Sunproof®-Kissen aus?",
@@ -774,52 +805,57 @@
             { text: "Atmungsaktiv, UV-beständig, schimmelresistent, wasserabweisend und recycelbar.", correct: true }
           ]
         },
+        // Q4 (correct at index 0)
         {
           category: "Lounges",
           question: "Welche zwei Arten von wetterfesten Kissen gibt es?",
           options: [
-            { text: "Magische Wolken-Kissen und selbstwärmende Kuschel-Kissen.", correct: false },
             { text: "QuickDry-Schaum (wasserdurchlässig) und innengummierte Kissen (wasserdicht).", correct: true },
+            { text: "Magische Wolken-Kissen und selbstwärmende Kuschel-Kissen.", correct: false },
             { text: "Schwamm-Kissen und Luftballon-Kissen.", correct: false }
           ]
         },
+        // Q5 (correct at index 1)
         {
           category: "Lounges",
           question: "Wie erkennt man, ob ein Kissen innengummiert ist?",
           options: [
             { text: "Wenn man es drückt, quietscht es.", correct: false },
-            { text: "Es schwebt leicht über dem Boden.", correct: false },
-            { text: "Es hat ein Lüftungsnetz an der Unterseite.", correct: true }
+            { text: "Es hat ein Lüftungsnetz an der Unterseite.", correct: true },
+            { text: "Es schwebt leicht über dem Boden.", correct: false }
           ]
         },
-        // Gartentische
+        // Q6 (correct at index 2)
         {
           category: "Gartentische",
           question: "Was unterscheidet unsere Keramiktische von günstigeren Modellen?",
           options: [
             { text: "Man kann sie als Surfbrett benutzen.", correct: false },
-            { text: "Durchgehendes Keramikmuster, arretierbare Auszugsplatte, hochwertige Materialien.", correct: true },
-            { text: "Sie sind aus einer geheimen Mars-Gesteinsschicht gefertigt.", correct: false }
+            { text: "Sie sind aus einer geheimen Mars-Gesteinsschicht gefertigt.", correct: false },
+            { text: "Durchgehendes Keramikmuster, arretierbare Auszugsplatte, hochwertige Materialien.", correct: true }
           ]
         },
+        // Q7 (correct at index 0)
         {
           category: "Gartentische",
           question: "Warum kann eine Keramikplatte nicht heiß werden?",
           options: [
+            { text: "Keramik ist hitzebeständig und nimmt Wärme nicht auf.", correct: true },
             { text: "Eine Zauberformel sorgt dafür, dass sie immer kühl bleibt.", correct: false },
-            { text: "Die Tischplatte hat eingebaute Mini-Ventilatoren.", correct: false },
-            { text: "Keramik ist hitzebeständig und nimmt Wärme nicht auf.", correct: true }
+            { text: "Die Tischplatte hat eingebaute Mini-Ventilatoren.", correct: false }
           ]
         },
+        // Q8 (correct at index 1)
         {
           category: "Gartentische",
           question: "Warum ist Keramik besonders pflegeleicht?",
           options: [
             { text: "Es wird mit einer Schutzschicht aus Drachenhaut versiegelt.", correct: false },
-            { text: "Es reinigt sich von selbst über Nacht.", correct: false },
-            { text: "Es ist nicht porös und nimmt keine Flüssigkeiten oder Flecken auf.", correct: true }
+            { text: "Es ist nicht porös und nimmt keine Flüssigkeiten oder Flecken auf.", correct: true },
+            { text: "Es reinigt sich von selbst über Nacht.", correct: false }
           ]
         },
+        // Q9 (correct at index 2)
         {
           category: "Gartentische",
           question: "Warum ist es sinnvoll, eine Hausratversicherung für einen Keramiktisch zu prüfen?",
@@ -829,7 +865,7 @@
             { text: "Manche Hausratversicherungen decken Keramikbruch ab.", correct: true }
           ]
         },
-        // Gartenstühle
+        // Q10 (correct at index 0)
         {
           category: "Gartenstühle",
           question: "Warum sind die Bezüge aus Batyline-Textilene besonders langlebig?",
@@ -839,6 +875,7 @@
             { text: "Weil sie jeden Morgen mit Kokosöl eingerieben werden.", correct: false }
           ]
         },
+        // Q11 (correct at index 1)
         {
           category: "Gartenstühle",
           question: "Warum bleibt der Bezug eines hochwertigen Stuhls lange straff?",
@@ -848,25 +885,27 @@
             { text: "Der Stuhl trainiert jeden Morgen Yoga.", correct: false }
           ]
         },
+        // Q12 (correct at index 2)
         {
           category: "Gartenstühle",
           question: "Was kann man mit einem hochwertigen Textilene-Stuhl als „Show-Effekt“ vorführen?",
           options: [
             { text: "Ihn in eine Couch umbauen.", correct: false },
-            { text: "Draufstellen, um die Stabilität zu demonstrieren.", correct: true },
-            { text: "Ihn in einen Liegestuhl verwandeln, indem man daran zieht.", correct: false }
+            { text: "Ihn in einen Liegestuhl verwandeln, indem man daran zieht.", correct: false },
+            { text: "Draufstellen, um die Stabilität zu demonstrieren.", correct: true }
           ]
         },
+        // Q13 (correct at index 0)
         {
           category: "Gartenstühle",
           question: "Warum sind viele Gartenstühle stapelbar?",
           options: [
-            { text: "Damit man darauf klettern kann, um den besten Blick zu haben.", correct: false },
             { text: "Um sie platzsparend zu lagern.", correct: true },
+            { text: "Damit man darauf klettern kann, um den besten Blick zu haben.", correct: false },
             { text: "Weil es lustig aussieht, wenn man einen Turm aus Stühlen baut.", correct: false }
           ]
         },
-        // Gartenliegen
+        // Q14 (correct at index 1)
         {
           category: "Gartenliegen",
           question: "Warum sind hochwertige Gartenliegen besonders bequem?",
@@ -876,6 +915,7 @@
             { text: "Sie schweben leicht über dem Boden.", correct: false }
           ]
         },
+        // Q15 (correct at index 2)
         {
           category: "Gartenliegen",
           question: "Warum haben einige Gartenliegen Rollen?",
@@ -885,13 +925,14 @@
             { text: "Damit sie leichter bewegt werden können.", correct: true }
           ]
         },
+        // Q16 (correct at index 0)
         {
           category: "Gartenliegen",
           question: "Was kann man mit einer hochwertigen Gartenliege als „Show-Effekt“ demonstrieren?",
           options: [
+            { text: "Draufstellen, um die Stabilität zu zeigen.", correct: true },
             { text: "Sie als Katapult benutzen.", correct: false },
-            { text: "Sie in ein Boot verwandeln.", correct: false },
-            { text: "Draufstellen, um die Stabilität zu zeigen.", correct: true }
+            { text: "Sie in ein Boot verwandeln.", correct: false }
           ]
         }
       ];
@@ -935,9 +976,21 @@
               let duration = 2000;
               let animationEnd = Date.now() + duration;
               (function frame() {
-                confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 } });
-                confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 } });
-                if (Date.now() < animationEnd) { requestAnimationFrame(frame); }
+                confetti({
+                  particleCount: 5,
+                  angle: 60,
+                  spread: 55,
+                  origin: { x: 0 }
+                });
+                confetti({
+                  particleCount: 5,
+                  angle: 120,
+                  spread: 55,
+                  origin: { x: 1 }
+                });
+                if (Date.now() < animationEnd) {
+                  requestAnimationFrame(frame);
+                }
               }());
             } else {
               btn.classList.add("incorrect");
@@ -967,44 +1020,51 @@
         }
       });
 
-      /* ------------------ Holzmöbel-Quiz ------------------ */
+      /* ------------------ Holzmöbel-Quiz ------------------
+         39 Fragen, Muster: Q1->0, Q2->1, Q3->2, Q4->0, etc.
+      */
       const holzQuizQuestions = [
+        // 1) correct index 0
         {
           category: "Holzmöbel",
           question: "Was ist der Hauptunterschied zwischen Massivholz und Furnier?",
           options: [
-            { text: "Furnier besteht aus zusammengeleimten Holzstaubpartikeln.", correct: false },
             { text: "Massivholz besteht durchgehend aus Holz, Furnier ist eine dünne Echtholzschicht auf einer Trägerplatte.", correct: true },
+            { text: "Furnier besteht aus zusammengeleimten Holzstaubpartikeln.", correct: false },
             { text: "Massivholz kann sprechen, Furnier nicht.", correct: false }
           ]
         },
+        // 2) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum sind Massivholzmöbel oft teurer als furnierte Möbel?",
           options: [
             { text: "Weil furnierte Möbel eigentlich nur aus Karton bestehen.", correct: false },
-            { text: "Weil der Baum ein Echtheitszertifikat unterschreiben muss.", correct: false },
-            { text: "Weil Massivholz durchgehend aus Holz besteht und aufwendiger verarbeitet wird.", correct: true }
+            { text: "Weil Massivholz durchgehend aus Holz besteht und aufwendiger verarbeitet wird.", correct: true },
+            { text: "Weil der Baum ein Echtheitszertifikat unterschreiben muss.", correct: false }
           ]
         },
+        // 3) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum arbeiten Massivholzmöbel bei wechselnder Luftfeuchtigkeit?",
           options: [
             { text: "Weil sie nachts lebendig werden.", correct: false },
-            { text: "Weil Holz Feuchtigkeit aufnimmt und wieder abgibt, wodurch es sich ausdehnen oder zusammenziehen kann.", correct: true },
-            { text: "Weil die Möbel atmen wie ein Mensch.", correct: false }
+            { text: "Weil die Möbel atmen wie ein Mensch.", correct: false },
+            { text: "Weil Holz Feuchtigkeit aufnimmt und wieder abgibt, wodurch es sich ausdehnen oder zusammenziehen kann.", correct: true }
           ]
         },
+        // 4) correct index 0
         {
           category: "Holzmöbel",
           question: "Was macht Wildeiche anders als normale Eiche?",
           options: [
-            { text: "Sie wächst schneller als normale Eiche.", correct: false },
             { text: "Sie hat eine lebendigere Maserung mit mehr Ästen.", correct: true },
-            { text: "Sie ist ein geheimes Zauberholz.", correct: false }
+            { text: "Sie ist ein geheimes Zauberholz.", correct: false },
+            { text: "Sie wächst schneller als normale Eiche.", correct: false }
           ]
         },
+        // 5) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum ist Eiche ein beliebtes Holz für Möbel?",
@@ -1014,24 +1074,27 @@
             { text: "Weil Eichhörnchen es besonders mögen.", correct: false }
           ]
         },
+        // 6) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum sollte man Wildeiche nicht mit zu viel Wasser reinigen?",
           options: [
             { text: "Weil es dann aufhört, Wildeiche zu sein.", correct: false },
-            { text: "Weil das Holz aufquellen kann.", correct: true },
-            { text: "Weil es sonst zu einem Weidenbaum wird.", correct: false }
+            { text: "Weil es sonst zu einem Weidenbaum wird.", correct: false },
+            { text: "Weil das Holz aufquellen kann.", correct: true }
           ]
         },
+        // 7) correct index 0
         {
           category: "Holzmöbel",
           question: "Was unterscheidet Kernbuche von normaler Buche?",
           options: [
-            { text: "Sie ist doppelt so schwer.", correct: false },
             { text: "Sie hat eine auffälligere Maserung mit mehr Farbspiel.", correct: true },
-            { text: "Sie kann von selbst wachsen.", correct: false }
+            { text: "Sie kann von selbst wachsen.", correct: false },
+            { text: "Sie ist doppelt so schwer.", correct: false }
           ]
         },
+        // 8) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum ist Kernbuche beliebt für Möbel?",
@@ -1041,69 +1104,77 @@
             { text: "Weil sie besonders weich ist.", correct: false }
           ]
         },
+        // 9) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum kann Kernbuche trotz harter Oberfläche empfindlich für Druckstellen sein?",
           options: [
             { text: "Weil sie nachts weicher wird.", correct: false },
-            { text: "Weil sie elastischer ist als andere Harthölzer.", correct: true },
-            { text: "Weil sie ein sehr sensibles Holz ist.", correct: false }
+            { text: "Weil sie ein sehr sensibles Holz ist.", correct: false },
+            { text: "Weil sie elastischer ist als andere Harthölzer.", correct: true }
           ]
         },
+        // 10) correct index 0
         {
           category: "Holzmöbel",
           question: "Was macht Nussbaumholz besonders edel?",
           options: [
-            { text: "Der Duft nach Walnüssen.", correct: false },
             { text: "Die dunkle Maserung und feine Struktur.", correct: true },
-            { text: "Die Fähigkeit, sich selbst zu reparieren.", correct: false }
+            { text: "Die Fähigkeit, sich selbst zu reparieren.", correct: false },
+            { text: "Der Duft nach Walnüssen.", correct: false }
           ]
         },
+        // 11) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum ist Nussbaumholz teurer als viele andere Holzarten?",
           options: [
-            { text: "Weil es seltener ist und langsamer wächst.", correct: true },
             { text: "Weil es von Zauberbäumen stammt.", correct: false },
+            { text: "Weil es seltener ist und langsamer wächst.", correct: true },
             { text: "Weil es bei Mondlicht geschnitten werden muss.", correct: false }
           ]
         },
+        // 12) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum wird Nussbaum häufig geölt statt lackiert?",
           options: [
             { text: "Weil Öl das Holz unzerstörbar macht.", correct: false },
-            { text: "Damit die Maserung besonders gut zur Geltung kommt.", correct: true },
-            { text: "Weil Lack bei Nussbaum explodiert.", correct: false }
+            { text: "Weil Lack bei Nussbaum explodiert.", correct: false },
+            { text: "Damit die Maserung besonders gut zur Geltung kommt.", correct: true }
           ]
         },
+        // 13) correct index 0
         {
           category: "Holzmöbel",
           question: "Warum duftet Arvenholz so intensiv?",
           options: [
-            { text: "Weil es nach Pizza riecht.", correct: false },
             { text: "Weil es ätherische Öle enthält, die eine beruhigende Wirkung haben.", correct: true },
+            { text: "Weil es nach Pizza riecht.", correct: false },
             { text: "Weil es magische Kräfte besitzt.", correct: false }
           ]
         },
+        // 14) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum wird Arvenholz oft für Schlafzimmermöbel verwendet?",
           options: [
-            { text: "Weil es die besten Träume bringt.", correct: false },
+            { text: "Weil es im Dunkeln leuchtet.", correct: false },
             { text: "Weil es nachweislich den Herzschlag senken kann.", correct: true },
-            { text: "Weil es im Dunkeln leuchtet.", correct: false }
+            { text: "Weil es die besten Träume bringt.", correct: false }
           ]
         },
+        // 15) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum werden Astulme-Möbel oft geölt?",
           options: [
-            { text: "Weil das Öl die natürliche Struktur hervorhebt.", correct: true },
             { text: "Weil geöltes Holz besser Musik abspielt.", correct: false },
-            { text: "Weil sie sich sonst auflöst.", correct: false }
+            { text: "Weil sie sich sonst auflöst.", correct: false },
+            { text: "Weil das Öl die natürliche Struktur hervorhebt.", correct: true }
           ]
         },
+        // 16) correct index 0
         {
           category: "Holzmöbel",
           question: "Was ist der Vorteil von geöltem Holz?",
@@ -1113,42 +1184,47 @@
             { text: "Es heilt Kratzer von selbst.", correct: false }
           ]
         },
+        // 17) correct index 1
         {
           category: "Holzmöbel",
           question: "Was ist der Vorteil von lackierten Möbeln?",
           options: [
             { text: "Sie riechen nach Vanille.", correct: false },
-            { text: "Sie reflektieren Sonnenlicht.", correct: false },
-            { text: "Sie sind widerstandsfähiger gegen Kratzer und Flüssigkeiten.", correct: true }
+            { text: "Sie sind widerstandsfähiger gegen Kratzer und Flüssigkeiten.", correct: true },
+            { text: "Sie reflektieren Sonnenlicht.", correct: false }
           ]
         },
+        // 18) correct index 2
         {
           category: "Holzmöbel",
           question: "Wie oft sollte man geölte Möbel nachbehandeln?",
           options: [
             { text: "Nie, sie bleiben für immer perfekt.", correct: false },
-            { text: "Alle paar Monate oder nach Bedarf.", correct: true },
-            { text: "Jeden Tag, sonst verschwinden sie.", correct: false }
+            { text: "Jeden Tag, sonst verschwinden sie.", correct: false },
+            { text: "Alle paar Monate oder nach Bedarf.", correct: true }
           ]
         },
+        // 19) correct index 0
         {
           category: "Holzmöbel",
           question: "Wie sollte man Massivholzmöbel reinigen?",
           options: [
-            { text: "Mit Hochdruckreiniger.", correct: false },
             { text: "Mit einem leicht feuchten Tuch und milder Seife.", correct: true },
+            { text: "Mit Hochdruckreiniger.", correct: false },
             { text: "Mit Zaubertrank.", correct: false }
           ]
         },
+        // 20) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum sollte man geölte Möbel nicht mit scharfen Reinigern putzen?",
           options: [
             { text: "Weil das Holz dann zu Staub zerfällt.", correct: false },
-            { text: "Weil sie dann anfangen zu rauchen.", correct: false },
-            { text: "Weil sie die Öl-Schicht angreifen können.", correct: true }
+            { text: "Weil sie die Öl-Schicht angreifen können.", correct: true },
+            { text: "Weil sie dann anfangen zu rauchen.", correct: false }
           ]
         },
+        // 21) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum eignen sich viele Massivhölzer besonders für langlebige Möbel?",
@@ -1158,15 +1234,17 @@
             { text: "Weil sie sehr robust und widerstandsfähig sind.", correct: true }
           ]
         },
+        // 22) correct index 0
         {
           category: "Holzmöbel",
           question: "Wie kann man geölte Holzoberflächen auffrischen?",
           options: [
-            { text: "Indem man darauf trommelt.", correct: false },
             { text: "Mit etwas neuem Öl und einem weichen Tuch.", correct: true },
+            { text: "Indem man darauf trommelt.", correct: false },
             { text: "Indem man sie mit Wasser übergießt.", correct: false }
           ]
         },
+        // 23) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum kann es sinnvoll sein, Filzgleiter unter Möbel zu kleben?",
@@ -1176,15 +1254,17 @@
             { text: "Damit die Möbel schweben können.", correct: false }
           ]
         },
+        // 24) correct index 2
         {
           category: "Holzmöbel",
           question: "Wie kann man kleine Kratzer auf geölten Möbeln entfernen?",
           options: [
             { text: "Mit einer Feile und einem Hammer.", correct: false },
-            { text: "Mit einem feuchten Lappen und etwas Öl.", correct: true },
-            { text: "Mit einem Speziallaser.", correct: false }
+            { text: "Mit einem Speziallaser.", correct: false },
+            { text: "Mit einem feuchten Lappen und etwas Öl.", correct: true }
           ]
         },
+        // 25) correct index 0
         {
           category: "Holzmöbel",
           question: "Warum sollte man Massivholzmöbel nicht direkt neben Heizkörpern aufstellen?",
@@ -1194,15 +1274,17 @@
             { text: "Weil es sich in eine Plastikoberfläche verwandelt.", correct: false }
           ]
         },
+        // 26) correct index 1
         {
           category: "Holzmöbel",
           question: "Welche Holzart ist besonders widerstandsfähig gegen Feuchtigkeit?",
           options: [
-            { text: "Eiche, da sie von Natur aus gerbsäurehaltig und widerstandsfähig ist.", correct: true },
             { text: "Kernbuche, weil sie aus einem Zauberwald stammt.", correct: false },
+            { text: "Eiche, da sie von Natur aus gerbsäurehaltig und widerstandsfähig ist.", correct: true },
             { text: "Astulme, weil sie in Wasser aufblüht.", correct: false }
           ]
         },
+        // 27) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum verändert sich die Farbe von Massivholz im Laufe der Zeit?",
@@ -1212,6 +1294,7 @@
             { text: "Durch UV-Strahlung und Oxidation verändert sich die Holzfarbe.", correct: true }
           ]
         },
+        // 28) correct index 0
         {
           category: "Holzmöbel",
           question: "Warum sollte man niemals heiße Töpfe direkt auf eine geölte Holzplatte stellen?",
@@ -1221,6 +1304,7 @@
             { text: "Weil der Tisch dann Feuer fangen könnte.", correct: false }
           ]
         },
+        // 29) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum sollte man bei furnierten Möbeln keine scharfen Reinigungsmittel verwenden?",
@@ -1230,15 +1314,17 @@
             { text: "Weil sie anfangen zu kleben.", correct: false }
           ]
         },
+        // 30) correct index 2
         {
           category: "Holzmöbel",
           question: "Wie kann man geöltes Holz gegen Flecken schützen?",
           options: [
             { text: "Indem man eine Schutzzauberformel drauf spricht.", correct: false },
-            { text: "Durch regelmäßiges Nachölen und schnelles Aufwischen von Flüssigkeiten.", correct: true },
-            { text: "Indem man es mit Plastikfolie abdeckt.", correct: false }
+            { text: "Indem man es mit Plastikfolie abdeckt.", correct: false },
+            { text: "Durch regelmäßiges Nachölen und schnelles Aufwischen von Flüssigkeiten.", correct: true }
           ]
         },
+        // 31) correct index 0
         {
           category: "Holzmöbel",
           question: "Was passiert, wenn man einen Kratzer auf lackiertem Holz ausbessern möchte?",
@@ -1248,6 +1334,7 @@
             { text: "Man muss das ganze Möbelstück komplett neu streichen.", correct: false }
           ]
         },
+        // 32) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum werden geölte Oberflächen nicht komplett versiegelt?",
@@ -1257,67 +1344,74 @@
             { text: "Weil versiegelte Möbel nicht mehr geölt werden dürfen.", correct: false }
           ]
         },
+        // 33) correct index 2
         {
           category: "Holzmöbel",
           question: "Welche Holzart ist besonders aromatisch und wird oft für Innenräume genutzt?",
           options: [
             { text: "Wildeiche, weil sie nach Zimt riecht.", correct: false },
-            { text: "Arvenholz, da es ätherische Öle freisetzt.", correct: true },
-            { text: "Kernbuche, weil sie nach Schokolade duftet.", correct: false }
+            { text: "Kernbuche, weil sie nach Schokolade duftet.", correct: false },
+            { text: "Arvenholz, da es ätherische Öle freisetzt.", correct: true }
           ]
         },
+        // 34) correct index 0
         {
           category: "Holzmöbel",
           question: "Welche Maserung hat Nussbaumholz typischerweise?",
           options: [
+            { text: "Dunkel, mit feinen, geschwungenen Linien.", correct: true },
             { text: "Ganz glatt, ohne Struktur.", correct: false },
-            { text: "Hell, mit wilden Knoten.", correct: false },
-            { text: "Dunkel, mit feinen, geschwungenen Linien.", correct: true }
+            { text: "Hell, mit wilden Knoten.", correct: false }
           ]
         },
+        // 35) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum ist es wichtig, Massivholzmöbel regelmäßig zu pflegen?",
           options: [
-            { text: "Damit das Holz seine Schönheit und Widerstandsfähigkeit behält.", correct: true },
             { text: "Weil sich sonst Tiere im Holz einnisten.", correct: false },
+            { text: "Damit das Holz seine Schönheit und Widerstandsfähigkeit behält.", correct: true },
             { text: "Weil sie sonst anfangen zu wachsen.", correct: false }
           ]
         },
+        // 36) correct index 2
         {
           category: "Holzmöbel",
           question: "Was kann passieren, wenn man ein Massivholzmöbel zu lange in direkter Sonne stehen lässt?",
           options: [
             { text: "Es beginnt zu leuchten.", correct: false },
-            { text: "Es kann ausbleichen und sich verziehen.", correct: true },
-            { text: "Es färbt sich blau.", correct: false }
+            { text: "Es färbt sich blau.", correct: false },
+            { text: "Es kann ausbleichen und sich verziehen.", correct: true }
           ]
         },
+        // 37) correct index 0
         {
           category: "Holzmöbel",
           question: "Warum werden manche Möbel aus recyceltem Holz gefertigt?",
           options: [
-            { text: "Weil recyceltes Holz eine unzerstörbare Zauberschicht hat.", correct: false },
             { text: "Um Ressourcen zu schonen und alten Hölzern eine neue Nutzung zu geben.", correct: true },
+            { text: "Weil recyceltes Holz eine unzerstörbare Zauberschicht hat.", correct: false },
             { text: "Weil es billiger ist und nach Plastik riecht.", correct: false }
           ]
         },
+        // 38) correct index 1
         {
           category: "Holzmöbel",
           question: "Welche Holzart wird gerne für Landhausmöbel verwendet?",
           options: [
-            { text: "Wildeiche, wegen ihrer rustikalen und lebhaften Optik.", correct: true },
             { text: "Arvenholz, weil es sich von selbst streicht.", correct: false },
+            { text: "Wildeiche, wegen ihrer rustikalen und lebhaften Optik.", correct: true },
             { text: "Nussbaum, weil es immer knistert.", correct: false }
           ]
         },
+        // 39) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum sind Massivholzmöbel oft Unikate?",
           options: [
             { text: "Weil sie von Elfen handgeschnitzt werden.", correct: false },
-            { text: "Weil jede Holzmaserung einzigartig ist.", correct: true },
-            { text: "Weil sie sich nachts von selbst verändern.", correct: false }
+            { text: "Weil sie sich nachts von selbst verändern.", correct: false },
+            { text: "Weil jede Holzmaserung einzigartig ist.", correct: true }
           ]
         }
       ];
@@ -1361,9 +1455,21 @@
               let duration = 2000;
               let animationEnd = Date.now() + duration;
               (function frame() {
-                confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 } });
-                confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 } });
-                if (Date.now() < animationEnd) { requestAnimationFrame(frame); }
+                confetti({
+                  particleCount: 5,
+                  angle: 60,
+                  spread: 55,
+                  origin: { x: 0 }
+                });
+                confetti({
+                  particleCount: 5,
+                  angle: 120,
+                  spread: 55,
+                  origin: { x: 1 }
+                });
+                if (Date.now() < animationEnd) {
+                  requestAnimationFrame(frame);
+                }
               }());
             } else {
               btn.classList.add("incorrect");
