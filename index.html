@@ -91,43 +91,6 @@
       margin: 80px auto 20px;
       padding: 0 15px;
     }
-    /* Startseite – App-Icons */
-    .app-icons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .app-icon {
-      width: 100px;
-      height: 100px;
-      margin: 15px;
-      background-color: #fff;
-      border: 2px solid #002147;
-      border-radius: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-    .app-icon:hover {
-      transform: scale(1.1);
-    }
-    .app-icon span.icon {
-      font-size: 3em;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-    .app-icon span.label {
-      margin-top: 10px;
-      font-size: 1em;
-      font-weight: bold;
-    }
     /* Sections */
     .section {
       display: none;
@@ -364,45 +327,12 @@
   </header>
 
   <div class="container">
-    <!-- Neue Startseite -->
-    <div id="startseite" class="section active">
-      <header class="subpage-title">
-        <h2>Startseite</h2>
-      </header>
-      <div class="app-icons">
-        <div class="app-icon" onclick="menuItemClicked('abschlussphase')">
-          <span class="icon">🤝</span>
-          <span class="label">Abschlussphase</span>
-        </div>
-        <div class="app-icon" onclick="menuItemClicked('neuheiten')">
-          <span class="icon">✨</span>
-          <span class="label">Neuheiten</span>
-        </div>
-        <div class="app-icon" onclick="menuItemClicked('google')">
-          <span class="icon">⭐</span>
-          <span class="label">Google</span>
-        </div>
-        <div class="app-icon" onclick="menuItemClicked('warenkorb')">
-          <span class="icon">🛒</span>
-          <span class="label">Warenkorb</span>
-        </div>
-        <div class="app-icon" onclick="menuItemClicked('gartenmoebel_quiz')">
-          <span class="icon">🌳</span>
-          <span class="label">Gartenmöbel‑Quiz</span>
-        </div>
-        <div class="app-icon" onclick="menuItemClicked('holzmoebel_quiz')">
-          <span class="icon">🪵</span>
-          <span class="label">Holzmöbel‑Quiz</span>
-        </div>
-      </div>
-    </div>
-
     <!-- Section: Abschlussphase -->
     <div id="abschlussphase" class="section">
       <header class="subpage-title">
         <h2>Abschlussphase – Den Deal erfolgreich abschliessen</h2>
       </header>
-      <p>Beobachte, ob dein Kunde Anzeichen zeigt, wie – intensives Nachdenken, zustimmendes Nicken oder konkrete Fragen zu Details.</p>
+      <p>Beobachte, ob dein Kunde Anzeichen zeigt – intensives Nachdenken, zustimmendes Nicken oder konkrete Fragen zu Details.</p>
       
       <h3>Kaufsignale</h3>
       <ul>
@@ -429,11 +359,11 @@
       <div id="abschluss-text"></div>
       
       <h3>Einwände behandeln</h3>
-      <p>Nehme jeden Einwand ernst und biete deinen Kunden eine klare Lösung – so findet ihr gemeinsam zum Abschluss.</p>
+      <p>Nehme jeden Einwand ernst und biete deinem Kunden eine klare Lösung – so findet ihr gemeinsam zum Abschluss.</p>
     </div>
 
     <!-- Section: Neuheiten und Topseller -->
-    <div id="neuheiten" class="section">
+    <div id="neuheiten" class="section active">
       <header class="subpage-title">
         <h1 style="margin:0; font-size:1.8em;">DIGA</h1>
         <p style="margin:5px 0 0; font-size:1.5em;">Neuheiten und Topseller</p>
@@ -549,10 +479,10 @@
         <li><strong>Persönlicher Ansatz:</strong> Beginne nach dem Verkauf mit einer freundlichen Nachfrage: „Wie zufrieden sind Sie mit Ihrem Einkaufserlebnis bei uns?“</li>
         <li><strong>Timing ist alles:</strong> Bitte um eine Bewertung, wenn der positive Eindruck noch frisch ist – direkt nach einem gelungenen Beratungsgespräch oder Kaufabschluss.</li>
         <li><strong>Hilfestellung anbieten:</strong> Erkläre dem Kunden, wie einfach es ist, eine Google-Bewertung abzugeben – einfach unser Kärtchen in die Hand drücken</li>
-        <li><strong>Dankbarkeit zeigen:</strong> Bedanke dich immer herzlich für das Feedback und betone, wie wertvoll jede Bewertung für uns ist.</li>
+        <li><strong>Dankbarkeit zeigen:</strong> Bedanken dich immer herzlich für das Feedback und betonen, wie wertvoll jede Bewertung für uns ist.</li>
         <li><strong>Teamgeist fördern:</strong> Lasst uns gemeinsame Ziele im Team setzen, um mehr 5-Sterne Bewertungen zu erzielen, um hier noch besser zu werden</li>
       </ul>
-      <p>Gehe mit Begeisterung an diese Aufgabe – jede positive Bewertung stärkt unseren Ruf und macht unseren Service für neue Kunden noch attraktiver.</p>
+      <p>Gehen mit Begeisterung an diese Aufgabe – jede positive Bewertung stärkt unseren Ruf und macht unseren Service für neue Kunden noch attraktiver.</p>
     </div>
     
     <!-- Section: Warenkorb -->
@@ -573,11 +503,11 @@
         <div id="quiz-instructions">
           <h2>Willkommen zum Gartenmöbel‑Quiz!</h2>
           <p>
-            Teste hier Dein Wissen über unsere hochwertigen Gartenmöbel.
-            In diesem Quiz gibt es zu jeder Frage 3 Antworten.
+            Testen Sie Ihr Wissen über unsere hochwertigen Gartenmöbel.
+            In diesem Quiz erhalten Sie jeweils eine Frage mit drei möglichen Antworten.
             Jede richtige Antwort gibt einen Punkt, jede falsche Antwort zieht einen Punkt ab.
-            Klicke nach jeder Auswahl auf weiter, um zur nächsten Frage zu gelangen.
-            Viel Spass 
+            Klicken Sie auf die Antwort, die Sie für richtig halten.
+            Danach erscheint Ihr aktueller Punktestand und Sie können auf „Weiter“ klicken, um zur nächsten Frage zu gelangen.
           </p>
           <button id="start-quiz">Quiz starten</button>
         </div>
@@ -606,11 +536,11 @@
         <div id="quiz-instructions-holz">
           <h2>Willkommen zum Holzmöbel‑Quiz!</h2>
           <p>
-            Teste hier Dein Wissen über unsere hochwertigen Holzmöbel.
-            In diesem Quiz gibt es zu jeder Frage 3 Antworten.
+            Testen Sie Ihr Wissen über Holzmöbel.
+            In diesem Quiz erhalten Sie jeweils eine Frage mit drei möglichen Antworten.
             Jede richtige Antwort gibt einen Punkt, jede falsche Antwort zieht einen Punkt ab.
-            Klicke nach jeder Auswahl auf weiter, um zur nächsten Frage zu gelangen.
-            Viel Spass 
+            Klicken Sie auf die Antwort, die Sie für richtig halten.
+            Danach erscheint Ihr aktueller Punktestand und Sie können auf „Weiter“ klicken, um zur nächsten Frage zu gelangen.
           </p>
           <button id="start-quiz-holz">Quiz starten</button>
         </div>
@@ -647,7 +577,7 @@
       window.menuItemClicked = menuItemClicked;
 
       // Swipe-Funktionalität für die Sections mit erhöhter Schwelle (75px)
-      const sectionOrder = ["startseite", "abschlussphase", "neuheiten", "google", "warenkorb", "gartenmoebel_quiz", "holzmoebel_quiz"];
+      const sectionOrder = ["abschlussphase", "neuheiten", "google", "warenkorb", "gartenmoebel_quiz", "holzmoebel_quiz"];
       let touchstartX = 0;
       let touchendX = 0;
       document.addEventListener('touchstart', function(event) {
@@ -1136,7 +1066,7 @@
         },
         {
           category: "Holzmöbel",
-          question: "Warum sollte man geölte Möbel nicht mit scharfen Reinigungsmitteln putzen?",
+          question: "Warum sollte man geölte Möbel nicht mit scharfen Reinigern putzen?",
           options: [
             { text: "Weil das Holz dann zu Staub zerfällt.", correct: false },
             { text: "Weil sie dann anfangen zu rauchen.", correct: false },
