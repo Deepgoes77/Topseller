@@ -30,7 +30,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background-color: #002147;
+      background-color: #002147; /* Einheitliches Blau */
       color: #fff;
       padding: 10px 20px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
@@ -66,7 +66,7 @@
     /* Dropdown Menü */
     .dropdown-menu {
       display: none;
-      background-color: #002147;
+      background-color: #002147; /* Einheitliches Blau */
       position: absolute;
       right: 20px;
       top: 100%;
@@ -88,11 +88,11 @@
       border-bottom: none;
     }
     .dropdown-menu a:hover {
-      background-color: #002147;
+      background-color: #002147; /* Gleiches Blau, dezentes Hover */
     }
     /* Gemeinsamer Header für Unterseiten */
     .subpage-title {
-      background-color: #002147;
+      background-color: #002147; /* Einheitliches Blau */
       color: #fff;
       text-align: center;
       padding: 15px 0;
@@ -144,7 +144,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     .category h2 {
-      background-color: #002147;
+      background-color: #002147; /* Einheitliches Blau */
       color: #fff;
       padding: 15px;
       font-size: 1.5em;
@@ -212,12 +212,12 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      background-color: #002147;
+      background-color: #002147; /* Einheitliches Blau */
       color: #fff;
       transition: background-color 0.3s;
     }
     #quiz-container button:hover, #quiz-container-holz button:hover {
-      background-color: #002147;
+      background-color: #002147; /* Einheitliches Blau */
     }
     .answer-btn {
       display: block;
@@ -257,7 +257,7 @@
       font-size: 1.8em;
       margin-top: 10px;
       font-weight: bold;
-      color: #002147;
+      color: #002147; /* Einheitliches Blau */
     }
     /* Abschlussphase - App-Charakter */
     #abschlussphase {
@@ -307,7 +307,7 @@
       transition: border-left 0.3s, background-color 0.3s;
     }
     #abschluss-text.active {
-      border-left: 4px solid #002147;
+      border-left: 4px solid #002147; /* Einheitliches Blau */
       background-color: #eef3f7;
     }
     /* Score-Counter */
@@ -320,7 +320,7 @@
       border-radius: 6px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       margin-bottom: 15px;
-      color: #002147;
+      color: #002147; /* Einheitliches Blau */
     }
     /* Startseite mit App-Icons */
     #startpage .app-icons {
@@ -330,7 +330,7 @@
       margin: 20px 0;
     }
     #startpage .app-icon {
-      background-color: #002147;
+      background-color: #002147; /* Einheitliches Blau */
       border-radius: 12px;
       width: 120px;
       height: 120px;
@@ -413,6 +413,73 @@
       border-radius: 10px;
       width: 0%;
       transition: width 0.5s;
+    }
+    
+    /* ------------------ Google Bewertungen Styles (Integriert) ------------------ */
+    /* Die in diesem Block enthaltenen Styles stammen aus dem gelieferten Code und werden nur in der Google-Sektion angewendet */
+    .google-container {
+      text-align: center;
+    }
+    .google-container h2 {
+      color: #002147;
+      margin-bottom: 20px;
+    }
+    .google-container .centered-text {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .google-container button {
+      background-color: #002147;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      width: 50%;
+      margin-top: 10px;
+    }
+    .google-container .hidden {
+      display: none;
+    }
+    .google-container .slot-machine {
+      margin-top: 20px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: inline-block;
+      text-align: center;
+    }
+    .google-container .reel-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      font-size: 40px;
+    }
+    .google-container .reel {
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      background: #002147;
+      color: white;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .google-container .tip-box {
+      background: #eef3f7;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 15px;
+      text-align: left;
+      font-weight: bold;
+      color: #002147;
     }
   </style>
 </head>
@@ -615,130 +682,112 @@
     
     <!-- Section: Google Bewertungen -->
     <div id="google" class="section">
-      <header class="subpage-title">
-        <h2>Google Bewertungen</h2>
-      </header>
-      <div id="google-reviews">
-        <h3>📊 Aktueller Stand</h3>
-        <p>Dübendorf hat aktuell einen Durchschnitt von <strong>4,6 Sternen</strong>. Unser Ziel ist es, durch herausragenden Service und freundliche Beratung konsequent <strong>5-Sterne-Bewertungen</strong> zu erreichen!</p>
-        <button id="tipButton" onclick="showTip()">💡 Tipp anzeigen</button>
-        <div id="tipBox" class="tip-box hidden"></div>
-      </div>
-
-      <div class="slot-machine">
-        <h3>🎰 Google Glücksrad</h3>
-        <div class="reel-container">
-          <div class="reel">🍒</div>
-          <div class="reel">🍋</div>
-          <div class="reel">🍉</div>
-          <div class="reel">🍇</div>
-          <div class="reel">🍍</div>
+      <div class="google-container">
+        <h2>🌟 Google Bewertungen - Unser Ziel: 5 Sterne!</h2>
+        
+        <div class="section" id="google-reviews">
+            <h3>📊 Aktueller Stand</h3>
+            <p>Dübendorf hat aktuell einen Durchschnitt von <strong>4,6 Sternen</strong>. Unser Ziel ist es, durch herausragenden Service und freundliche Beratung konsequent <strong>5-Sterne-Bewertungen</strong> zu erreichen!</p>
+            <button id="tipButton" onclick="showTip()">💡 Tipp anzeigen</button>
+            <div id="tipBox" class="tip-box hidden"></div>
         </div>
-        <button onclick="startSlotMachine()">🎲 Drehen</button>
+        
+        <div class="slot-machine">
+            <div class="centered-text">Sternegenerator</div>
+            <div class="centered-text">Dübendorf</div>
+            <div class="reel-container">
+                <div class="reel">🍒</div>
+                <div class="reel">🍋</div>
+                <div class="reel">🍉</div>
+                <div class="reel">🍇</div>
+                <div class="reel">🍍</div>
+            </div>
+            <button onclick="startSlotMachine()">🎲 Drehen</button>
+        </div>
       </div>
-
-      <div id="thumbsUpContainer" class="thumbs-up-container hidden">
-        👍
-        <p>Du schaffst das!</p>
-      </div>
-
-      <style>
-          .tip-box {
-              background: #eef3f7;
-              padding: 15px;
-              border-radius: 6px;
-              margin-top: 15px;
-              text-align: left;
-              font-weight: bold;
-              color: #002147;
-          }
-          .slot-machine {
-              margin-top: 20px;
-              padding: 20px;
-              background: #fff;
-              border-radius: 6px;
-              box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-              text-align: center;
-          }
-          .reel-container {
-              display: flex;
-              justify-content: center;
-              gap: 10px;
-              font-size: 40px;
-          }
-          .reel {
-              width: 60px;
-              height: 60px;
-              line-height: 60px;
-              background: #002147;
-              color: white;
-              border-radius: 6px;
-              text-align: center;
-              font-weight: bold;
-              font-size: 30px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-          }
-          .thumbs-up-container {
-              position: fixed;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%) scale(0.1);
-              font-size: 100px;
-              color: #008000;
-              animation: zoomIn 1s forwards;
-              text-align: center;
-              display: none;
-          }
-          .thumbs-up-container p {
-              font-size: 24px;
-              font-weight: bold;
-              color: #002147;
-          }
-          @keyframes zoomIn {
-              0% { transform: translate(-50%, -50%) scale(0.1); opacity: 0; }
-              100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-          }
-      </style>
-
+      
       <script>
-          function startSlotMachine() {
-              let reels = document.querySelectorAll('.reel');
-              let symbols = ["🍒", "🍋", "🍉", "🍇", "🍍", "⭐"];
-              let delay = 1000; // Doppelt so lange drehen lassen
+        function startSlotMachine() {
+            let reels = document.querySelectorAll('.reel');
+            let symbols = ["🍒", "🍋", "🍉", "🍇", "🍍", "⭐"];
+            let delay = 1000; // Doppelt so lange drehen lassen
+            
+            reels.forEach((reel, index) => {
+                let interval = setInterval(() => {
+                    reel.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+                }, 100);
+                
+                setTimeout(() => {
+                    clearInterval(interval);
+                    reel.innerText = "⭐";
+                }, delay * (index + 1));
+            });
+            
+            setTimeout(() => {
+                triggerStarConfetti();
+            }, delay * reels.length + 500);
+        }
 
-              reels.forEach((reel, index) => {
-                  let interval = setInterval(() => {
-                      reel.innerText = symbols[Math.floor(Math.random() * symbols.length)];
-                  }, 100);
+        function triggerStarConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { x: 0.5, y: 0.5 },
+                shapes: ['star']
+            });
+        }
 
-                  setTimeout(() => {
-                      clearInterval(interval);
-                      reel.innerText = "⭐";
-                  }, delay * (index + 1));
-              });
-
-              setTimeout(() => {
-                  document.getElementById('thumbsUpContainer').style.display = 'block';
-              }, delay * reels.length + 500);
-          }
-
-          function showTip() {
-              let tips = [
-                  "💡 Persönlicher Ansatz: Frage den Kunden direkt nach dem Verkauf: ‚Wie zufrieden waren Sie mit unserem Service?‘",
-                  "💡 Timing ist alles: Bitte um eine Bewertung, wenn der positive Eindruck noch frisch ist – z. B. direkt nach einem Kaufabschluss.",
-                  "💡 Hilfestellung anbieten: Zeige dem Kunden unser Bewertungs-Kärtchen für eine einfache Google-Bewertung.",
-                  "💡 Dankbarkeit zeigen: Ein einfaches ‚Danke!‘ macht den Unterschied – betone, wie wertvoll das Feedback für uns ist.",
-                  "💡 Motivation erhalten: Setze dir eine persönliche Challenge – frage diese Woche mindestens einen Kunden aktiv nach einer Bewertung!"
-              ];
-              let randomTip = tips[Math.floor(Math.random() * tips.length)];
-              let tipBox = document.getElementById('tipBox');
-              tipBox.innerText = randomTip;
-              tipBox.classList.remove('hidden');
-              document.getElementById('tipButton').innerText = "➡ Nächster Tipp";
-          }
+        function showTip() {
+            let tips = [
+                "💡 Persönlicher Ansatz: Frage den Kunden direkt nach dem Verkauf: ‚Wie zufrieden waren Sie mit unserem Service?‘",
+                "💡 Timing ist alles: Bitte um eine Bewertung, wenn der positive Eindruck noch frisch ist – z. B. direkt nach einem Kaufabschluss.",
+                "💡 Hilfestellung anbieten: Zeige dem Kunden unser Bewertungs-Kärtchen für eine einfache Google-Bewertung.",
+                "💡 Dankbarkeit zeigen: Ein einfaches ‚Danke!‘ macht den Unterschied – betone, wie wertvoll das Feedback für uns ist.",
+                "💡 Motivation erhalten: Setze dir eine persönliche Challenge – frage diese Woche mindestens einen Kunden aktiv nach einer Bewertung!"
+            ];
+            let randomTip = tips[Math.floor(Math.random() * tips.length)];
+            let tipBox = document.getElementById('tipBox');
+            tipBox.innerText = randomTip;
+            tipBox.classList.remove('hidden');
+            document.getElementById('tipButton').innerText = "➡ Nächster Tipp";
+        }
       </script>
+    </div>
+    
+    <!-- Section: Warenkorb (mit integrierter Ehrenrunde Mission) -->
+    <div id="warenkorb" class="section">
+      <header class="subpage-title">
+        <h2>Warenkorb</h2>
+      </header>
+      <!-- Hier wurde der ursprüngliche Ehrenrunde Mission Code integriert -->
+      <div class="ehrenrunde-container">
+        <h2>🏆 Ehrenrunde Mission</h2>
+        
+        <div id="ehrenrunde-progress" class="ehrenrunde-section">
+          <h3>📈 Dein Fortschritt</h3>
+          <p>Schließe 5 Ehrenrunden ab und erreiche das Ziel! 🎯</p>
+          <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <p><span id="points">0</span>/5 abgeschlossen</p>
+          <button onclick="addPoint()">+ Ehrenrunde abgeschlossen</button>
+          <button onclick="resetProgress()" style="background-color: #ff3333;">🔄 Fortschritt zurücksetzen</button>
+        </div>
+        
+        <div id="reminder" class="ehrenrunde-section">
+          <h3>🔔 Tages-Erinnerung <span id="thumbsReminder" class="thumbs-up">👍</span></h3>
+          <p>Hast du heute schon eine Ehrenrunde gemacht?</p>
+          <button onclick="confirmReminder()">Ja, erledigt! ✅</button>
+          <button id="resetReminderBtn" class="hidden" onclick="resetReminder()" style="background-color: #ff3333;">🔄 Erinnerung zurücksetzen</button>
+        </div>
+        
+        <div id="team-reminder" class="ehrenrunde-section">
+          <h3>🤝 Kollegen-Erinnerung <span id="thumbsTeamReminder" class="thumbs-up">👍</span></h3>
+          <p>Hast du heute schon einen Kollegen an die Ehrenrunde erinnert?</p>
+          <button onclick="confirmTeamReminder()">Ja, erledigt! ✅</button>
+          <button id="resetTeamReminderBtn" class="hidden" onclick="resetTeamReminder()" style="background-color: #ff3333;">🔄 Erinnerung zurücksetzen</button>
+        </div>
+      </div>
     </div>
     
     <!-- Section: Gartenmöbel-Quiz -->
