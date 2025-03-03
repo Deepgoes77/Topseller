@@ -416,7 +416,6 @@
     }
     
     /* ------------------ Google Bewertungen Styles (Integriert) ------------------ */
-    /* Die in diesem Block enthaltenen Styles stammen aus dem gelieferten Code und werden nur in der Google-Sektion angewendet */
     .google-container {
       text-align: center;
     }
@@ -686,70 +685,70 @@
         <h2>🌟 Google Bewertungen - Unser Ziel: 5 Sterne!</h2>
         
         <div class="section" id="google-reviews">
-            <h3>📊 Aktueller Stand</h3>
-            <p>Dübendorf hat aktuell einen Durchschnitt von <strong>4,6 Sternen</strong>. Unser Ziel ist es, durch herausragenden Service und freundliche Beratung konsequent <strong>5-Sterne-Bewertungen</strong> zu erreichen!</p>
-            <button id="tipButton" onclick="showTip()">💡 Tipp anzeigen</button>
-            <div id="tipBox" class="tip-box hidden"></div>
+          <h3>📊 Aktueller Stand</h3>
+          <p>Dübendorf hat aktuell einen Durchschnitt von <strong>4,6 Sternen</strong>. Unser Ziel ist es, durch herausragenden Service und freundliche Beratung konsequent <strong>5-Sterne-Bewertungen</strong> zu erreichen!</p>
+          <button id="tipButton" onclick="showTip()">💡 Tipp anzeigen</button>
+          <div id="tipBox" class="tip-box hidden"></div>
         </div>
         
         <div class="slot-machine">
-            <div class="centered-text">Sternegenerator</div>
-            <div class="centered-text">Dübendorf</div>
-            <div class="reel-container">
-                <div class="reel">🍒</div>
-                <div class="reel">🍋</div>
-                <div class="reel">🍉</div>
-                <div class="reel">🍇</div>
-                <div class="reel">🍍</div>
-            </div>
-            <button onclick="startSlotMachine()">🎲 Drehen</button>
+          <div class="centered-text">Sternegenerator</div>
+          <div class="centered-text">Dübendorf</div>
+          <div class="reel-container">
+            <div class="reel">🍒</div>
+            <div class="reel">🍋</div>
+            <div class="reel">🍉</div>
+            <div class="reel">🍇</div>
+            <div class="reel">🍍</div>
+          </div>
+          <button onclick="startSlotMachine()">🎲 Drehen</button>
         </div>
       </div>
       
       <script>
         function startSlotMachine() {
-            let reels = document.querySelectorAll('.reel');
-            let symbols = ["🍒", "🍋", "🍉", "🍇", "🍍", "⭐"];
-            let delay = 1000; // Doppelt so lange drehen lassen
-            
-            reels.forEach((reel, index) => {
-                let interval = setInterval(() => {
-                    reel.innerText = symbols[Math.floor(Math.random() * symbols.length)];
-                }, 100);
-                
-                setTimeout(() => {
-                    clearInterval(interval);
-                    reel.innerText = "⭐";
-                }, delay * (index + 1));
-            });
+          let reels = document.querySelectorAll('.reel');
+          let symbols = ["🍒", "🍋", "🍉", "🍇", "🍍", "⭐"];
+          let delay = 1000; // Doppelt so lange drehen lassen
+          
+          reels.forEach((reel, index) => {
+            let interval = setInterval(() => {
+              reel.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            }, 100);
             
             setTimeout(() => {
-                triggerStarConfetti();
-            }, delay * reels.length + 500);
+              clearInterval(interval);
+              reel.innerText = "⭐";
+            }, delay * (index + 1));
+          });
+          
+          setTimeout(() => {
+            triggerStarConfetti();
+          }, delay * reels.length + 500);
         }
-
+    
         function triggerStarConfetti() {
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { x: 0.5, y: 0.5 },
-                shapes: ['star']
-            });
+          confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { x: 0.5, y: 0.5 },
+            shapes: ['star']
+          });
         }
-
+    
         function showTip() {
-            let tips = [
-                "💡 Persönlicher Ansatz: Frage den Kunden direkt nach dem Verkauf: ‚Wie zufrieden waren Sie mit unserem Service?‘",
-                "💡 Timing ist alles: Bitte um eine Bewertung, wenn der positive Eindruck noch frisch ist – z. B. direkt nach einem Kaufabschluss.",
-                "💡 Hilfestellung anbieten: Zeige dem Kunden unser Bewertungs-Kärtchen für eine einfache Google-Bewertung.",
-                "💡 Dankbarkeit zeigen: Ein einfaches ‚Danke!‘ macht den Unterschied – betone, wie wertvoll das Feedback für uns ist.",
-                "💡 Motivation erhalten: Setze dir eine persönliche Challenge – frage diese Woche mindestens einen Kunden aktiv nach einer Bewertung!"
-            ];
-            let randomTip = tips[Math.floor(Math.random() * tips.length)];
-            let tipBox = document.getElementById('tipBox');
-            tipBox.innerText = randomTip;
-            tipBox.classList.remove('hidden');
-            document.getElementById('tipButton').innerText = "➡ Nächster Tipp";
+          let tips = [
+            "💡 Persönlicher Ansatz: Frage den Kunden direkt nach dem Verkauf: ‚Wie zufrieden waren Sie mit unserem Service?‘",
+            "💡 Timing ist alles: Bitte um eine Bewertung, wenn der positive Eindruck noch frisch ist – z. B. direkt nach einem Kaufabschluss.",
+            "💡 Hilfestellung anbieten: Zeige dem Kunden unser Bewertungs-Kärtchen für eine einfache Google-Bewertung.",
+            "💡 Dankbarkeit zeigen: Ein einfaches ‚Danke!‘ macht den Unterschied – betone, wie wertvoll das Feedback für uns ist.",
+            "💡 Motivation erhalten: Setze dir eine persönliche Challenge – frage diese Woche mindestens einen Kunden aktiv nach einer Bewertung!"
+          ];
+          let randomTip = tips[Math.floor(Math.random() * tips.length)];
+          let tipBox = document.getElementById('tipBox');
+          tipBox.innerText = randomTip;
+          tipBox.classList.remove('hidden');
+          document.getElementById('tipButton').innerText = "➡ Nächster Tipp";
         }
       </script>
     </div>
@@ -1395,7 +1394,7 @@
         },
         {
           category: "Holzmöbel",
-          question: "Warum sollte man geölte Möbel nicht mit scharfen Reinigern putzen?",
+          question: "Warum sollte man geölte Möbel nicht mit scharfen Reinigungsmitteln putzen?",
           options: [
             { text: "Weil das Holz dann zu Staub zerfällt.", correct: false },
             { text: "Weil sie die Öl-Schicht angreifen können.", correct: true },
