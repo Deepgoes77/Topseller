@@ -30,7 +30,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background-color: #002147; /* Einheitliches Blau */
+      background-color: #002147;
       color: #fff;
       padding: 10px 20px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
@@ -66,7 +66,7 @@
     /* Dropdown Menü */
     .dropdown-menu {
       display: none;
-      background-color: #002147; /* Einheitliches Blau */
+      background-color: #002147;
       position: absolute;
       right: 20px;
       top: 100%;
@@ -88,11 +88,11 @@
       border-bottom: none;
     }
     .dropdown-menu a:hover {
-      background-color: #002147; /* Gleiches Blau, dezentes Hover */
+      background-color: #002147;
     }
     /* Gemeinsamer Header für Unterseiten */
     .subpage-title {
-      background-color: #002147; /* Einheitliches Blau */
+      background-color: #002147;
       color: #fff;
       text-align: center;
       padding: 15px 0;
@@ -144,7 +144,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     .category h2 {
-      background-color: #002147; /* Einheitliches Blau */
+      background-color: #002147;
       color: #fff;
       padding: 15px;
       font-size: 1.5em;
@@ -212,12 +212,12 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      background-color: #002147; /* Einheitliches Blau */
+      background-color: #002147;
       color: #fff;
       transition: background-color 0.3s;
     }
     #quiz-container button:hover, #quiz-container-holz button:hover {
-      background-color: #002147; /* Einheitliches Blau */
+      background-color: #002147;
     }
     .answer-btn {
       display: block;
@@ -257,7 +257,7 @@
       font-size: 1.8em;
       margin-top: 10px;
       font-weight: bold;
-      color: #002147; /* Einheitliches Blau */
+      color: #002147;
     }
     /* Abschlussphase - App-Charakter */
     #abschlussphase {
@@ -307,7 +307,7 @@
       transition: border-left 0.3s, background-color 0.3s;
     }
     #abschluss-text.active {
-      border-left: 4px solid #002147; /* Einheitliches Blau */
+      border-left: 4px solid #002147;
       background-color: #eef3f7;
     }
     /* Score-Counter */
@@ -320,7 +320,7 @@
       border-radius: 6px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       margin-bottom: 15px;
-      color: #002147; /* Einheitliches Blau */
+      color: #002147;
     }
     /* Startseite mit App-Icons */
     #startpage .app-icons {
@@ -330,7 +330,7 @@
       margin: 20px 0;
     }
     #startpage .app-icon {
-      background-color: #002147; /* Einheitliches Blau */
+      background-color: #002147;
       border-radius: 12px;
       width: 120px;
       height: 120px;
@@ -357,6 +357,62 @@
       #startpage .app-icon {
         width: calc(50% - 20px);
       }
+    }
+    
+    /* ------------------ Ehrenrunde Mission Styles ------------------ */
+    .ehrenrunde-container {
+      max-width: 400px;
+      margin: 20px auto;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .ehrenrunde-container h2,
+    .ehrenrunde-container h3 {
+      color: #002147;
+    }
+    .ehrenrunde-section {
+      margin-bottom: 20px;
+      padding: 10px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .ehrenrunde-container button {
+      background-color: #002147;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      margin-top: 5px;
+    }
+    .ehrenrunde-container .hidden {
+      display: none;
+    }
+    .ehrenrunde-container .thumbs-up {
+      font-size: 30px;
+      color: #008000;
+      margin-left: 10px;
+      display: none;
+    }
+    .ehrenrunde-container .progress {
+      height: 20px;
+      background: #cccccc;
+      border-radius: 10px;
+      margin-top: 10px;
+      position: relative;
+    }
+    .ehrenrunde-container .progress-bar {
+      height: 100%;
+      background: #002147;
+      border-radius: 10px;
+      width: 0%;
+      transition: width 0.5s;
     }
   </style>
 </head>
@@ -574,12 +630,40 @@
       <p>Gehe mit Begeisterung an diese Aufgabe – jede positive Bewertung stärkt unseren Ruf und macht unseren Service für neue Kunden noch attraktiver.</p>
     </div>
     
-    <!-- Section: Warenkorb -->
+    <!-- Section: Warenkorb (mit integrierter Ehrenrunde Mission) -->
     <div id="warenkorb" class="section">
       <header class="subpage-title">
         <h2>Warenkorb</h2>
       </header>
-      <p>Inhalt folgt.</p>
+      <!-- Hier wurde der ursprüngliche Ehrenrunde Mission Code integriert -->
+      <div class="ehrenrunde-container">
+        <h2>🏆 Ehrenrunde Mission</h2>
+        
+        <div id="ehrenrunde-progress" class="ehrenrunde-section">
+          <h3>📈 Dein Fortschritt</h3>
+          <p>Schließe 5 Ehrenrunden ab und erreiche das Ziel! 🎯</p>
+          <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <p><span id="points">0</span>/5 abgeschlossen</p>
+          <button onclick="addPoint()">+ Ehrenrunde abgeschlossen</button>
+          <button onclick="resetProgress()" style="background-color: #ff3333;">🔄 Fortschritt zurücksetzen</button>
+        </div>
+        
+        <div id="reminder" class="ehrenrunde-section">
+          <h3>🔔 Tages-Erinnerung <span id="thumbsReminder" class="thumbs-up">👍</span></h3>
+          <p>Hast du heute schon eine Ehrenrunde gemacht?</p>
+          <button onclick="confirmReminder()">Ja, erledigt! ✅</button>
+          <button id="resetReminderBtn" class="hidden" onclick="resetReminder()" style="background-color: #ff3333;">🔄 Erinnerung zurücksetzen</button>
+        </div>
+        
+        <div id="team-reminder" class="ehrenrunde-section">
+          <h3>🤝 Kollegen-Erinnerung <span id="thumbsTeamReminder" class="thumbs-up">👍</span></h3>
+          <p>Hast du heute schon einen Kollegen an die Ehrenrunde erinnert?</p>
+          <button onclick="confirmTeamReminder()">Ja, erledigt! ✅</button>
+          <button id="resetTeamReminderBtn" class="hidden" onclick="resetTeamReminder()" style="background-color: #ff3333;">🔄 Erinnerung zurücksetzen</button>
+        </div>
+      </div>
     </div>
     
     <!-- Section: Gartenmöbel-Quiz -->
@@ -781,7 +865,6 @@
          Die richtige Antwort wechselt ab Q1 -> Index 0, Q2 -> Index 1, Q3 -> Index 2, ...
       */
       const quizQuestions = [
-        // Q1 (correct at index 0)
         {
           category: "Lounges",
           question: "Warum können die Gestelle nicht rosten?",
@@ -791,7 +874,6 @@
             { text: "Weil sie mit Zaubersalz aus der Karibik behandelt wurden.", correct: false }
           ]
         },
-        // Q2 (correct at index 1)
         {
           category: "Lounges",
           question: "Was bedeutet pulverbeschichtet?",
@@ -801,7 +883,6 @@
             { text: "Es bedeutet, dass sie aus purem Pulver bestehen und sich bei Regen auflösen.", correct: false }
           ]
         },
-        // Q3 (correct at index 2)
         {
           category: "Lounges",
           question: "Was zeichnet Sunproof®-Kissen aus?",
@@ -811,7 +892,6 @@
             { text: "Atmungsaktiv, UV-beständig, schimmelresistent, wasserabweisend und recycelbar.", correct: true }
           ]
         },
-        // Q4 (correct at index 0)
         {
           category: "Lounges",
           question: "Welche zwei Arten von wetterfesten Kissen gibt es?",
@@ -821,7 +901,6 @@
             { text: "Schwamm-Kissen und Luftballon-Kissen.", correct: false }
           ]
         },
-        // Q5 (correct at index 1)
         {
           category: "Lounges",
           question: "Wie erkennt man, ob ein Kissen innengummiert ist?",
@@ -831,7 +910,6 @@
             { text: "Es schwebt leicht über dem Boden.", correct: false }
           ]
         },
-        // Q6 (correct at index 2)
         {
           category: "Gartentische",
           question: "Was unterscheidet unsere Keramiktische von günstigeren Modellen?",
@@ -841,7 +919,6 @@
             { text: "Durchgehendes Keramikmuster, arretierbare Auszugsplatte, hochwertige Materialien.", correct: true }
           ]
         },
-        // Q7 (correct at index 0)
         {
           category: "Gartentische",
           question: "Warum kann eine Keramikplatte nicht heiß werden?",
@@ -851,7 +928,6 @@
             { text: "Die Tischplatte hat eingebaute Mini-Ventilatoren.", correct: false }
           ]
         },
-        // Q8 (correct at index 1)
         {
           category: "Gartentische",
           question: "Warum ist Keramik besonders pflegeleicht?",
@@ -861,7 +937,6 @@
             { text: "Es reinigt sich von selbst über Nacht.", correct: false }
           ]
         },
-        // Q9 (correct at index 2)
         {
           category: "Gartentische",
           question: "Warum ist es sinnvoll, eine Hausratversicherung für einen Keramiktisch zu prüfen?",
@@ -871,7 +946,6 @@
             { text: "Manche Hausratversicherungen decken Keramikbruch ab.", correct: true }
           ]
         },
-        // Q10 (correct at index 0)
         {
           category: "Gartenstühle",
           question: "Warum sind die Bezüge aus Batyline-Textilene besonders langlebig?",
@@ -881,7 +955,6 @@
             { text: "Weil sie jeden Morgen mit Kokosöl eingerieben werden.", correct: false }
           ]
         },
-        // Q11 (correct at index 1)
         {
           category: "Gartenstühle",
           question: "Warum bleibt der Bezug eines hochwertigen Stuhls lange straff?",
@@ -891,7 +964,6 @@
             { text: "Der Stuhl trainiert jeden Morgen Yoga.", correct: false }
           ]
         },
-        // Q12 (correct at index 2)
         {
           category: "Gartenstühle",
           question: "Was kann man mit einem hochwertigen Textilene-Stuhl als „Show-Effekt“ vorführen?",
@@ -901,7 +973,6 @@
             { text: "Draufstellen, um die Stabilität zu demonstrieren.", correct: true }
           ]
         },
-        // Q13 (correct at index 0)
         {
           category: "Gartenstühle",
           question: "Warum sind viele Gartenstühle stapelbar?",
@@ -911,7 +982,6 @@
             { text: "Weil es lustig aussieht, wenn man einen Turm aus Stühlen baut.", correct: false }
           ]
         },
-        // Q14 (correct at index 1)
         {
           category: "Gartenliegen",
           question: "Warum sind hochwertige Gartenliegen besonders bequem?",
@@ -921,7 +991,6 @@
             { text: "Sie schweben leicht über dem Boden.", correct: false }
           ]
         },
-        // Q15 (correct at index 2)
         {
           category: "Gartenliegen",
           question: "Warum haben einige Gartenliegen Rollen?",
@@ -931,7 +1000,6 @@
             { text: "Damit sie leichter bewegt werden können.", correct: true }
           ]
         },
-        // Q16 (correct at index 0)
         {
           category: "Gartenliegen",
           question: "Was kann man mit einer hochwertigen Gartenliege als „Show-Effekt“ demonstrieren?",
@@ -1030,7 +1098,6 @@
          39 Fragen, Muster: Q1->0, Q2->1, Q3->2, Q4->0, etc.
       */
       const holzQuizQuestions = [
-        // 1) correct index 0
         {
           category: "Holzmöbel",
           question: "Was ist der Hauptunterschied zwischen Massivholz und Furnier?",
@@ -1040,7 +1107,6 @@
             { text: "Massivholz kann sprechen, Furnier nicht.", correct: false }
           ]
         },
-        // 2) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum sind Massivholzmöbel oft teurer als furnierte Möbel?",
@@ -1050,7 +1116,6 @@
             { text: "Weil der Baum ein Echtheitszertifikat unterschreiben muss.", correct: false }
           ]
         },
-        // 3) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum arbeiten Massivholzmöbel bei wechselnder Luftfeuchtigkeit?",
@@ -1060,7 +1125,6 @@
             { text: "Weil Holz Feuchtigkeit aufnimmt und wieder abgibt, wodurch es sich ausdehnen oder zusammenziehen kann.", correct: true }
           ]
         },
-        // 4) correct index 0
         {
           category: "Holzmöbel",
           question: "Was macht Wildeiche anders als normale Eiche?",
@@ -1070,7 +1134,6 @@
             { text: "Sie wächst schneller als normale Eiche.", correct: false }
           ]
         },
-        // 5) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum ist Eiche ein beliebtes Holz für Möbel?",
@@ -1080,7 +1143,6 @@
             { text: "Weil Eichhörnchen es besonders mögen.", correct: false }
           ]
         },
-        // 6) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum sollte man Wildeiche nicht mit zu viel Wasser reinigen?",
@@ -1090,7 +1152,6 @@
             { text: "Weil das Holz aufquellen kann.", correct: true }
           ]
         },
-        // 7) correct index 0
         {
           category: "Holzmöbel",
           question: "Was unterscheidet Kernbuche von normaler Buche?",
@@ -1100,7 +1161,6 @@
             { text: "Sie ist doppelt so schwer.", correct: false }
           ]
         },
-        // 8) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum ist Kernbuche beliebt für Möbel?",
@@ -1110,7 +1170,6 @@
             { text: "Weil sie besonders weich ist.", correct: false }
           ]
         },
-        // 9) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum kann Kernbuche trotz harter Oberfläche empfindlich für Druckstellen sein?",
@@ -1120,7 +1179,6 @@
             { text: "Weil sie elastischer ist als andere Harthölzer.", correct: true }
           ]
         },
-        // 10) correct index 0
         {
           category: "Holzmöbel",
           question: "Was macht Nussbaumholz besonders edel?",
@@ -1130,7 +1188,6 @@
             { text: "Der Duft nach Walnüssen.", correct: false }
           ]
         },
-        // 11) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum ist Nussbaumholz teurer als viele andere Holzarten?",
@@ -1140,7 +1197,6 @@
             { text: "Weil es bei Mondlicht geschnitten werden muss.", correct: false }
           ]
         },
-        // 12) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum wird Nussbaum häufig geölt statt lackiert?",
@@ -1150,7 +1206,6 @@
             { text: "Damit die Maserung besonders gut zur Geltung kommt.", correct: true }
           ]
         },
-        // 13) correct index 0
         {
           category: "Holzmöbel",
           question: "Warum duftet Arvenholz so intensiv?",
@@ -1160,7 +1215,6 @@
             { text: "Weil es magische Kräfte besitzt.", correct: false }
           ]
         },
-        // 14) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum wird Arvenholz oft für Schlafzimmermöbel verwendet?",
@@ -1170,7 +1224,6 @@
             { text: "Weil es die besten Träume bringt.", correct: false }
           ]
         },
-        // 15) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum werden Astulme-Möbel oft geölt?",
@@ -1180,7 +1233,6 @@
             { text: "Weil das Öl die natürliche Struktur hervorhebt.", correct: true }
           ]
         },
-        // 16) correct index 0
         {
           category: "Holzmöbel",
           question: "Was ist der Vorteil von geöltem Holz?",
@@ -1190,7 +1242,6 @@
             { text: "Es heilt Kratzer von selbst.", correct: false }
           ]
         },
-        // 17) correct index 1
         {
           category: "Holzmöbel",
           question: "Was ist der Vorteil von lackierten Möbeln?",
@@ -1200,7 +1251,6 @@
             { text: "Sie reflektieren Sonnenlicht.", correct: false }
           ]
         },
-        // 18) correct index 2
         {
           category: "Holzmöbel",
           question: "Wie oft sollte man geölte Möbel nachbehandeln?",
@@ -1210,7 +1260,6 @@
             { text: "Alle paar Monate oder nach Bedarf.", correct: true }
           ]
         },
-        // 19) correct index 0
         {
           category: "Holzmöbel",
           question: "Wie sollte man Massivholzmöbel reinigen?",
@@ -1220,7 +1269,6 @@
             { text: "Mit Zaubertrank.", correct: false }
           ]
         },
-        // 20) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum sollte man geölte Möbel nicht mit scharfen Reinigern putzen?",
@@ -1230,7 +1278,6 @@
             { text: "Weil sie dann anfangen zu rauchen.", correct: false }
           ]
         },
-        // 21) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum eignen sich viele Massivhölzer besonders für langlebige Möbel?",
@@ -1240,7 +1287,6 @@
             { text: "Weil sie sehr robust und widerstandsfähig sind.", correct: true }
           ]
         },
-        // 22) correct index 0
         {
           category: "Holzmöbel",
           question: "Wie kann man geölte Holzoberflächen auffrischen?",
@@ -1250,27 +1296,6 @@
             { text: "Indem man sie mit Wasser übergießt.", correct: false }
           ]
         },
-        // 23) correct index 1
-        {
-          category: "Holzmöbel",
-          question: "Warum kann es sinnvoll sein, Filzgleiter unter Möbel zu kleben?",
-          options: [
-            { text: "Damit die Möbel schneller rutschen.", correct: false },
-            { text: "Um den Boden zu schützen.", correct: true },
-            { text: "Damit die Möbel schweben können.", correct: false }
-          ]
-        },
-        // 24) correct index 2
-        {
-          category: "Holzmöbel",
-          question: "Wie kann man kleine Kratzer auf geölten Möbeln entfernen?",
-          options: [
-            { text: "Mit einer Feile und einem Hammer.", correct: false },
-            { text: "Mit einem Speziallaser.", correct: false },
-            { text: "Mit einem feuchten Lappen und etwas Öl.", correct: true }
-          ]
-        },
-        // 25) correct index 0
         {
           category: "Holzmöbel",
           question: "Warum sollte man Massivholzmöbel nicht direkt neben Heizkörpern aufstellen?",
@@ -1280,7 +1305,6 @@
             { text: "Weil es sich in eine Plastikoberfläche verwandelt.", correct: false }
           ]
         },
-        // 26) correct index 1
         {
           category: "Holzmöbel",
           question: "Welche Holzart ist besonders widerstandsfähig gegen Feuchtigkeit?",
@@ -1290,7 +1314,6 @@
             { text: "Astulme, weil sie in Wasser aufblüht.", correct: false }
           ]
         },
-        // 27) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum verändert sich die Farbe von Massivholz im Laufe der Zeit?",
@@ -1300,7 +1323,6 @@
             { text: "Durch UV-Strahlung und Oxidation verändert sich die Holzfarbe.", correct: true }
           ]
         },
-        // 28) correct index 0
         {
           category: "Holzmöbel",
           question: "Warum sollte man niemals heiße Töpfe direkt auf eine geölte Holzplatte stellen?",
@@ -1310,7 +1332,6 @@
             { text: "Weil der Tisch dann Feuer fangen könnte.", correct: false }
           ]
         },
-        // 29) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum sollte man bei furnierten Möbeln keine scharfen Reinigungsmittel verwenden?",
@@ -1320,7 +1341,6 @@
             { text: "Weil sie anfangen zu kleben.", correct: false }
           ]
         },
-        // 30) correct index 2
         {
           category: "Holzmöbel",
           question: "Wie kann man geöltes Holz gegen Flecken schützen?",
@@ -1330,7 +1350,6 @@
             { text: "Durch regelmäßiges Nachölen und schnelles Aufwischen von Flüssigkeiten.", correct: true }
           ]
         },
-        // 31) correct index 0
         {
           category: "Holzmöbel",
           question: "Was passiert, wenn man einen Kratzer auf lackiertem Holz ausbessern möchte?",
@@ -1340,7 +1359,6 @@
             { text: "Man muss das ganze Möbelstück komplett neu streichen.", correct: false }
           ]
         },
-        // 32) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum werden geölte Oberflächen nicht komplett versiegelt?",
@@ -1350,7 +1368,6 @@
             { text: "Weil versiegelte Möbel nicht mehr geölt werden dürfen.", correct: false }
           ]
         },
-        // 33) correct index 2
         {
           category: "Holzmöbel",
           question: "Welche Holzart ist besonders aromatisch und wird oft für Innenräume genutzt?",
@@ -1360,7 +1377,6 @@
             { text: "Arvenholz, da es ätherische Öle freisetzt.", correct: true }
           ]
         },
-        // 34) correct index 0
         {
           category: "Holzmöbel",
           question: "Welche Maserung hat Nussbaumholz typischerweise?",
@@ -1370,7 +1386,6 @@
             { text: "Hell, mit wilden Knoten.", correct: false }
           ]
         },
-        // 35) correct index 1
         {
           category: "Holzmöbel",
           question: "Warum ist es wichtig, Massivholzmöbel regelmäßig zu pflegen?",
@@ -1380,7 +1395,6 @@
             { text: "Weil sie sonst anfangen zu wachsen.", correct: false }
           ]
         },
-        // 36) correct index 2
         {
           category: "Holzmöbel",
           question: "Was kann passieren, wenn man ein Massivholzmöbel zu lange in direkter Sonne stehen lässt?",
@@ -1390,7 +1404,6 @@
             { text: "Es kann ausbleichen und sich verziehen.", correct: true }
           ]
         },
-        // 37) correct index 0
         {
           category: "Holzmöbel",
           question: "Warum werden manche Möbel aus recyceltem Holz gefertigt?",
@@ -1400,7 +1413,6 @@
             { text: "Weil es billiger ist und nach Plastik riecht.", correct: false }
           ]
         },
-        // 38) correct index 1
         {
           category: "Holzmöbel",
           question: "Welche Holzart wird gerne für Landhausmöbel verwendet?",
@@ -1410,7 +1422,6 @@
             { text: "Nussbaum, weil es immer knistert.", correct: false }
           ]
         },
-        // 39) correct index 2
         {
           category: "Holzmöbel",
           question: "Warum sind Massivholzmöbel oft Unikate?",
@@ -1504,6 +1515,68 @@
           nextQuestionHolzBtn.style.display = "none";
         }
       });
+    });
+
+    /* ------------------ Ehrenrunde Mission Funktionen ------------------ */
+    function updateProgressBar() {
+      let points = parseInt(localStorage.getItem('points')) || 0;
+      let percentage = (points / 5) * 100;
+      document.getElementById('progressBar').style.width = percentage + "%";
+    }
+
+    function addPoint() {
+      let points = parseInt(localStorage.getItem('points')) || 0;
+      if (points < 5) {
+        points++;
+        localStorage.setItem('points', points);
+        document.getElementById('points').innerText = points;
+        updateProgressBar();
+      }
+      if (points === 5) {
+        alert("🏆 Ziel erreicht! Super gemacht!");
+      }
+    }
+
+    function resetProgress() {
+      localStorage.setItem('points', 0);
+      document.getElementById('points').innerText = 0;
+      updateProgressBar();
+      alert("🔄 Fortschritt wurde zurückgesetzt.");
+    }
+
+    function confirmReminder() {
+      localStorage.setItem('reminderDone', 'true');
+      document.getElementById('resetReminderBtn').classList.remove('hidden');
+      document.getElementById('thumbsReminder').style.display = 'inline';
+      alert("Super! Ehrenrunde erledigt. Weiter so! 💪");
+    }
+
+    function resetReminder() {
+      localStorage.removeItem('reminderDone');
+      document.getElementById('resetReminderBtn').classList.add('hidden');
+      document.getElementById('thumbsReminder').style.display = 'none';
+      alert("🔄 Tages-Erinnerung zurückgesetzt.");
+    }
+
+    function confirmTeamReminder() {
+      localStorage.setItem('teamReminderDone', 'true');
+      document.getElementById('resetTeamReminderBtn').classList.remove('hidden');
+      document.getElementById('thumbsTeamReminder').style.display = 'inline';
+      alert("👍 Du hast einen Kollegen an die Ehrenrunde erinnert!");
+    }
+
+    function resetTeamReminder() {
+      localStorage.removeItem('teamReminderDone');
+      document.getElementById('resetTeamReminderBtn').classList.add('hidden');
+      document.getElementById('thumbsTeamReminder').style.display = 'none';
+      alert("🔄 Kollegen-Erinnerung zurückgesetzt.");
+    }
+
+    // Initialisierung der Ehrenrunde Mission beim Laden der Seite
+    document.addEventListener("DOMContentLoaded", function() {
+      let points = parseInt(localStorage.getItem('points')) || 0;
+      document.getElementById('points').innerText = points;
+      updateProgressBar();
     });
   </script>
   
