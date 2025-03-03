@@ -418,6 +418,7 @@
     /* ------------------ Google Bewertungen Styles (Integriert) ------------------ */
     .google-container {
       text-align: center;
+      margin-bottom: 20px;
     }
     .google-container h2 {
       color: #002147;
@@ -683,14 +684,14 @@
     <div id="google" class="section">
       <div class="google-container">
         <h2>🌟 Google Bewertungen - Unser Ziel: 5 Sterne!</h2>
-        
-        <div class="section" id="google-reviews">
+        <!-- Tippbereich (immer sichtbar, nicht als .section deklariert) -->
+        <div id="google-reviews">
           <h3>📊 Aktueller Stand</h3>
           <p>Dübendorf hat aktuell einen Durchschnitt von <strong>4,6 Sternen</strong>. Unser Ziel ist es, durch herausragenden Service und freundliche Beratung konsequent <strong>5-Sterne-Bewertungen</strong> zu erreichen!</p>
           <button id="tipButton" onclick="showTip()">💡 Tipp anzeigen</button>
           <div id="tipBox" class="tip-box hidden"></div>
         </div>
-        
+        <!-- Slot-Machine -->
         <div class="slot-machine">
           <div class="centered-text">Sternegenerator</div>
           <div class="centered-text">Dübendorf</div>
