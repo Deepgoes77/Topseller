@@ -217,7 +217,7 @@
       }
     }
     /* Quiz-Stile */
-    #quiz-container, #quiz-container-holz {
+    #quiz-container, #quiz-container-holz, #quiz-container-polstermoebel {
       background: #fff;
       border-radius: 8px;
       padding: 20px;
@@ -227,16 +227,16 @@
       position: relative;
       overflow: hidden;
     }
-    #quiz-container h2, #quiz-container-holz h2 {
+    #quiz-container h2, #quiz-container-holz h2, #quiz-container-polstermoebel h2 {
       text-align: center;
       margin-bottom: 15px;
     }
-    #quiz-container p, #quiz-container-holz p {
+    #quiz-container p, #quiz-container-holz p, #quiz-container-polstermoebel p {
       font-size: 1.1em;
       line-height: 1.4;
       margin-bottom: 15px;
     }
-    #quiz-container button, #quiz-container-holz button {
+    #quiz-container button, #quiz-container-holz button, #quiz-container-polstermoebel button {
       padding: 10px 20px;
       font-size: 1em;
       margin-top: 15px;
@@ -247,7 +247,7 @@
       color: #fff;
       transition: background-color 0.3s;
     }
-    #quiz-container button:hover, #quiz-container-holz button:hover {
+    #quiz-container button:hover, #quiz-container-holz button:hover, #quiz-container-polstermoebel button:hover {
       background-color: #002147;
     }
     .answer-btn {
@@ -342,7 +342,7 @@
       background-color: #eef3f7;
     }
     /* Score-Counter */
-    #score-counter, #score-counter-holz {
+    #score-counter, #score-counter-holz, #score-counter-polstermoebel {
       font-size: 1.2em;
       font-weight: bold;
       text-align: right;
@@ -389,132 +389,6 @@
         width: calc(50% - 20px);
       }
     }
-    
-    /* ------------------ Ehrenrunde Mission Styles ------------------ */
-    .ehrenrunde-container {
-      max-width: 400px;
-      margin: 20px auto;
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .ehrenrunde-container h2,
-    .ehrenrunde-container h3 {
-      color: #002147;
-    }
-    .ehrenrunde-section {
-      margin-bottom: 20px;
-      padding: 10px;
-      background: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: relative;
-    }
-    .ehrenrunde-container button {
-      background-color: #002147;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      width: 100%;
-      margin-top: 5px;
-    }
-    .ehrenrunde-container .hidden {
-      display: none;
-    }
-    .ehrenrunde-container .thumbs-up {
-      font-size: 30px;
-      color: #008000;
-      margin-left: 10px;
-      display: none;
-    }
-    .ehrenrunde-container .progress {
-      height: 20px;
-      background: #cccccc;
-      border-radius: 10px;
-      margin-top: 10px;
-      position: relative;
-    }
-    .ehrenrunde-container .progress-bar {
-      height: 100%;
-      background: #002147;
-      border-radius: 10px;
-      width: 0%;
-      transition: width 0.5s;
-    }
-    
-    /* ------------------ Google Bewertungen Styles (Integriert) ------------------ */
-    .google-container {
-      max-width: 600px;
-      margin: 0 auto 20px;
-      text-align: center;
-    }
-    .google-container h2 {
-      color: #002147;
-      margin-bottom: 20px;
-    }
-    .google-container h3 {
-      margin-bottom: 10px;
-    }
-    .google-container p {
-      margin-bottom: 10px;
-      line-height: 1.4;
-    }
-    .google-container button {
-      background-color: #002147;
-      color: white;
-      border: none;
-      padding: 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 18px;
-      width: 60%;
-      margin: 10px auto;
-      display: block;
-    }
-    .google-container .tip-box {
-      background: #eef3f7;
-      padding: 15px;
-      border-radius: 6px;
-      margin: 15px auto;
-      width: 80%;
-      text-align: center;
-      font-weight: bold;
-      color: #002147;
-    }
-    .google-container .slot-machine {
-      margin-top: 20px;
-      padding: 20px;
-      background: #fff;
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      display: block;
-      text-align: center;
-      width: 100%;
-    }
-    .google-container .reel-container {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      font-size: 40px;
-    }
-    .google-container .reel {
-      width: 60px;
-      height: 60px;
-      line-height: 60px;
-      background: #002147;
-      color: white;
-      border-radius: 6px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
   </style>
 </head>
 <body>
@@ -533,6 +407,7 @@
       <a onclick="menuItemClicked('warenkorb')">Warenkorb</a>
       <a onclick="menuItemClicked('gartenmoebel_quiz')">Gartenmöbel‑Quiz</a>
       <a onclick="menuItemClicked('holzmoebel_quiz')">Holzmöbel‑Quiz</a>
+      <a onclick="menuItemClicked('polstermoebel_quiz')">Polstermöbel‑Quiz</a>
     </div>
   </header>
 
@@ -564,11 +439,15 @@
         </a>
         <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('gartenmoebel_quiz')">
           <i class="fa fa-seedling"></i>
-          <span>Gartenmöbel-Quiz</span>
+          <span>Gartenmöbel‑Quiz</span>
         </a>
         <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('holzmoebel_quiz')">
           <i class="fa fa-tree"></i>
-          <span>Holzmöbel-Quiz</span>
+          <span>Holzmöbel‑Quiz</span>
+        </a>
+        <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('polstermoebel_quiz')">
+          <i class="fa fa-couch"></i>
+          <span>Polstermöbel‑Quiz</span>
         </a>
       </div>
     </div>
@@ -714,7 +593,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Section: Google Bewertungen -->
     <div id="google" class="section">
       <div class="google-container">
@@ -748,7 +627,7 @@
           "💡 Timing ist alles: Bitte um eine Bewertung, wenn der positive Eindruck noch frisch ist – z. B. direkt nach einem Kaufabschluss.",
           "💡 Hilfestellung anbieten: Zeige dem Kunden unser Bewertungs-Kärtchen für eine einfache Google-Bewertung.",
           "💡 Dankbarkeit zeigen: Ein einfaches ‚Danke!‘ macht den Unterschied – betone, wie wertvoll das Feedback für uns ist.",
-          "💡 Motivation erhalten: Setze dir eine persönliche Challenge – frage heute mindestens einen Kunden aktiv nach einer Bewertung!"
+          "💡 Motivation erhalten: Setze dir eine persönliche Challenge – frage diese Woche mindestens einen Kunden aktiv nach einer Bewertung!"
         ];
         let availableTips = [...allTips];
 
@@ -797,7 +676,7 @@
         }
       </script>
     </div>
-    
+
     <!-- Section: Warenkorb (mit integrierter Ehrenrunde Mission) -->
     <div id="warenkorb" class="section">
       <header class="subpage-title">
@@ -833,7 +712,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Section: Gartenmöbel-Quiz -->
     <div id="gartenmoebel_quiz" class="section">
       <header class="subpage-title">
@@ -869,7 +748,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Section: Holzmöbel-Quiz -->
     <div id="holzmoebel_quiz" class="section">
       <header class="subpage-title">
@@ -905,7 +784,41 @@
         </div>
       </div>
     </div>
-    
+
+    <!-- NEUE Kategorie: Polstermöbel-Quiz -->
+    <div id="polstermoebel_quiz" class="section">
+      <header class="subpage-title">
+        <h2>Polstermöbel‑Quiz</h2>
+      </header>
+      <div id="quiz-container-polstermoebel">
+        <!-- Anleitung -->
+        <div id="quiz-instructions-polstermoebel">
+          <h2>Willkommen zum Polstermöbel‑Quiz!</h2>
+          <p>
+            Teste hier Dein Wissen über Qualitätsmerkmale, Verarbeitung und Materialien von hochwertigen Polstermöbeln.
+            In diesem Quiz gibt es zu jeder Frage 3 Antworten – jede richtige Antwort gibt einen Punkt, jede falsche Antwort zieht einen Punkt ab.
+            Viel Spass und Vorsicht: Die falschen Antworten sorgen für den nötigen Funfaktor!
+          </p>
+          <button id="start-quiz-polstermoebel">Quiz starten</button>
+        </div>
+        <!-- Quiz-Inhalt -->
+        <div id="quiz-content-polstermoebel" style="display: none;">
+          <div id="score-counter-polstermoebel">Punkte: 0</div>
+          <div id="question-container-polstermoebel">
+            <h3 id="question-text-polstermoebel"></h3>
+            <div id="answers-container-polstermoebel">
+              <!-- Antwortbuttons werden dynamisch erstellt -->
+            </div>
+          </div>
+          <!-- Container für Smiley und Weiter-Button nebeneinander -->
+          <div id="feedback-and-button-polstermoebel" style="display: flex; align-items: center; justify-content: center; gap: 15px; margin: 20px 0;">
+            <div id="feedback-polstermoebel" style="text-align:center; font-size: 3em;"></div>
+            <button id="next-question-polstermoebel" style="display: none;">Weiter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script>
@@ -937,7 +850,8 @@
         "google",
         "warenkorb",
         "gartenmoebel_quiz",
-        "holzmoebel_quiz"
+        "holzmoebel_quiz",
+        "polstermoebel_quiz"
       ];
       let touchstartX = 0;
       let touchendX = 0;
@@ -1034,7 +948,7 @@
       */
       const quizQuestions = [
         {
-          category: "Lounges",
+          category: "Gartenmöbel-Quiz",
           question: "Warum können die Gestelle nicht rosten?",
           options: [
             { text: "Edelstahl ist rostfrei, Aluminiumgestelle sind pulverbeschichtet.", correct: true },
@@ -1043,7 +957,7 @@
           ]
         },
         {
-          category: "Lounges",
+          category: "Gartenmöbel-Quiz",
           question: "Was bedeutet pulverbeschichtet?",
           options: [
             { text: "Die Möbel werden in Puderzucker getaucht, damit sie süßer aussehen.", correct: false },
@@ -1052,7 +966,7 @@
           ]
         },
         {
-          category: "Lounges",
+          category: "Gartenmöbel-Quiz",
           question: "Was zeichnet Sunproof®-Kissen aus?",
           options: [
             { text: "Sie wechseln die Farbe je nach Wetterlage.", correct: false },
@@ -1061,16 +975,16 @@
           ]
         },
         {
-          category: "Lounges",
+          category: "Gartenmöbel-Quiz",
           question: "Welche zwei Arten von wetterfesten Kissen gibt es?",
           options: [
-            { text: "QuickDry-Schaum (wasserdurchlässig) und innengummierte Kissen (wasserdicht).", correct: true },
             { text: "Magische Wolken-Kissen und selbstwärmende Kuschel-Kissen.", correct: false },
+            { text: "QuickDry-Schaum (wasserdurchlässig) und innengummierte Kissen (wasserdicht).", correct: true },
             { text: "Schwamm-Kissen und Luftballon-Kissen.", correct: false }
           ]
         },
         {
-          category: "Lounges",
+          category: "Gartenmöbel-Quiz",
           question: "Wie erkennt man, ob ein Kissen innengummiert ist?",
           options: [
             { text: "Wenn man es drückt, quietscht es.", correct: false },
@@ -1079,7 +993,7 @@
           ]
         },
         {
-          category: "Gartentische",
+          category: "Gartenmöbel-Quiz",
           question: "Was unterscheidet unsere Keramiktische von günstigeren Modellen?",
           options: [
             { text: "Man kann sie als Surfbrett benutzen.", correct: false },
@@ -1088,61 +1002,61 @@
           ]
         },
         {
-          category: "Gartentische",
+          category: "Gartenmöbel-Quiz",
           question: "Warum kann eine Keramikplatte nicht heiß werden?",
           options: [
-            { text: "Keramik ist hitzebeständig und nimmt Wärme nicht auf.", correct: true },
+            { text: "Die Tischplatte hat eingebaute Mini-Ventilatoren.", correct: false },
             { text: "Eine Zauberformel sorgt dafür, dass sie immer kühl bleibt.", correct: false },
-            { text: "Die Tischplatte hat eingebaute Mini-Ventilatoren.", correct: false }
+            { text: "Keramik ist hitzebeständig und nimmt Wärme nicht auf.", correct: true }
           ]
         },
         {
-          category: "Gartentische",
+          category: "Gartenmöbel-Quiz",
           question: "Warum ist Keramik besonders pflegeleicht?",
           options: [
-            { text: "Es wird mit einer Schutzschicht aus Drachenhaut versiegelt.", correct: false },
+            { text: "Es reinigt sich von selbst über Nacht.", correct: false },
             { text: "Es ist nicht porös und nimmt keine Flüssigkeiten oder Flecken auf.", correct: true },
-            { text: "Es reinigt sich von selbst über Nacht.", correct: false }
+            { text: "Es wird mit einer Schutzschicht aus Drachenhaut versiegelt.", correct: false }
           ]
         },
         {
-          category: "Gartentische",
+          category: "Gartenmöbel-Quiz",
           question: "Warum ist es sinnvoll, eine Hausratversicherung für einen Keramiktisch zu prüfen?",
           options: [
-            { text: "Falls der Tisch davonfliegt, bekommt man eine Entschädigung.", correct: false },
+            { text: "Manche Hausratversicherungen decken Keramikbruch ab.", correct: true },
             { text: "Falls ein Einhorn darauf landet, zahlt die Versicherung für den Schaden.", correct: false },
-            { text: "Manche Hausratversicherungen decken Keramikbruch ab.", correct: true }
+            { text: "Falls der Tisch davonfliegt, bekommt man eine Entschädigung.", correct: false }
           ]
         },
         {
-          category: "Gartenstühle",
+          category: "Gartenmöbel-Quiz",
           question: "Warum sind die Bezüge aus Batyline-Textilene besonders langlebig?",
           options: [
+            { text: "Weil sie jeden Morgen mit Kokosöl eingerieben werden.", correct: false },
             { text: "Sie sind nicht nur genäht, sondern auch verschweißt.", correct: true },
-            { text: "Sie sind mit Zaubergarn verstärkt.", correct: false },
-            { text: "Weil sie jeden Morgen mit Kokosöl eingerieben werden.", correct: false }
+            { text: "Sie werden mit Zaubergarn verstärkt.", correct: false }
           ]
         },
         {
-          category: "Gartenstühle",
+          category: "Gartenmöbel-Quiz",
           question: "Warum bleibt der Bezug eines hochwertigen Stuhls lange straff?",
           options: [
-            { text: "Der Bezug zieht sich bei Regen automatisch zusammen.", correct: false },
             { text: "Das Material hat eine hohe Spannkraft und wird nicht schnell träge.", correct: true },
+            { text: "Der Bezug zieht sich bei Regen automatisch zusammen.", correct: false },
             { text: "Der Stuhl trainiert jeden Morgen Yoga.", correct: false }
           ]
         },
         {
-          category: "Gartenstühle",
+          category: "Gartenmöbel-Quiz",
           question: "Was kann man mit einem hochwertigen Textilene-Stuhl als „Show-Effekt“ vorführen?",
           options: [
-            { text: "Ihn in eine Couch umbauen.", correct: false },
+            { text: "Draufstellen, um die Stabilität zu demonstrieren.", correct: true },
             { text: "Ihn in einen Liegestuhl verwandeln, indem man daran zieht.", correct: false },
-            { text: "Draufstellen, um die Stabilität zu demonstrieren.", correct: true }
+            { text: "Ihn in eine Couch umbauen.", correct: false }
           ]
         },
         {
-          category: "Gartenstühle",
+          category: "Gartenmöbel-Quiz",
           question: "Warum sind viele Gartenstühle stapelbar?",
           options: [
             { text: "Um sie platzsparend zu lagern.", correct: true },
@@ -1151,25 +1065,25 @@
           ]
         },
         {
-          category: "Gartenliegen",
+          category: "Gartenmöbel-Quiz",
           question: "Warum sind hochwertige Gartenliegen besonders bequem?",
           options: [
-            { text: "Sie sind mit einem unsichtbaren Federkern ausgestattet.", correct: false },
             { text: "Die Bespannung geht um den Rahmen herum, nicht nur dazwischen.", correct: true },
+            { text: "Sie sind mit einem unsichtbaren Federkern ausgestattet.", correct: false },
             { text: "Sie schweben leicht über dem Boden.", correct: false }
           ]
         },
         {
-          category: "Gartenliegen",
+          category: "Gartenmöbel-Quiz",
           question: "Warum haben einige Gartenliegen Rollen?",
           options: [
+            { text: "Damit sie leichter bewegt werden können.", correct: true },
             { text: "Damit man sie wie ein Skateboard benutzen kann.", correct: false },
-            { text: "Damit sie von alleine in die Sonne rollen.", correct: false },
-            { text: "Damit sie leichter bewegt werden können.", correct: true }
+            { text: "Damit sie von alleine in die Sonne rollen.", correct: false }
           ]
         },
         {
-          category: "Gartenliegen",
+          category: "Gartenmöbel-Quiz",
           question: "Was kann man mit einer hochwertigen Gartenliege als „Show-Effekt“ demonstrieren?",
           options: [
             { text: "Draufstellen, um die Stabilität zu zeigen.", correct: true },
@@ -1267,7 +1181,7 @@
       */
       const holzQuizQuestions = [
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Was ist der Hauptunterschied zwischen Massivholz und Furnier?",
           options: [
             { text: "Massivholz besteht durchgehend aus Holz, Furnier ist eine dünne Echtholzschicht auf einer Trägerplatte.", correct: true },
@@ -1276,7 +1190,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum sind Massivholzmöbel oft teurer als furnierte Möbel?",
           options: [
             { text: "Weil furnierte Möbel eigentlich nur aus Karton bestehen.", correct: false },
@@ -1285,7 +1199,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum arbeiten Massivholzmöbel bei wechselnder Luftfeuchtigkeit?",
           options: [
             { text: "Weil sie nachts lebendig werden.", correct: false },
@@ -1294,7 +1208,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Was macht Wildeiche anders als normale Eiche?",
           options: [
             { text: "Sie hat eine lebendigere Maserung mit mehr Ästen.", correct: true },
@@ -1303,7 +1217,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum ist Eiche ein beliebtes Holz für Möbel?",
           options: [
             { text: "Weil es sich selbst polieren kann.", correct: false },
@@ -1312,7 +1226,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum sollte man Wildeiche nicht mit zu viel Wasser reinigen?",
           options: [
             { text: "Weil es dann aufhört, Wildeiche zu sein.", correct: false },
@@ -1321,7 +1235,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Was unterscheidet Kernbuche von normaler Buche?",
           options: [
             { text: "Sie hat eine auffälligere Maserung mit mehr Farbspiel.", correct: true },
@@ -1330,7 +1244,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum ist Kernbuche beliebt für Möbel?",
           options: [
             { text: "Weil sie von Natur aus glänzt.", correct: false },
@@ -1339,7 +1253,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum kann Kernbuche trotz harter Oberfläche empfindlich für Druckstellen sein?",
           options: [
             { text: "Weil sie nachts weicher wird.", correct: false },
@@ -1348,7 +1262,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Was macht Nussbaumholz besonders edel?",
           options: [
             { text: "Die dunkle Maserung und feine Struktur.", correct: true },
@@ -1357,7 +1271,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum ist Nussbaumholz teurer als viele andere Holzarten?",
           options: [
             { text: "Weil es von Zauberbäumen stammt.", correct: false },
@@ -1366,7 +1280,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum wird Nussbaum häufig geölt statt lackiert?",
           options: [
             { text: "Weil Öl das Holz unzerstörbar macht.", correct: false },
@@ -1375,7 +1289,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum duftet Arvenholz so intensiv?",
           options: [
             { text: "Weil es ätherische Öle enthält, die eine beruhigende Wirkung haben.", correct: true },
@@ -1384,7 +1298,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum wird Arvenholz oft für Schlafzimmermöbel verwendet?",
           options: [
             { text: "Weil es im Dunkeln leuchtet.", correct: false },
@@ -1393,7 +1307,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum werden Astulme-Möbel oft geölt?",
           options: [
             { text: "Weil geöltes Holz besser Musik abspielt.", correct: false },
@@ -1402,7 +1316,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Was ist der Vorteil von geöltem Holz?",
           options: [
             { text: "Es betont die Maserung und lässt das Holz atmen.", correct: true },
@@ -1411,25 +1325,25 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Was ist der Vorteil von lackierten Möbeln?",
           options: [
-            { text: "Sie riechen nach Vanille.", correct: false },
+            { text: "Sie reflektieren Sonnenlicht.", correct: false },
             { text: "Sie sind widerstandsfähiger gegen Kratzer und Flüssigkeiten.", correct: true },
-            { text: "Sie reflektieren Sonnenlicht.", correct: false }
+            { text: "Sie riechen nach Vanille.", correct: false }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Wie oft sollte man geölte Möbel nachbehandeln?",
           options: [
-            { text: "Nie, sie bleiben für immer perfekt.", correct: false },
+            { text: "Alle paar Monate oder nach Bedarf.", correct: true },
             { text: "Jeden Tag, sonst verschwinden sie.", correct: false },
-            { text: "Alle paar Monate oder nach Bedarf.", correct: true }
+            { text: "Nie, sie bleiben für immer perfekt.", correct: false }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Wie sollte man Massivholzmöbel reinigen?",
           options: [
             { text: "Mit einem leicht feuchten Tuch und milder Seife.", correct: true },
@@ -1438,7 +1352,7 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum sollte man geölte Möbel nicht mit scharfen Reinigungsmitteln putzen?",
           options: [
             { text: "Weil das Holz dann zu Staub zerfällt.", correct: false },
@@ -1447,16 +1361,16 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum eignen sich viele Massivhölzer besonders für langlebige Möbel?",
           options: [
-            { text: "Weil sie sich selbst erneuern.", correct: false },
+            { text: "Weil sie sehr robust und widerstandsfähig sind.", correct: true },
             { text: "Weil sie magisch verstärkt werden.", correct: false },
-            { text: "Weil sie sehr robust und widerstandsfähig sind.", correct: true }
+            { text: "Weil sie sich selbst erneuern.", correct: false }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Wie kann man geölte Holzoberflächen auffrischen?",
           options: [
             { text: "Mit etwas neuem Öl und einem weichen Tuch.", correct: true },
@@ -1465,138 +1379,138 @@
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum sollte man Massivholzmöbel nicht direkt neben Heizkörpern aufstellen?",
           options: [
-            { text: "Weil das Holz austrocknen und Risse bekommen kann.", correct: true },
             { text: "Weil das Holz dann zu glühen beginnt.", correct: false },
-            { text: "Weil es sich in eine Plastikoberfläche verwandelt.", correct: false }
+            { text: "Weil es sich in eine Plastikoberfläche verwandelt.", correct: false },
+            { text: "Weil das Holz austrocknen und Risse bekommen kann.", correct: true }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Welche Holzart ist besonders widerstandsfähig gegen Feuchtigkeit?",
           options: [
+            { text: "Astulme, weil sie in Wasser aufblüht.", correct: false },
             { text: "Kernbuche, weil sie aus einem Zauberwald stammt.", correct: false },
-            { text: "Eiche, da sie von Natur aus gerbsäurehaltig und widerstandsfähig ist.", correct: true },
-            { text: "Astulme, weil sie in Wasser aufblüht.", correct: false }
+            { text: "Eiche, da sie von Natur aus gerbsäurehaltig und widerstandsfähig ist.", correct: true }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum verändert sich die Farbe von Massivholz im Laufe der Zeit?",
           options: [
-            { text: "Weil es von Natur aus Chamäleon-Gene hat.", correct: false },
             { text: "Weil es sich an die Laune des Besitzers anpasst.", correct: false },
-            { text: "Durch UV-Strahlung und Oxidation verändert sich die Holzfarbe.", correct: true }
+            { text: "Durch UV-Strahlung und Oxidation verändert sich die Holzfarbe.", correct: true },
+            { text: "Weil es von Natur aus Chamäleon-Gene hat.", correct: false }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum sollte man niemals heiße Töpfe direkt auf eine geölte Holzplatte stellen?",
           options: [
-            { text: "Weil die Hitze die Öl-Schicht beschädigt und Flecken entstehen können.", correct: true },
+            { text: "Weil der Tisch dann Feuer fangen könnte.", correct: false },
             { text: "Weil das Holz sich verformt und zu tanzen beginnt.", correct: false },
-            { text: "Weil der Tisch dann Feuer fangen könnte.", correct: false }
+            { text: "Weil die Hitze die Öl-Schicht beschädigt und Flecken entstehen können.", correct: true }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum sollten bei furnierten Möbeln keine scharfen Reinigungsmitteln verwendet werden?",
           options: [
-            { text: "Weil sie sich dann auflösen.", correct: false },
+            { text: "Weil sie anfangen zu kleben.", correct: false },
             { text: "Weil die dünne Furnierschicht beschädigt werden kann.", correct: true },
-            { text: "Weil sie anfangen zu kleben.", correct: false }
+            { text: "Weil sie sich dann auflösen.", correct: false }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Wie kann man geöltes Holz gegen Flecken schützen?",
           options: [
-            { text: "Indem man eine Schutzzauberformel drauf spricht.", correct: false },
+            { text: "Durch regelmäßiges Nachölen und schnelles Aufwischen von Flüssigkeiten.", correct: true },
             { text: "Indem man es mit Plastikfolie abdeckt.", correct: false },
-            { text: "Durch regelmäßiges Nachölen und schnelles Aufwischen von Flüssigkeiten.", correct: true }
+            { text: "Indem man eine Schutzzauberformel drauf spricht.", correct: false }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Was passiert, wenn man einen Kratzer auf lackiertem Holz ausbessern möchte?",
           options: [
-            { text: "Kleinere Kratzer kann man mit speziellem Lackstift ausbessern.", correct: true },
+            { text: "Man muss das ganze Möbelstück komplett neu streichen.", correct: false },
             { text: "Man kann einfach mit Wasser darüber wischen, dann verschwindet er.", correct: false },
-            { text: "Man muss das ganze Möbelstück komplett neu streichen.", correct: false }
+            { text: "Kleinere Kratzer kann man mit speziellem Lackstift ausbessern.", correct: true }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum werden geölte Oberflächen nicht komplett versiegelt?",
           options: [
+            { text: "Weil versiegelte Möbel nicht mehr geölt werden dürfen.", correct: false },
             { text: "Weil das Öl von selbst eine unsichtbare Schutzschicht bildet.", correct: false },
-            { text: "Damit das Holz atmen und weiterhin Feuchtigkeit regulieren kann.", correct: true },
-            { text: "Weil versiegelte Möbel nicht mehr geölt werden dürfen.", correct: false }
+            { text: "Damit das Holz atmen und weiterhin Feuchtigkeit regulieren kann.", correct: true }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Welche Holzart ist besonders aromatisch und wird oft für Innenräume genutzt?",
           options: [
-            { text: "Wildeiche, weil sie nach Zimt riecht.", correct: false },
             { text: "Kernbuche, weil sie nach Schokolade duftet.", correct: false },
+            { text: "Wildeiche, weil sie nach Zimt riecht.", correct: false },
             { text: "Arvenholz, da es ätherische Öle freisetzt.", correct: true }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Welche Maserung hat Nussbaumholz typischerweise?",
           options: [
-            { text: "Dunkel, mit feinen, geschwungenen Linien.", correct: true },
             { text: "Ganz glatt, ohne Struktur.", correct: false },
-            { text: "Hell, mit wilden Knoten.", correct: false }
+            { text: "Hell, mit wilden Knoten.", correct: false },
+            { text: "Dunkel, mit feinen, geschwungenen Linien.", correct: true }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum ist es wichtig, Massivholzmöbel regelmäßig zu pflegen?",
           options: [
+            { text: "Weil sie sich selbst erneuern.", correct: false },
             { text: "Weil sich sonst Tiere im Holz einnisten.", correct: false },
-            { text: "Damit das Holz seine Schönheit und Widerstandsfähigkeit behält.", correct: true },
-            { text: "Weil sie sonst anfangen zu wachsen.", correct: false }
+            { text: "Damit das Holz seine Schönheit und Widerstandsfähigkeit behält.", correct: true }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Was kann passieren, wenn man ein Massivholzmöbel zu lange in direkter Sonne stehen lässt?",
           options: [
-            { text: "Es beginnt zu leuchten.", correct: false },
             { text: "Es färbt sich blau.", correct: false },
+            { text: "Es beginnt zu leuchten.", correct: false },
             { text: "Es kann ausbleichen und sich verziehen.", correct: true }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum werden manche Möbel aus recyceltem Holz gefertigt?",
           options: [
-            { text: "Um Ressourcen zu schonen und alten Hölzern eine neue Nutzung zu geben.", correct: true },
+            { text: "Weil es billiger ist und nach Plastik riecht.", correct: false },
             { text: "Weil recyceltes Holz eine unzerstörbare Zauberschicht hat.", correct: false },
-            { text: "Weil es billiger ist und nach Plastik riecht.", correct: false }
+            { text: "Um Ressourcen zu schonen und alten Hölzern eine neue Nutzung zu geben.", correct: true }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Welche Holzart wird gerne für Landhausmöbel verwendet?",
           options: [
             { text: "Arvenholz, weil es sich von selbst streicht.", correct: false },
-            { text: "Wildeiche, wegen ihrer rustikalen und lebhaften Optik.", correct: true },
-            { text: "Nussbaum, weil es immer knistert.", correct: false }
+            { text: "Nussbaum, weil es immer knistert.", correct: false },
+            { text: "Wildeiche, wegen ihrer rustikalen und lebhaften Optik.", correct: true }
           ]
         },
         {
-          category: "Holzmöbel",
+          category: "Holzmöbel-Quiz",
           question: "Warum sind Massivholzmöbel oft Unikate?",
           options: [
+            { text: "Weil jede Holzmaserung einzigartig ist.", correct: true },
             { text: "Weil sie von Elfen handgeschnitzt werden.", correct: false },
-            { text: "Weil sie sich nachts von selbst verändern.", correct: false },
-            { text: "Weil jede Holzmaserung einzigartig ist.", correct: true }
+            { text: "Weil sie sich nachts von selbst verändern.", correct: false }
           ]
         }
       ];
@@ -1683,68 +1597,455 @@
           nextQuestionHolzBtn.style.display = "none";
         }
       });
-    });
 
-    /* ------------------ Ehrenrunde Mission Funktionen ------------------ */
-    function updateProgressBar() {
-      let points = parseInt(localStorage.getItem('points')) || 0;
-      let percentage = (points / 5) * 100;
-      document.getElementById('progressBar').style.width = percentage + "%";
-    }
-
-    function addPoint() {
-      let points = parseInt(localStorage.getItem('points')) || 0;
-      if (points < 5) {
-        points++;
-        localStorage.setItem('points', points);
-        document.getElementById('points').innerText = points;
-        updateProgressBar();
+      /* ------------------ NEUES: Polstermöbel-Quiz ------------------
+         Quiz aus dem Fachtraining Polstergruppen (mind. 40 Fragen, lustige falsche Antworten, wechselnde Position der richtigen Antwort)
+      */
+      const polstermoebelQuizQuestions = [
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welches Merkmal kennzeichnet eine hochwertige Polsterung?",
+          options: [
+            { text: "Mehrlagige Polsterung mit unterschiedlichen Härtegraden.", correct: true },
+            { text: "Ein eingebauter Kühlschrank im Sofa.", correct: false },
+            { text: "Polsterung aus Einhornhaar.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Woran erkennt man eine qualitative Polsterung?",
+          options: [
+            { text: "An einer Farbe, die im Dunkeln leuchtet.", correct: false },
+            { text: "An einer mehrschichtigen Zusammensetzung aus Kammern und Schaumstoffen.", correct: true },
+            { text: "An einer eingebauten Popcorn-Maschine im Sitz.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Was ist ein typisches Qualitätsmerkmal beim Gestell von hochwertigen Sofas?",
+          options: [
+            { text: "Ein Gestell aus Schaumstoff, das bei Berührung weich wird.", correct: false },
+            { text: "Ein Gestell, das sich selbst zusammenbaut.", correct: false },
+            { text: "Verzapfte, verschraubte oder durch Dübel verbundene Konstruktion aus formbeständigem Massivholz.", correct: true }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "In welchem Land werden hochwertige Polstermöbel überwiegend hergestellt?",
+          options: [
+            { text: "Deutschland", correct: true },
+            { text: "Atlantis", correct: false },
+            { text: "Mars", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welcher Faktor ist besonders wichtig für den Sitz- und Liegekomfort eines Sofas?",
+          options: [
+            { text: "Ein eingebauter Massageeffekt, der permanent aktiviert ist.", correct: false },
+            { text: "Ein starker Federkern und mehrschichtige Schaumstoffe.", correct: true },
+            { text: "Sitzkissen aus recyceltem Popcorn.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Was unterscheidet eine hochwertige Couch von einer minderwertigen in Bezug auf die Verarbeitung?",
+          options: [
+            { text: "Hochwertige Couches werden in Handarbeit und mit schadstofffreien Leimen gefertigt.", correct: true },
+            { text: "Minderwertige Couches sind mit Wunderpulver beschichtet.", correct: false },
+            { text: "Hochwertige Couches haben einen eingebauten Zauberspiegel.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welcher der folgenden Punkte ist KEIN Qualitätsmerkmal eines Polstermöbels?",
+          options: [
+            { text: "Mehrlagige, atmungsaktive Polsterung.", correct: false },
+            { text: "Verarbeitungsdefizite, die zu verrutschenden Nähten führen.", correct: true },
+            { text: "Stabile Rahmenkonstruktion aus Massivholz.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welches Material wird oft als Bezug bei hochwertigen Sofas verwendet und ist für seine edle Optik bekannt?",
+          options: [
+            { text: "Leder.", correct: true },
+            { text: "Plastik, das wie Leder aussieht.", correct: false },
+            { text: "Gummibärchen.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welcher Vorteil wird oft mit Lederbezügen in Verbindung gebracht?",
+          options: [
+            { text: "Kann als Sicherheitsgurt genutzt werden.", correct: false },
+            { text: "Temperaturausgleichend und edle Optik.", correct: true },
+            { text: "Leuchtet im Dunkeln.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welche Eigenschaft ist bei textilen Bezügen von Sofas besonders wichtig?",
+          options: [
+            { text: "Die Fähigkeit, automatisch Staub zu entfernen.", correct: false },
+            { text: "Verwandelt sich in ein Kissen, wenn man niest.", correct: false },
+            { text: "Pflegeleichtigkeit und Strapazierfähigkeit.", correct: true }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Was bedeutet 'Ledergerbung' im Zusammenhang mit hochwertigen Polstermöbeln?",
+          options: [
+            { text: "Ein Verfahren zur Behandlung von Leder, um Langlebigkeit und edle Optik zu gewährleisten.", correct: true },
+            { text: "Das Leder wird mit feurigen Drachenflammen gebrannt.", correct: false },
+            { text: "Das Leder wird in eine Form von Pudding verwandelt.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welches dieser Merkmale spricht für die Langlebigkeit eines hochwertigen Sofas?",
+          options: [
+            { text: "Ein eingebauter Kaffeeautomat.", correct: false },
+            { text: "Mehrschichtige Polsterung und stabile Rahmenkonstruktion.", correct: true },
+            { text: "Ein magnetischer Fußboden, der das Sofa schweben lässt.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Wie wird die Qualität einer Polsterung typischerweise überprüft?",
+          options: [
+            { text: "Indem man das Sofa in der Sonne zum Schmelzen bringt.", correct: false },
+            { text: "Durch Hören, ob es flüstert.", correct: false },
+            { text: "Durch Testen des Sitz- und Liegekomforts.", correct: true }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welche Aussage trifft auf die Herstellung von hochwertigen Polstermöbeln zu?",
+          options: [
+            { text: "Sie werden in Massenproduktionen in fernen Galaxien hergestellt.", correct: false },
+            { text: "Sie entstehen durch Magie in verzauberten Wäldern.", correct: false },
+            { text: "Sie werden meist in Familienunternehmen in Deutschland in Handarbeit gefertigt.", correct: true }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welche der folgenden Aussagen beschreibt den Aufbau einer hochwertigen Polsterung?",
+          options: [
+            { text: "Sie ist aus einer einzigen, dünnen Schicht zusammengepresst.", correct: false },
+            { text: "Sie besteht aus einer unteren Schicht mit Kammern oder Federkern und mehreren Schichten Schaumstoff.", correct: true },
+            { text: "Sie ist aus fluffiger Zuckerwatte hergestellt.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Was ist ein wichtiges Qualitätsmerkmal bei der Rahmenkonstruktion von Polstermöbeln?",
+          options: [
+            { text: "Eine Konstruktion, die bei Berührung melodisch summt.", correct: false },
+            { text: "Ein Rahmen, der sich selbst repariert.", correct: false },
+            { text: "Verzapfte und verschraubte Verbindungselemente aus formbeständigem Massivholz.", correct: true }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welcher Faktor ist bei der Auswahl eines Bezugs für Polstermöbel entscheidend?",
+          options: [
+            { text: "Der persönliche Geschmack und die Pflegeleichtigkeit des Materials.", correct: true },
+            { text: "Ob der Bezug im Dunkeln glitzert.", correct: false },
+            { text: "Ob er mit dem Lieblingslied des Kunden synchronisiert ist.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welche der folgenden Aussagen ist KEIN Qualitätsmerkmal von hochwertigen Polstermöbeln im Bereich Stoffe?",
+          options: [
+            { text: "Mehrlagige, atmungsaktive Polsterung.", correct: false },
+            { text: "Verarbeitungsdefizite, die zu Pillbildung führen.", correct: true },
+            { text: "Gute Lichtechtheit.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Was versteht man unter 'Reibechtheit' bei Stoffen?",
+          options: [
+            { text: "Die Fähigkeit des Stoffes, bei Berührung zu singen.", correct: false },
+            { text: "Die Fähigkeit des Stoffes, sich in einen Teppich zu verwandeln.", correct: false },
+            { text: "Die Fähigkeit des Stoffes, Farbe auf andere Textilien zu übertragen.", correct: true }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Wie wird die Lichtechtheit eines Stoffes gemessen?",
+          options: [
+            { text: "Durch Bestrahlung mit künstlichem UV-Licht und Vergleich mit einer abgedeckten Probe.", correct: true },
+            { text: "Durch Anzünden des Stoffes und Beobachtung des Flammenmusters.", correct: false },
+            { text: "Indem man den Stoff bei Sonnenuntergang tanzen lässt.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welche Stoffart hat keinen Flor und kann eine glatte bis strukturierte Oberfläche aufweisen?",
+          options: [
+            { text: "Velours.", correct: false },
+            { text: "Flachgewebe.", correct: true },
+            { text: "Flockvelours.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welche Stoffart zeichnet sich durch eine flauschige Oberfläche aus?",
+          options: [
+            { text: "Velours.", correct: true },
+            { text: "Mikrofaser.", correct: false },
+            { text: "Flachgewebe.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welche Stoffart entsteht durch Aufbringen feiner Flocken mittels Klebstoff auf ein Grundgewebe?",
+          options: [
+            { text: "Velours.", correct: false },
+            { text: "Falsches Velours.", correct: false },
+            { text: "Flockvelours.", correct: true }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welche Stoffart bietet eine Wildleder-ähnliche Optik und ist sehr strapazierfähig?",
+          options: [
+            { text: "Mikrofaser.", correct: true },
+            { text: "Bunt gemischter Baumwollstoff.", correct: false },
+            { text: "Kunstleder, das wie Mikrofaser aussieht.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Was ist ein wichtiges Qualitätsmerkmal von Polstermöbelbezügen im Bereich Stoffe?",
+          options: [
+            { text: "Automatischer Farbwechsel.", correct: false },
+            { text: "Hohe Scheuerbeständigkeit.", correct: true },
+            { text: "Geräuschlose Bewegung bei Wind.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Was bedeutet 'Pillbildung' bei Stoffen?",
+          options: [
+            { text: "Das Hinzufügen von winzigen Pillen zur Stabilisierung.", correct: false },
+            { text: "Das Verdoppeln der Farbe durch Druck.", correct: false },
+            { text: "Das Bilden von kleinen Knötchen auf der Oberfläche des Stoffs.", correct: true }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Was versteht man unter 'Lichtechtheit'?",
+          options: [
+            { text: "Die Fähigkeit des Stoffes, im Dunkeln zu leuchten.", correct: false },
+            { text: "Die Widerstandsfähigkeit des farbigen Stoffs gegenüber UV-Licht.", correct: true },
+            { text: "Die Fähigkeit des Stoffes, Licht zu reflektieren.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welches Qualitätsmerkmal von Stoffen wird in 5 Stufen beurteilt?",
+          options: [
+            { text: "Flauschigkeitsgrad.", correct: false },
+            { text: "Glanzintensität.", correct: false },
+            { text: "Reibechtheit.", correct: true }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welches Merkmal gehört NICHT zu den 4 wichtigsten Qualitätsmerkmalen von Polstermöbeln im Bereich Stoffe?",
+          options: [
+            { text: "Scheuerbeständigkeit.", correct: false },
+            { text: "Pillbildung.", correct: true },
+            { text: "Lichtechtheit.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Was sollte man bei der Pflege von Polstermöbeln beachten?",
+          options: [
+            { text: "Mit einem Hochdruckreiniger abspritzen.", correct: false },
+            { text: "Die Möbel in den Gefrierschrank legen.", correct: false },
+            { text: "Regelmäßiges Nachölen und schnelles Aufwischen von Flüssigkeiten.", correct: true }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welches Element ist typischerweise Teil der Polsterung eines hochwertigen Sofas?",
+          options: [
+            { text: "Ein Federkern.", correct: true },
+            { text: "Ein eingebauter Lautsprecher.", correct: false },
+            { text: "Ein faltbarer Schirm.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welche Verbindungsmethode wird bei hochwertigen Polstermöbeln bevorzugt, um Stabilität zu gewährleisten?",
+          options: [
+            { text: "Zusammenkleben mit magischem Sirup.", correct: false },
+            { text: "Verzapfen und Verschrauben.", correct: true },
+            { text: "Verschweißen mit Laser.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Was macht einen hochwertigen Stoffbezug strapazierfähig?",
+          options: [
+            { text: "Die Fähigkeit, Geräusche zu machen.", correct: false },
+            { text: "Automatisches Verändern der Textur.", correct: false },
+            { text: "Hohe Reibechtheit.", correct: true }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welches Kriterium trägt zur Langlebigkeit eines hochwertigen Polstermöbels bei?",
+          options: [
+            { text: "Eine stabile Rahmenkonstruktion und hochwertige Polsterung.", correct: true },
+            { text: "Ein eingebauter Schmusemodus.", correct: false },
+            { text: "Das regelmäßige Austauschen des Bezugs.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Warum ist eine abgerundete Konstruktion an häufig beanspruchten Stellen wichtig?",
+          options: [
+            { text: "Damit das Sofa besser tanzt.", correct: false },
+            { text: "Um das Durchscheuern der Möbel zu verhindern.", correct: true },
+            { text: "Damit die Kanten leuchten.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welche Aussage trifft auf die Verarbeitung von hochwertigen Polstermöbeln zu?",
+          options: [
+            { text: "Sie werden von Robotern in einer futuristischen Fabrik hergestellt.", correct: false },
+            { text: "Sie werden in nur einer Stunde zusammengebaut.", correct: false },
+            { text: "Sie werden in Handarbeit gefertigt und weisen eine hervorragende Verarbeitung auf.", correct: true }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Was ist ein Zeichen für eine minderwertige Polsterung?",
+          options: [
+            { text: "Zu starkes Einsinken der Polsterung.", correct: true },
+            { text: "Ein eingebauter Wecker im Polster.", correct: false },
+            { text: "Ein automatischer Kaffeebereiter im Sitz.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welche Aussage beschreibt den Bezug von hochwertigen Designer-Sofas am besten?",
+          options: [
+            { text: "Er besteht aus recyceltem Konfetti.", correct: false },
+            { text: "Er ist oft textil, pflegeleicht und strapazierfähig.", correct: true },
+            { text: "Er ändert seine Farbe je nach Stimmung des Besitzers.", correct: false }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Welches Kriterium ist bei der Auswahl eines Polsterbezugs besonders wichtig?",
+          options: [
+            { text: "Ob der Bezug mit Musik synchronisiert ist.", correct: false },
+            { text: "Ob der Bezug im Regen tanzt.", correct: false },
+            { text: "Der persönliche Geschmack des Kunden.", correct: true }
+          ]
+        },
+        {
+          category: "Polstermöbel-Quiz",
+          question: "Was trägt zur Langlebigkeit eines hochwertigen Polstermöbels bei?",
+          options: [
+            { text: "Eine stabile Rahmenkonstruktion und hochwertige Polsterung.", correct: true },
+            { text: "Ein eingebauter Schmusemodus.", correct: false },
+            { text: "Das regelmäßige Austauschen des Bezugs.", correct: false }
+          ]
+        }
+      ];
+      let currentPolstermoebelQuestionIndex = 0;
+      let polstermoebelScore = 0;
+      const startQuizPolstermoebelBtn = document.getElementById("start-quiz-polstermoebel");
+      const quizInstructionsPolstermoebel = document.getElementById("quiz-instructions-polstermoebel");
+      const quizContentPolstermoebel = document.getElementById("quiz-content-polstermoebel");
+      const questionTextPolstermoebel = document.getElementById("question-text-polstermoebel");
+      const answersContainerPolstermoebel = document.getElementById("answers-container-polstermoebel");
+      const feedbackPolstermoebelEl = document.getElementById("feedback-polstermoebel");
+      const nextQuestionPolstermoebelBtn = document.getElementById("next-question-polstermoebel");
+      const scoreCounterPolstermoebelEl = document.getElementById("score-counter-polstermoebel");
+      function updateScoreCounterPolstermoebel() {
+        scoreCounterPolstermoebelEl.innerText = "Punkte: " + polstermoebelScore;
       }
-      if (points === 5) {
-        alert("🏆 Ziel erreicht! Super gemacht!");
+      startQuizPolstermoebelBtn.addEventListener("click", function() {
+        quizInstructionsPolstermoebel.style.display = "none";
+        quizContentPolstermoebel.style.display = "block";
+        currentPolstermoebelQuestionIndex = 0;
+        polstermoebelScore = 0;
+        updateScoreCounterPolstermoebel();
+        showPolstermoebelQuizQuestion();
+      });
+      function showPolstermoebelQuizQuestion() {
+        feedbackPolstermoebelEl.innerHTML = "";
+        nextQuestionPolstermoebelBtn.style.display = "none";
+        answersContainerPolstermoebel.innerHTML = "";
+        const currentQuestion = polstermoebelQuizQuestions[currentPolstermoebelQuestionIndex];
+        questionTextPolstermoebel.textContent = currentQuestion.question;
+        currentQuestion.options.forEach(option => {
+          const btn = document.createElement("button");
+          btn.textContent = option.text;
+          btn.className = "answer-btn";
+          btn.addEventListener("click", function() {
+            Array.from(answersContainerPolstermoebel.children).forEach(child => child.disabled = true);
+            if(option.correct) {
+              btn.classList.add("correct");
+              polstermoebelScore++;
+              feedbackPolstermoebelEl.innerHTML = '<span style="color: green;">&#128512;</span>';
+              let duration = 2000;
+              let animationEnd = Date.now() + duration;
+              (function frame() {
+                confetti({
+                  particleCount: 5,
+                  angle: 60,
+                  spread: 55,
+                  origin: { x: 0 }
+                });
+                confetti({
+                  particleCount: 5,
+                  angle: 120,
+                  spread: 55,
+                  origin: { x: 1 }
+                });
+                if (Date.now() < animationEnd) {
+                  requestAnimationFrame(frame);
+                }
+              }());
+            } else {
+              btn.classList.add("incorrect");
+              polstermoebelScore--;
+              feedbackPolstermoebelEl.innerHTML = '<span style="color: red;">&#128577;</span>';
+            }
+            updateScoreCounterPolstermoebel();
+            nextQuestionPolstermoebelBtn.style.display = "block";
+          });
+          answersContainerPolstermoebel.appendChild(btn);
+        });
       }
-    }
-
-    function resetProgress() {
-      localStorage.setItem('points', 0);
-      document.getElementById('points').innerText = 0;
-      updateProgressBar();
-      alert("🔄 Fortschritt wurde zurückgesetzt.");
-    }
-
-    function confirmReminder() {
-      localStorage.setItem('reminderDone', 'true');
-      document.getElementById('resetReminderBtn').classList.remove('hidden');
-      document.getElementById('thumbsReminder').style.display = 'inline';
-      alert("Super! Ehrenrunde erledigt. Weiter so! 💪");
-    }
-
-    function resetReminder() {
-      localStorage.removeItem('reminderDone');
-      document.getElementById('resetReminderBtn').classList.add('hidden');
-      document.getElementById('thumbsReminder').style.display = 'none';
-      alert("🔄 Tages-Erinnerung zurückgesetzt.");
-    }
-
-    function confirmTeamReminder() {
-      localStorage.setItem('teamReminderDone', 'true');
-      document.getElementById('resetTeamReminderBtn').classList.remove('hidden');
-      document.getElementById('thumbsTeamReminder').style.display = 'inline';
-      alert("👍 Du hast einen Kollegen an die Ehrenrunde erinnert!");
-    }
-
-    function resetTeamReminder() {
-      localStorage.removeItem('teamReminderDone');
-      document.getElementById('resetTeamReminderBtn').classList.add('hidden');
-      document.getElementById('thumbsTeamReminder').style.display = 'none';
-      alert("🔄 Kollegen-Erinnerung zurückgesetzt.");
-    }
-
-    // Initialisierung der Ehrenrunde Mission beim Laden der Seite
-    document.addEventListener("DOMContentLoaded", function() {
-      let points = parseInt(localStorage.getItem('points')) || 0;
-      document.getElementById('points').innerText = points;
-      updateProgressBar();
+      nextQuestionPolstermoebelBtn.addEventListener("click", function() {
+        currentPolstermoebelQuestionIndex++;
+        if(currentPolstermoebelQuestionIndex < polstermoebelQuizQuestions.length) {
+          showPolstermoebelQuizQuestion();
+        } else {
+          if(polstermoebelScore === polstermoebelQuizQuestions.length) {
+            questionTextPolstermoebel.innerHTML = '<div class="thumbs-up">👍</div><div class="final-message">Super - Du hast es geschafft.<br>Du hast ' + polstermoebelScore + ' von ' + polstermoebelQuizQuestions.length + ' Punkten erreicht</div>';
+            feedbackPolstermoebelEl.innerHTML = "";
+            confetti({ particleCount: 100, spread: 70, origin: { x: 0.5, y: 0.3 } });
+          } else {
+            questionTextPolstermoebel.textContent = "Quiz abgeschlossen! Vielen Dank fürs Mitmachen. Du hast " + polstermoebelScore + " von " + polstermoebelQuizQuestions.length + " Punkten erreicht.";
+          }
+          answersContainerPolstermoebel.innerHTML = "";
+          nextQuestionPolstermoebelBtn.style.display = "none";
+        }
+      });
     });
   </script>
   
