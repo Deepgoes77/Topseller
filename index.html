@@ -1524,4 +1524,229 @@
           options: [
             { text: "Kleinere Kratzer kann man mit speziellem Lackstift ausbessern.", correct: true },
             { text: "Man kann einfach mit Wasser darüber wischen, dann verschwindet er.", correct: false },
-            { text: "Man muss das ganze Möbelstü
+            { text: "Man muss das ganze Möbelstück komplett neu streichen.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum werden geölte Oberflächen nicht komplett versiegelt?",
+          options: [
+            { text: "Weil das Öl von selbst eine unsichtbare Schutzschicht bildet.", correct: false },
+            { text: "Damit das Holz atmen und weiterhin Feuchtigkeit regulieren kann.", correct: true },
+            { text: "Weil versiegelte Möbel nicht mehr geölt werden dürfen.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Welche Holzart ist besonders aromatisch und wird oft für Innenräume genutzt?",
+          options: [
+            { text: "Wildeiche, weil sie nach Zimt riecht.", correct: false },
+            { text: "Kernbuche, weil sie nach Schokolade duftet.", correct: false },
+            { text: "Arvenholz, da es ätherische Öle freisetzt.", correct: true }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Welche Maserung hat Nussbaumholz typischerweise?",
+          options: [
+            { text: "Dunkel, mit feinen, geschwungenen Linien.", correct: true },
+            { text: "Ganz glatt, ohne Struktur.", correct: false },
+            { text: "Hell, mit wilden Knoten.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum ist es wichtig, Massivholzmöbel regelmäßig zu pflegen?",
+          options: [
+            { text: "Weil sich sonst Tiere im Holz einnisten.", correct: false },
+            { text: "Damit das Holz seine Schönheit und Widerstandsfähigkeit behält.", correct: true },
+            { text: "Weil sie sonst anfangen zu wachsen.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Was kann passieren, wenn man ein Massivholzmöbel zu lange in direkter Sonne stehen lässt?",
+          options: [
+            { text: "Es beginnt zu leuchten.", correct: false },
+            { text: "Es färbt sich blau.", correct: false },
+            { text: "Es kann ausbleichen und sich verziehen.", correct: true }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum werden manche Möbel aus recyceltem Holz gefertigt?",
+          options: [
+            { text: "Um Ressourcen zu schonen und alten Hölzern eine neue Nutzung zu geben.", correct: true },
+            { text: "Weil recyceltes Holz eine unzerstörbare Zauberschicht hat.", correct: false },
+            { text: "Weil es billiger ist und nach Plastik riecht.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Welche Holzart wird gerne für Landhausmöbel verwendet?",
+          options: [
+            { text: "Arvenholz, weil es sich von selbst streicht.", correct: false },
+            { text: "Wildeiche, wegen ihrer rustikalen und lebhaften Optik.", correct: true },
+            { text: "Nussbaum, weil es immer knistert.", correct: false }
+          ]
+        },
+        {
+          category: "Holzmöbel",
+          question: "Warum sind Massivholzmöbel oft Unikate?",
+          options: [
+            { text: "Weil sie von Elfen handgeschnitzt werden.", correct: false },
+            { text: "Weil sie sich nachts von selbst verändern.", correct: false },
+            { text: "Weil jede Holzmaserung einzigartig ist.", correct: true }
+          ]
+        }
+      ];
+      let currentHolzQuestionIndex = 0;
+      let holzScore = 0;
+      const startQuizHolzBtn = document.getElementById("start-quiz-holz");
+      const quizInstructionsHolz = document.getElementById("quiz-instructions-holz");
+      const quizContentHolz = document.getElementById("quiz-content-holz");
+      const questionTextHolz = document.getElementById("question-text-holz");
+      const answersContainerHolz = document.getElementById("answers-container-holz");
+      const feedbackHolzEl = document.getElementById("feedback-holz");
+      const nextQuestionHolzBtn = document.getElementById("next-question-holz");
+      const scoreCounterHolzEl = document.getElementById("score-counter-holz");
+      function updateScoreCounterHolz() {
+        scoreCounterHolzEl.innerText = "Punkte: " + holzScore;
+      }
+      startQuizHolzBtn.addEventListener("click", function() {
+        quizInstructionsHolz.style.display = "none";
+        quizContentHolz.style.display = "block";
+        currentHolzQuestionIndex = 0;
+        holzScore = 0;
+        updateScoreCounterHolz();
+        showHolzQuizQuestion();
+      });
+      function showHolzQuizQuestion() {
+        feedbackHolzEl.innerHTML = "";
+        nextQuestionHolzBtn.style.display = "none";
+        answersContainerHolz.innerHTML = "";
+        const currentQuestion = holzQuizQuestions[currentHolzQuestionIndex];
+        questionTextHolz.textContent = currentQuestion.question;
+        currentQuestion.options.forEach(option => {
+          const btn = document.createElement("button");
+          btn.textContent = option.text;
+          btn.className = "answer-btn";
+          btn.addEventListener("click", function() {
+            Array.from(answersContainerHolz.children).forEach(child => child.disabled = true);
+            if(option.correct) {
+              btn.classList.add("correct");
+              holzScore++;
+              feedbackHolzEl.innerHTML = '<span style="color: green;">&#128512;</span>';
+              let duration = 2000;
+              let animationEnd = Date.now() + duration;
+              (function frame() {
+                confetti({
+                  particleCount: 5,
+                  angle: 60,
+                  spread: 55,
+                  origin: { x: 0 }
+                });
+                confetti({
+                  particleCount: 5,
+                  angle: 120,
+                  spread: 55,
+                  origin: { x: 1 }
+                });
+                if (Date.now() < animationEnd) {
+                  requestAnimationFrame(frame);
+                }
+              }());
+            } else {
+              btn.classList.add("incorrect");
+              holzScore--;
+              feedbackHolzEl.innerHTML = '<span style="color: red;">&#128577;</span>';
+            }
+            updateScoreCounterHolz();
+            nextQuestionHolzBtn.style.display = "block";
+          });
+          answersContainerHolz.appendChild(btn);
+        });
+      }
+      nextQuestionHolzBtn.addEventListener("click", function() {
+        currentHolzQuestionIndex++;
+        if(currentHolzQuestionIndex < holzQuizQuestions.length) {
+          showHolzQuizQuestion();
+        } else {
+          if(holzScore === holzQuizQuestions.length) {
+            questionTextHolz.innerHTML = '<div class="thumbs-up">👍</div><div class="final-message">Super - Du hast es geschafft.<br>Du hast ' + holzScore + ' von ' + holzQuizQuestions.length + ' Punkten erreicht</div>';
+            feedbackHolzEl.innerHTML = "";
+            confetti({ particleCount: 100, spread: 70, origin: { x: 0.5, y: 0.3 } });
+          } else {
+            questionTextHolz.textContent = "Quiz abgeschlossen! Vielen Dank fürs Mitmachen. Du hast " + holzScore + " von " + holzQuizQuestions.length + " Punkten erreicht.";
+          }
+          answersContainerHolz.innerHTML = "";
+          nextQuestionHolzBtn.style.display = "none";
+        }
+      });
+    });
+
+    /* ------------------ Ehrenrunde Mission Funktionen ------------------ */
+    function updateProgressBar() {
+      let points = parseInt(localStorage.getItem('points')) || 0;
+      let percentage = (points / 5) * 100;
+      document.getElementById('progressBar').style.width = percentage + "%";
+    }
+
+    function addPoint() {
+      let points = parseInt(localStorage.getItem('points')) || 0;
+      if (points < 5) {
+        points++;
+        localStorage.setItem('points', points);
+        document.getElementById('points').innerText = points;
+        updateProgressBar();
+      }
+      if (points === 5) {
+        alert("🏆 Ziel erreicht! Super gemacht!");
+      }
+    }
+
+    function resetProgress() {
+      localStorage.setItem('points', 0);
+      document.getElementById('points').innerText = 0;
+      updateProgressBar();
+      alert("🔄 Fortschritt wurde zurückgesetzt.");
+    }
+
+    function confirmReminder() {
+      localStorage.setItem('reminderDone', 'true');
+      document.getElementById('resetReminderBtn').classList.remove('hidden');
+      document.getElementById('thumbsReminder').style.display = 'inline';
+      alert("Super! Ehrenrunde erledigt. Weiter so! 💪");
+    }
+
+    function resetReminder() {
+      localStorage.removeItem('reminderDone');
+      document.getElementById('resetReminderBtn').classList.add('hidden');
+      document.getElementById('thumbsReminder').style.display = 'none';
+      alert("🔄 Tages-Erinnerung zurückgesetzt.");
+    }
+
+    function confirmTeamReminder() {
+      localStorage.setItem('teamReminderDone', 'true');
+      document.getElementById('resetTeamReminderBtn').classList.remove('hidden');
+      document.getElementById('thumbsTeamReminder').style.display = 'inline';
+      alert("👍 Du hast einen Kollegen an die Ehrenrunde erinnert!");
+    }
+
+    function resetTeamReminder() {
+      localStorage.removeItem('teamReminderDone');
+      document.getElementById('resetTeamReminderBtn').classList.add('hidden');
+      document.getElementById('thumbsTeamReminder').style.display = 'none';
+      alert("🔄 Kollegen-Erinnerung zurückgesetzt.");
+    }
+
+    // Initialisierung der Ehrenrunde Mission beim Laden der Seite
+    document.addEventListener("DOMContentLoaded", function() {
+      let points = parseInt(localStorage.getItem('points')) || 0;
+      document.getElementById('points').innerText = points;
+      updateProgressBar();
+    });
+  </script>
+  
+</body>
+</html>
