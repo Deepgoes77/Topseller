@@ -107,7 +107,7 @@
     /* Sections */
     .section {
       display: none;
-      animation: fadeIn 0.5s;
+      /* Der FadeIn-Effekt wird nun separat angewendet (siehe unten) */
       background-color: #fff;
       border-radius: 6px;
       padding: 20px;
@@ -116,6 +116,10 @@
     }
     .section.active {
       display: block;
+    }
+    /* FadeIn nur, wenn kein Slide-Effekt angewandt wird */
+    .section:not(.slide-in-right):not(.slide-in-left) {
+      animation: fadeIn 0.5s;
     }
     @keyframes fadeIn {
       from { opacity: 0; }
