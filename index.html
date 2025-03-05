@@ -19,7 +19,6 @@
     }
     body {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 16px; /* Basisgröße festlegen */
       background-color: #f7f7f7;
       color: #333;
       line-height: 1.6;
@@ -239,7 +238,7 @@
     }
     #quiz-container button, #quiz-container-holz button, #quiz-container-polstermoebel button {
       padding: 10px 20px;
-      font-size: 16px;
+      font-size: 1em;
       margin-top: 15px;
       border: none;
       border-radius: 4px;
@@ -361,7 +360,7 @@
       justify-content: center;
       margin: 20px 0;
     }
-    .app-icon {
+    #startpage .app-icon {
       background-color: #002147;
       border-radius: 12px;
       width: 120px;
@@ -374,43 +373,21 @@
       align-items: center;
       justify-content: center;
     }
-    .app-icon i {
+    #startpage .app-icon i {
       font-size: 2em;
       margin-bottom: 8px;
     }
-    /* Bei Beschriftungen mit zwei Wörtern: jeweils ein Zeilenumbruch */
-    .app-icon span {
+    #startpage .app-icon span {
       font-size: 1em;
       text-align: center;
-      line-height: 1.2;
-      white-space: pre-line;
+    }
+    #startpage p {
+      text-align: center;
     }
     @media (max-width: 600px) {
-      .app-icon {
+      #startpage .app-icon {
         width: calc(50% - 20px);
       }
-    }
-    /* Zusätzliche Anpassungen für Google Bewertungen (Originaldarstellung wiederherstellen) */
-    .google-container .reel-container {
-      display: flex;
-      flex-direction: row !important;
-      justify-content: center;
-      gap: 10px;
-      font-size: 40px;
-    }
-    .google-container .reel {
-      width: 60px !important;
-      height: 60px !important;
-      line-height: 60px !important;
-      font-size: 30px !important;
-      background: #002147;
-      color: white;
-      border-radius: 6px;
-      text-align: center;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
   </style>
 </head>
@@ -426,11 +403,11 @@
     <div id="dropdownMenu" class="dropdown-menu">
       <a onclick="menuItemClicked('abschlussphase')">Abschlussphase</a>
       <a onclick="menuItemClicked('neuheiten')">Neuheiten</a>
-      <a onclick="menuItemClicked('google')">Google<br>Bewertungen</a>
+      <a onclick="menuItemClicked('google')">Google Bewertungen</a>
       <a onclick="menuItemClicked('warenkorb')">Warenkorb</a>
-      <a onclick="menuItemClicked('gartenmoebel_quiz')">Gartenmöbel<br>Quiz</a>
-      <a onclick="menuItemClicked('holzmoebel_quiz')">Holzmöbel<br>Quiz</a>
-      <a onclick="menuItemClicked('polstermoebel_quiz')">Polstermöbel<br>Quiz</a>
+      <a onclick="menuItemClicked('gartenmoebel_quiz')">Gartenmöbel‑Quiz</a>
+      <a onclick="menuItemClicked('holzmoebel_quiz')">Holzmöbel‑Quiz</a>
+      <a onclick="menuItemClicked('polstermoebel_quiz')">Polstermöbel‑Quiz</a>
     </div>
   </header>
 
@@ -447,13 +424,14 @@
           <i class="fa fa-handshake"></i>
           <span>Abschlussphase</span>
         </a>
+        <!-- Neuheiten-Icon auf "Topseller" + Zeilenumbruch + "Neuheuten" geändert -->
         <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('neuheiten')">
           <i class="fa fa-star"></i>
           <span>Topseller<br>Neuheuten</span>
         </a>
         <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('google')">
           <i class="fa fa-google"></i>
-          <span>Google<br>Bewertungen</span>
+          <span>Google Bewertungen</span>
         </a>
         <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('warenkorb')">
           <i class="fa fa-shopping-cart"></i>
@@ -461,15 +439,15 @@
         </a>
         <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('gartenmoebel_quiz')">
           <i class="fa fa-seedling"></i>
-          <span>Gartenmöbel<br>Quiz</span>
+          <span>Gartenmöbel‑Quiz</span>
         </a>
         <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('holzmoebel_quiz')">
           <i class="fa fa-tree"></i>
-          <span>Holzmöbel<br>Quiz</span>
+          <span>Holzmöbel‑Quiz</span>
         </a>
         <a href="javascript:void(0);" class="app-icon" onclick="menuItemClicked('polstermoebel_quiz')">
           <i class="fa fa-couch"></i>
-          <span>Polstermöbel<br>Quiz</span>
+          <span>Polstermöbel‑Quiz</span>
         </a>
       </div>
     </div>
@@ -615,7 +593,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Section: Google Bewertungen -->
     <div id="google" class="section">
       <div class="google-container">
@@ -1054,9 +1032,9 @@
           category: "Gartenmöbel-Quiz",
           question: "Warum sind die Bezüge aus Batyline-Textilene besonders langlebig?",
           options: [
-            { text: "Sie sind nicht nur genäht, sondern auch verschweißt.", correct: true },
             { text: "Weil sie jeden Morgen mit Kokosöl eingerieben werden.", correct: false },
-            { text: "Weil sie mit Zaubergarn verstärkt werden.", correct: false }
+            { text: "Sie sind nicht nur genäht, sondern auch verschweißt.", correct: true },
+            { text: "Sie werden mit Zaubergarn verstärkt.", correct: false }
           ]
         },
         {
@@ -1350,8 +1328,8 @@
           category: "Holzmöbel-Quiz",
           question: "Was ist der Vorteil von lackierten Möbeln?",
           options: [
-            { text: "Sie sind widerstandsfähiger gegen Kratzer und Flüssigkeiten.", correct: true },
             { text: "Sie reflektieren Sonnenlicht.", correct: false },
+            { text: "Sie sind widerstandsfähiger gegen Kratzer und Flüssigkeiten.", correct: true },
             { text: "Sie riechen nach Vanille.", correct: false }
           ]
         },
@@ -1377,8 +1355,8 @@
           category: "Holzmöbel-Quiz",
           question: "Warum sollte man geölte Möbel nicht mit scharfen Reinigungsmitteln putzen?",
           options: [
-            { text: "Weil sie die Öl-Schicht angreifen können.", correct: true },
             { text: "Weil das Holz dann zu Staub zerfällt.", correct: false },
+            { text: "Weil sie die Öl-Schicht angreifen können.", correct: true },
             { text: "Weil sie dann anfangen zu rauchen.", correct: false }
           ]
         },
@@ -1404,44 +1382,44 @@
           category: "Holzmöbel-Quiz",
           question: "Warum sollte man Massivholzmöbel nicht direkt neben Heizkörpern aufstellen?",
           options: [
-            { text: "Weil das Holz austrocknen und Risse bekommen kann.", correct: true },
             { text: "Weil das Holz dann zu glühen beginnt.", correct: false },
-            { text: "Weil es sich in eine Plastikoberfläche verwandelt.", correct: false }
+            { text: "Weil es sich in eine Plastikoberfläche verwandelt.", correct: false },
+            { text: "Weil das Holz austrocknen und Risse bekommen kann.", correct: true }
           ]
         },
         {
           category: "Holzmöbel-Quiz",
           question: "Welche Holzart ist besonders widerstandsfähig gegen Feuchtigkeit?",
           options: [
-            { text: "Eiche, da sie von Natur aus gerbsäurehaltig und widerstandsfähig ist.", correct: true },
+            { text: "Astulme, weil sie in Wasser aufblüht.", correct: false },
             { text: "Kernbuche, weil sie aus einem Zauberwald stammt.", correct: false },
-            { text: "Astulme, weil sie in Wasser aufblüht.", correct: false }
+            { text: "Eiche, da sie von Natur aus gerbsäurehaltig und widerstandsfähig ist.", correct: true }
           ]
         },
         {
           category: "Holzmöbel-Quiz",
           question: "Warum verändert sich die Farbe von Massivholz im Laufe der Zeit?",
           options: [
+            { text: "Weil es sich an die Laune des Besitzers anpasst.", correct: false },
             { text: "Durch UV-Strahlung und Oxidation verändert sich die Holzfarbe.", correct: true },
-            { text: "Weil es von Natur aus Chamäleon-Gene hat.", correct: false },
-            { text: "Weil es sich an die Laune des Besitzers anpasst.", correct: false }
+            { text: "Weil es von Natur aus Chamäleon-Gene hat.", correct: false }
           ]
         },
         {
           category: "Holzmöbel-Quiz",
           question: "Warum sollte man niemals heiße Töpfe direkt auf eine geölte Holzplatte stellen?",
           options: [
-            { text: "Weil die Hitze die Öl-Schicht beschädigt und Flecken entstehen können.", correct: true },
+            { text: "Weil der Tisch dann Feuer fangen könnte.", correct: false },
             { text: "Weil das Holz sich verformt und zu tanzen beginnt.", correct: false },
-            { text: "Weil der Tisch dann Feuer fangen könnte.", correct: false }
+            { text: "Weil die Hitze die Öl-Schicht beschädigt und Flecken entstehen können.", correct: true }
           ]
         },
         {
           category: "Holzmöbel-Quiz",
           question: "Warum sollten bei furnierten Möbeln keine scharfen Reinigungsmitteln verwendet werden?",
           options: [
-            { text: "Weil die dünne Furnierschicht beschädigt werden kann.", correct: true },
             { text: "Weil sie anfangen zu kleben.", correct: false },
+            { text: "Weil die dünne Furnierschicht beschädigt werden kann.", correct: true },
             { text: "Weil sie sich dann auflösen.", correct: false }
           ]
         },
@@ -1458,72 +1436,72 @@
           category: "Holzmöbel-Quiz",
           question: "Was passiert, wenn man einen Kratzer auf lackiertem Holz ausbessern möchte?",
           options: [
-            { text: "Kleinere Kratzer kann man mit speziellem Lackstift ausbessern.", correct: true },
+            { text: "Man muss das ganze Möbelstück komplett neu streichen.", correct: false },
             { text: "Man kann einfach mit Wasser darüber wischen, dann verschwindet er.", correct: false },
-            { text: "Man muss das ganze Möbelstück komplett neu streichen.", correct: false }
+            { text: "Kleinere Kratzer kann man mit speziellem Lackstift ausbessern.", correct: true }
           ]
         },
         {
           category: "Holzmöbel-Quiz",
           question: "Warum werden geölte Oberflächen nicht komplett versiegelt?",
           options: [
-            { text: "Damit das Holz atmen und weiterhin Feuchtigkeit regulieren kann.", correct: true },
             { text: "Weil versiegelte Möbel nicht mehr geölt werden dürfen.", correct: false },
-            { text: "Weil das Öl von selbst eine unsichtbare Schutzschicht bildet.", correct: false }
+            { text: "Weil das Öl von selbst eine unsichtbare Schutzschicht bildet.", correct: false },
+            { text: "Damit das Holz atmen und weiterhin Feuchtigkeit regulieren kann.", correct: true }
           ]
         },
         {
           category: "Holzmöbel-Quiz",
           question: "Welche Holzart ist besonders aromatisch und wird oft für Innenräume genutzt?",
           options: [
-            { text: "Arvenholz, da es ätherische Öle freisetzt.", correct: true },
             { text: "Kernbuche, weil sie nach Schokolade duftet.", correct: false },
-            { text: "Wildeiche, weil sie nach Zimt riecht.", correct: false }
+            { text: "Wildeiche, weil sie nach Zimt riecht.", correct: false },
+            { text: "Arvenholz, da es ätherische Öle freisetzt.", correct: true }
           ]
         },
         {
           category: "Holzmöbel-Quiz",
           question: "Welche Maserung hat Nussbaumholz typischerweise?",
           options: [
-            { text: "Dunkel, mit feinen, geschwungenen Linien.", correct: true },
             { text: "Ganz glatt, ohne Struktur.", correct: false },
-            { text: "Hell, mit wilden Knoten.", correct: false }
+            { text: "Hell, mit wilden Knoten.", correct: false },
+            { text: "Dunkel, mit feinen, geschwungenen Linien.", correct: true }
           ]
         },
         {
           category: "Holzmöbel-Quiz",
           question: "Warum ist es wichtig, Massivholzmöbel regelmäßig zu pflegen?",
           options: [
-            { text: "Damit das Holz seine Schönheit und Widerstandsfähigkeit behält.", correct: true },
+            { text: "Weil sie sich selbst erneuern.", correct: false },
             { text: "Weil sich sonst Tiere im Holz einnisten.", correct: false },
-            { text: "Weil sie sich selbst erneuern.", correct: false }
+            { text: "Damit das Holz seine Schönheit und Widerstandsfähigkeit behält.", correct: true }
           ]
         },
         {
           category: "Holzmöbel-Quiz",
           question: "Was kann passieren, wenn man ein Massivholzmöbel zu lange in direkter Sonne stehen lässt?",
           options: [
-            { text: "Es kann ausbleichen und sich verziehen.", correct: true },
+            { text: "Es färbt sich blau.", correct: false },
             { text: "Es beginnt zu leuchten.", correct: false },
-            { text: "Es färbt sich blau.", correct: false }
+            { text: "Es kann ausbleichen und sich verziehen.", correct: true }
           ]
         },
         {
           category: "Holzmöbel-Quiz",
           question: "Warum werden manche Möbel aus recyceltem Holz gefertigt?",
           options: [
-            { text: "Um Ressourcen zu schonen und alten Hölzern eine neue Nutzung zu geben.", correct: true },
+            { text: "Weil es billiger ist und nach Plastik riecht.", correct: false },
             { text: "Weil recyceltes Holz eine unzerstörbare Zauberschicht hat.", correct: false },
-            { text: "Weil es billiger ist und nach Plastik riecht.", correct: false }
+            { text: "Um Ressourcen zu schonen und alten Hölzern eine neue Nutzung zu geben.", correct: true }
           ]
         },
         {
           category: "Holzmöbel-Quiz",
           question: "Welche Holzart wird gerne für Landhausmöbel verwendet?",
           options: [
-            { text: "Wildeiche, wegen ihrer rustikalen und lebhaften Optik.", correct: true },
             { text: "Arvenholz, weil es sich von selbst streicht.", correct: false },
-            { text: "Nussbaum, weil es immer knistert.", correct: false }
+            { text: "Nussbaum, weil es immer knistert.", correct: false },
+            { text: "Wildeiche, wegen ihrer rustikalen und lebhaften Optik.", correct: true }
           ]
         },
         {
@@ -1621,7 +1599,7 @@
       });
 
       /* ------------------ NEUES: Polstermöbel-Quiz ------------------
-         Quiz basierend auf dem Fachtraining Polstergruppen (mind. 40 Fragen, lustige falsche Antworten, wechselnde Position der richtigen Antwort)
+         Quiz aus dem Fachtraining Polstergruppen (mind. 40 Fragen, lustige falsche Antworten, wechselnde Position der richtigen Antwort)
       */
       const polstermoebelQuizQuestions = [
         {
@@ -1635,20 +1613,20 @@
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Woran erkennen Sie eine qualitative Polsterung?",
+          question: "Woran erkennt man eine qualitative Polsterung?",
           options: [
-            { text: "An einer mehrschichtigen Zusammensetzung aus Kammern und Schaumstoffen.", correct: true },
             { text: "An einer Farbe, die im Dunkeln leuchtet.", correct: false },
+            { text: "An einer mehrschichtigen Zusammensetzung aus Kammern und Schaumstoffen.", correct: true },
             { text: "An einer eingebauten Popcorn-Maschine im Sitz.", correct: false }
           ]
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Was ist ein typisches Qualitätsmerkmal beim Gestell hochwertiger Sofas?",
+          question: "Was ist ein typisches Qualitätsmerkmal beim Gestell von hochwertigen Sofas?",
           options: [
-            { text: "Verzapfte, verschraubte oder durch Dübel verbundene Konstruktion aus formbeständigem Massivholz.", correct: true },
+            { text: "Ein Gestell aus Schaumstoff, das bei Berührung weich wird.", correct: false },
             { text: "Ein Gestell, das sich selbst zusammenbaut.", correct: false },
-            { text: "Ein Gestell aus Schaumstoff, das bei Berührung weich wird.", correct: false }
+            { text: "Verzapfte, verschraubte oder durch Dübel verbundene Konstruktion aus formbeständigem Massivholz.", correct: true }
           ]
         },
         {
@@ -1664,14 +1642,14 @@
           category: "Polstermöbel-Quiz",
           question: "Welcher Faktor ist besonders wichtig für den Sitz- und Liegekomfort eines Sofas?",
           options: [
-            { text: "Ein starker Federkern und mehrschichtige Schaumstoffe.", correct: true },
             { text: "Ein eingebauter Massageeffekt, der permanent aktiviert ist.", correct: false },
+            { text: "Ein starker Federkern und mehrschichtige Schaumstoffe.", correct: true },
             { text: "Sitzkissen aus recyceltem Popcorn.", correct: false }
           ]
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Wie unterscheidet sich eine hochwertige Couch in der Verarbeitung?",
+          question: "Was unterscheidet eine hochwertige Couch von einer minderwertigen in Bezug auf die Verarbeitung?",
           options: [
             { text: "Hochwertige Couches werden in Handarbeit und mit schadstofffreien Leimen gefertigt.", correct: true },
             { text: "Minderwertige Couches sind mit Wunderpulver beschichtet.", correct: false },
@@ -1682,14 +1660,14 @@
           category: "Polstermöbel-Quiz",
           question: "Welcher der folgenden Punkte ist KEIN Qualitätsmerkmal eines Polstermöbels?",
           options: [
-            { text: "Verarbeitungsdefizite, die zu verrutschenden Nähten führen.", correct: true },
             { text: "Mehrlagige, atmungsaktive Polsterung.", correct: false },
+            { text: "Verarbeitungsdefizite, die zu verrutschenden Nähten führen.", correct: true },
             { text: "Stabile Rahmenkonstruktion aus Massivholz.", correct: false }
           ]
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Welches Material wird oft als Bezug bei hochwertigen Sofas verwendet?",
+          question: "Welches Material wird oft als Bezug bei hochwertigen Sofas verwendet und ist für seine edle Optik bekannt?",
           options: [
             { text: "Leder.", correct: true },
             { text: "Plastik, das wie Leder aussieht.", correct: false },
@@ -1698,10 +1676,10 @@
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Welcher Vorteil wird mit Lederbezügen häufig in Verbindung gebracht?",
+          question: "Welcher Vorteil wird oft mit Lederbezügen in Verbindung gebracht?",
           options: [
-            { text: "Temperaturausgleichend und edle Optik.", correct: true },
             { text: "Kann als Sicherheitsgurt genutzt werden.", correct: false },
+            { text: "Temperaturausgleichend und edle Optik.", correct: true },
             { text: "Leuchtet im Dunkeln.", correct: false }
           ]
         },
@@ -1709,14 +1687,14 @@
           category: "Polstermöbel-Quiz",
           question: "Welche Eigenschaft ist bei textilen Bezügen von Sofas besonders wichtig?",
           options: [
-            { text: "Pflegeleichtigkeit und Strapazierfähigkeit.", correct: true },
             { text: "Die Fähigkeit, automatisch Staub zu entfernen.", correct: false },
-            { text: "Verwandelt sich in ein Kissen, wenn man niest.", correct: false }
+            { text: "Verwandelt sich in ein Kissen, wenn man niest.", correct: false },
+            { text: "Pflegeleichtigkeit und Strapazierfähigkeit.", correct: true }
           ]
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Was bedeutet 'Ledergerbung' im Zusammenhang mit Polstermöbeln?",
+          question: "Was bedeutet 'Ledergerbung' im Zusammenhang mit hochwertigen Polstermöbeln?",
           options: [
             { text: "Ein Verfahren zur Behandlung von Leder, um Langlebigkeit und edle Optik zu gewährleisten.", correct: true },
             { text: "Das Leder wird mit feurigen Drachenflammen gebrannt.", correct: false },
@@ -1725,10 +1703,10 @@
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Welches Merkmal spricht für die Langlebigkeit eines hochwertigen Sofas?",
+          question: "Welches dieser Merkmale spricht für die Langlebigkeit eines hochwertigen Sofas?",
           options: [
-            { text: "Mehrschichtige Polsterung und stabile Rahmenkonstruktion.", correct: true },
             { text: "Ein eingebauter Kaffeeautomat.", correct: false },
+            { text: "Mehrschichtige Polsterung und stabile Rahmenkonstruktion.", correct: true },
             { text: "Ein magnetischer Fußboden, der das Sofa schweben lässt.", correct: false }
           ]
         },
@@ -1736,41 +1714,41 @@
           category: "Polstermöbel-Quiz",
           question: "Wie wird die Qualität einer Polsterung typischerweise überprüft?",
           options: [
-            { text: "Durch Testen des Sitz- und Liegekomforts.", correct: true },
             { text: "Indem man das Sofa in der Sonne zum Schmelzen bringt.", correct: false },
-            { text: "Durch Hören, ob es flüstert.", correct: false }
+            { text: "Durch Hören, ob es flüstert.", correct: false },
+            { text: "Durch Testen des Sitz- und Liegekomforts.", correct: true }
           ]
         },
         {
           category: "Polstermöbel-Quiz",
           question: "Welche Aussage trifft auf die Herstellung von hochwertigen Polstermöbeln zu?",
           options: [
-            { text: "Sie werden meist in Familienunternehmen in Deutschland in Handarbeit gefertigt.", correct: true },
             { text: "Sie werden in Massenproduktionen in fernen Galaxien hergestellt.", correct: false },
-            { text: "Sie entstehen durch Magie in verzauberten Wäldern.", correct: false }
+            { text: "Sie entstehen durch Magie in verzauberten Wäldern.", correct: false },
+            { text: "Sie werden meist in Familienunternehmen in Deutschland in Handarbeit gefertigt.", correct: true }
           ]
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Wie ist der Aufbau einer hochwertigen Polsterung typischerweise strukturiert?",
+          question: "Welche der folgenden Aussagen beschreibt den Aufbau einer hochwertigen Polsterung?",
           options: [
-            { text: "Aus einer unteren Schicht mit Kammern oder Federkern und mehreren Schichten Schaumstoff.", correct: true },
-            { text: "Aus einer einzigen, dünnen Schicht zusammengepresst.", correct: false },
-            { text: "Aus fluffiger Zuckerwatte.", correct: false }
+            { text: "Sie ist aus einer einzigen, dünnen Schicht zusammengepresst.", correct: false },
+            { text: "Sie besteht aus einer unteren Schicht mit Kammern oder Federkern und mehreren Schichten Schaumstoff.", correct: true },
+            { text: "Sie ist aus fluffiger Zuckerwatte hergestellt.", correct: false }
           ]
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Welches Qualitätsmerkmal ist bei der Rahmenkonstruktion von Polstermöbeln entscheidend?",
+          question: "Was ist ein wichtiges Qualitätsmerkmal bei der Rahmenkonstruktion von Polstermöbeln?",
           options: [
-            { text: "Verzapfte und verschraubte Verbindungselemente aus formbeständigem Massivholz.", correct: true },
-            { text: "Ein Rahmen, der bei Berührung melodisch summt.", correct: false },
-            { text: "Ein Rahmen, der sich selbst repariert.", correct: false }
+            { text: "Eine Konstruktion, die bei Berührung melodisch summt.", correct: false },
+            { text: "Ein Rahmen, der sich selbst repariert.", correct: false },
+            { text: "Verzapfte und verschraubte Verbindungselemente aus formbeständigem Massivholz.", correct: true }
           ]
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Welches Kriterium ist bei der Auswahl eines Polsterbezugs besonders wichtig?",
+          question: "Welcher Faktor ist bei der Auswahl eines Bezugs für Polstermöbel entscheidend?",
           options: [
             { text: "Der persönliche Geschmack und die Pflegeleichtigkeit des Materials.", correct: true },
             { text: "Ob der Bezug im Dunkeln glitzert.", correct: false },
@@ -1779,10 +1757,10 @@
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Welche Aussage ist KEIN Qualitätsmerkmal von hochwertigen Polstermöbeln im Bereich Stoffe?",
+          question: "Welche der folgenden Aussagen ist KEIN Qualitätsmerkmal von hochwertigen Polstermöbeln im Bereich Stoffe?",
           options: [
-            { text: "Verarbeitungsdefizite, die zu Pillbildung führen.", correct: true },
             { text: "Mehrlagige, atmungsaktive Polsterung.", correct: false },
+            { text: "Verarbeitungsdefizite, die zu Pillbildung führen.", correct: true },
             { text: "Gute Lichtechtheit.", correct: false }
           ]
         },
@@ -1790,9 +1768,9 @@
           category: "Polstermöbel-Quiz",
           question: "Was versteht man unter 'Reibechtheit' bei Stoffen?",
           options: [
-            { text: "Die Fähigkeit des Stoffes, Farbe auf andere Textilien zu übertragen.", correct: true },
             { text: "Die Fähigkeit des Stoffes, bei Berührung zu singen.", correct: false },
-            { text: "Die Fähigkeit des Stoffes, sich in einen Teppich zu verwandeln.", correct: false }
+            { text: "Die Fähigkeit des Stoffes, sich in einen Teppich zu verwandeln.", correct: false },
+            { text: "Die Fähigkeit des Stoffes, Farbe auf andere Textilien zu übertragen.", correct: true }
           ]
         },
         {
@@ -1808,8 +1786,8 @@
           category: "Polstermöbel-Quiz",
           question: "Welche Stoffart hat keinen Flor und kann eine glatte bis strukturierte Oberfläche aufweisen?",
           options: [
-            { text: "Flachgewebe.", correct: true },
             { text: "Velours.", correct: false },
+            { text: "Flachgewebe.", correct: true },
             { text: "Flockvelours.", correct: false }
           ]
         },
@@ -1826,9 +1804,9 @@
           category: "Polstermöbel-Quiz",
           question: "Welche Stoffart entsteht durch Aufbringen feiner Flocken mittels Klebstoff auf ein Grundgewebe?",
           options: [
-            { text: "Flockvelours.", correct: true },
             { text: "Velours.", correct: false },
-            { text: "Falsches Velours.", correct: false }
+            { text: "Falsches Velours.", correct: false },
+            { text: "Flockvelours.", correct: true }
           ]
         },
         {
@@ -1844,8 +1822,8 @@
           category: "Polstermöbel-Quiz",
           question: "Was ist ein wichtiges Qualitätsmerkmal von Polstermöbelbezügen im Bereich Stoffe?",
           options: [
-            { text: "Hohe Scheuerbeständigkeit.", correct: true },
             { text: "Automatischer Farbwechsel.", correct: false },
+            { text: "Hohe Scheuerbeständigkeit.", correct: true },
             { text: "Geräuschlose Bewegung bei Wind.", correct: false }
           ]
         },
@@ -1853,35 +1831,35 @@
           category: "Polstermöbel-Quiz",
           question: "Was bedeutet 'Pillbildung' bei Stoffen?",
           options: [
-            { text: "Das Bilden von kleinen Knötchen auf der Oberfläche des Stoffs.", correct: true },
             { text: "Das Hinzufügen von winzigen Pillen zur Stabilisierung.", correct: false },
-            { text: "Das Verdoppeln der Farbe durch Druck.", correct: false }
+            { text: "Das Verdoppeln der Farbe durch Druck.", correct: false },
+            { text: "Das Bilden von kleinen Knötchen auf der Oberfläche des Stoffs.", correct: true }
           ]
         },
         {
           category: "Polstermöbel-Quiz",
           question: "Was versteht man unter 'Lichtechtheit'?",
           options: [
-            { text: "Die Widerstandsfähigkeit des farbigen Stoffs gegenüber UV-Licht.", correct: true },
             { text: "Die Fähigkeit des Stoffes, im Dunkeln zu leuchten.", correct: false },
+            { text: "Die Widerstandsfähigkeit des farbigen Stoffs gegenüber UV-Licht.", correct: true },
             { text: "Die Fähigkeit des Stoffes, Licht zu reflektieren.", correct: false }
           ]
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Welches Qualitätsmerkmal wird in 5 Stufen beurteilt?",
+          question: "Welches Qualitätsmerkmal von Stoffen wird in 5 Stufen beurteilt?",
           options: [
-            { text: "Reibechtheit.", correct: true },
             { text: "Flauschigkeitsgrad.", correct: false },
-            { text: "Glanzintensität.", correct: false }
+            { text: "Glanzintensität.", correct: false },
+            { text: "Reibechtheit.", correct: true }
           ]
         },
         {
           category: "Polstermöbel-Quiz",
           question: "Welches Merkmal gehört NICHT zu den 4 wichtigsten Qualitätsmerkmalen von Polstermöbeln im Bereich Stoffe?",
           options: [
-            { text: "Pillbildung.", correct: true },
             { text: "Scheuerbeständigkeit.", correct: false },
+            { text: "Pillbildung.", correct: true },
             { text: "Lichtechtheit.", correct: false }
           ]
         },
@@ -1889,9 +1867,9 @@
           category: "Polstermöbel-Quiz",
           question: "Was sollte man bei der Pflege von Polstermöbeln beachten?",
           options: [
-            { text: "Regelmäßiges Nachölen und schnelles Aufwischen von Flüssigkeiten.", correct: true },
             { text: "Mit einem Hochdruckreiniger abspritzen.", correct: false },
-            { text: "Die Möbel in den Gefrierschrank legen.", correct: false }
+            { text: "Die Möbel in den Gefrierschrank legen.", correct: false },
+            { text: "Regelmäßiges Nachölen und schnelles Aufwischen von Flüssigkeiten.", correct: true }
           ]
         },
         {
@@ -1905,20 +1883,20 @@
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Welche Verbindungsmethode wird bei hochwertigen Polstermöbeln bevorzugt?",
+          question: "Welche Verbindungsmethode wird bei hochwertigen Polstermöbeln bevorzugt, um Stabilität zu gewährleisten?",
           options: [
-            { text: "Verzapfen und Verschrauben.", correct: true },
             { text: "Zusammenkleben mit magischem Sirup.", correct: false },
+            { text: "Verzapfen und Verschrauben.", correct: true },
             { text: "Verschweißen mit Laser.", correct: false }
           ]
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Was trägt zur Strapazierfähigkeit eines hochwertigen Stoffbezugs bei?",
+          question: "Was macht einen hochwertigen Stoffbezug strapazierfähig?",
           options: [
-            { text: "Hohe Reibechtheit.", correct: true },
+            { text: "Die Fähigkeit, Geräusche zu machen.", correct: false },
             { text: "Automatisches Verändern der Textur.", correct: false },
-            { text: "Die Fähigkeit, Geräusche zu machen.", correct: false }
+            { text: "Hohe Reibechtheit.", correct: true }
           ]
         },
         {
@@ -1932,10 +1910,10 @@
         },
         {
           category: "Polstermöbel-Quiz",
-          question: "Warum ist eine abgerundete Konstruktion an beanspruchten Stellen wichtig?",
+          question: "Warum ist eine abgerundete Konstruktion an häufig beanspruchten Stellen wichtig?",
           options: [
-            { text: "Um das Durchscheuern der Möbel zu verhindern.", correct: true },
             { text: "Damit das Sofa besser tanzt.", correct: false },
+            { text: "Um das Durchscheuern der Möbel zu verhindern.", correct: true },
             { text: "Damit die Kanten leuchten.", correct: false }
           ]
         },
@@ -1943,9 +1921,9 @@
           category: "Polstermöbel-Quiz",
           question: "Welche Aussage trifft auf die Verarbeitung von hochwertigen Polstermöbeln zu?",
           options: [
-            { text: "Sie werden in Handarbeit gefertigt und weisen eine hervorragende Verarbeitung auf.", correct: true },
             { text: "Sie werden von Robotern in einer futuristischen Fabrik hergestellt.", correct: false },
-            { text: "Sie werden in nur einer Stunde zusammengebaut.", correct: false }
+            { text: "Sie werden in nur einer Stunde zusammengebaut.", correct: false },
+            { text: "Sie werden in Handarbeit gefertigt und weisen eine hervorragende Verarbeitung auf.", correct: true }
           ]
         },
         {
@@ -1961,8 +1939,8 @@
           category: "Polstermöbel-Quiz",
           question: "Welche Aussage beschreibt den Bezug von hochwertigen Designer-Sofas am besten?",
           options: [
-            { text: "Er ist oft textil, pflegeleicht und strapazierfähig.", correct: true },
             { text: "Er besteht aus recyceltem Konfetti.", correct: false },
+            { text: "Er ist oft textil, pflegeleicht und strapazierfähig.", correct: true },
             { text: "Er ändert seine Farbe je nach Stimmung des Besitzers.", correct: false }
           ]
         },
@@ -1970,9 +1948,9 @@
           category: "Polstermöbel-Quiz",
           question: "Welches Kriterium ist bei der Auswahl eines Polsterbezugs besonders wichtig?",
           options: [
-            { text: "Der persönliche Geschmack des Kunden.", correct: true },
             { text: "Ob der Bezug mit Musik synchronisiert ist.", correct: false },
-            { text: "Ob der Bezug im Regen tanzt.", correct: false }
+            { text: "Ob der Bezug im Regen tanzt.", correct: false },
+            { text: "Der persönliche Geschmack des Kunden.", correct: true }
           ]
         },
         {
