@@ -929,10 +929,10 @@
       let touchstartX = 0;
       let touchendX = 0;
       document.addEventListener('touchstart', function(event) {
-        touchstartX = event.changedTouches[0].screenX;
+        touchstartX = event.changedTouches[0].clientX;
       }, false);
       document.addEventListener('touchend', function(event) {
-        touchendX = event.changedTouches[0].screenX;
+        touchendX = event.changedTouches[0].clientX;
         handleGesture();
       }, false);
       function handleGesture(){
