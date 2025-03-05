@@ -36,6 +36,9 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
       z-index: 1000;
       text-align: center;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
     }
     header.global-header h1 {
       font-size: 2em;
@@ -107,7 +110,11 @@
     /* Sections */
     .section {
       display: none;
-      /* Der FadeIn-Effekt wird nun separat angewendet (siehe unten) */
+      width: 100%;
+      /* Hardwarebeschleunigung, um Skalierungsprobleme zu vermeiden */
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
       background-color: #fff;
       border-radius: 6px;
       padding: 20px;
@@ -136,9 +143,11 @@
     }
     .slide-in-right {
       animation: slideInRight 0.5s forwards !important;
+      will-change: transform, opacity;
     }
     .slide-in-left {
       animation: slideInLeft 0.5s forwards !important;
+      will-change: transform, opacity;
     }
     /* Kategorien in Neuheiten & Topseller */
     .category {
